@@ -1,5 +1,9 @@
+import Button from "./Button.vue";
+import { shallowMount } from "@vue/test-utils";
+
 describe("Button", () => {
-  it("should pass", () => {
-    expect(true).toBe(true);
+  it("should render", () => {
+    const wrapper = shallowMount(Button);
+    expect(wrapper.exists()).toBe(true);
   });
 });
