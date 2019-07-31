@@ -2,7 +2,10 @@
   "name": "zenlib",
   "scripts": {
     "build": "lerna exec --ignore \"**/@(storybook|bootstrap)\" -- rollup -c \\$LERNA_ROOT_PATH/rollup.config.js",
-    "test": "jest"
+    "build:watch": "lerna exec --ignore \"**/@(storybook|bootstrap)\" -- rollup -w -c \\$LERNA_ROOT_PATH/rollup.config.js",
+    "test": "jest",
+    "eslint": "eslint \"packages/**/*.{js,vue}\"",
+    "eslint:fix": "eslint --fix \"packages/**/*.{js,vue}\""
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",
@@ -11,9 +14,14 @@
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^24.8.0",
     "bootstrap-vue": "^2.0.0-rc.27",
+    "eslint": "^6.1.0",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-vue": "^5.2.3",
     "jest": "^24.8.0",
     "jest-cli": "^24.8.0",
     "lerna": "^3.16.4",
+    "prettier": "1.18.2",
     "rollup": "^1.17.0",
     "rollup-plugin-commonjs": "^10.0.1",
     "rollup-plugin-node-resolve": "^5.2.0",
