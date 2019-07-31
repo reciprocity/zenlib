@@ -1,0 +1,12 @@
+{
+  "name": "@reciprocity/bootstrap",
+  "version": "0.0.1",
+  "description": "Customized version of bootstrap",
+  "scripts": {},
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "bootstrap-vue": "^2.0.0-rc.27"
+  }
+}

@@ -1,0 +1,25 @@
+@import "./colors.scss";
+
+//  COLORS MAPPING
+
+// Keep this mapping short and very general for most used colors. We don't want
+// to end up using $border-gray for text color or something similar.
+// In cases like that, use color variables directly.
+// Naming convention $color-[part of app eg. app|text|border]-[variant]
+
+// General
+$color-app-primary:     $color-picton-blue;
+
+// Text
+$color-text-default:    $color-shark;
+
+// State
+$color-success:         $color-emerald;
+$color-error:           $color-amaranth;
+$color-warning:         $color-my-sin;
+
+
+//  BORDER
+$border-width-default:  1px;
+$border-color-default:  $color-ghost;
+$border-default:        $border-width-default solid $border-color-default;

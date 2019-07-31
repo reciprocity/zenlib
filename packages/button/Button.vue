@@ -8,11 +8,11 @@
 </template>
 
 <script>
-	import bButton from 'bootstrap-vue/es/components/button/button';
+	import { BButton } from 'bootstrap-vue';
 
 	export default {
 		name: 'Button',
-		components: { bButton },
+		components: { BButton },
 		props: {
 			showLoader: {
 				type: Boolean,

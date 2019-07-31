@@ -1,0 +1,73 @@
+/*!
+ * Copyright (C) 2019 Reciprocity, Inc - All Rights Reserved
+ * Unauthorized use, copying, distribution, displaying, or public performance
+ * of this file, via any medium, is strictly prohibited. All information
+ * contained herein is proprietary and confidential and may not be shared
+ * with any third party without the express written consent of Reciprocity, Inc.
+ */
+
+/* stylelint-disable color-no-hex */
+
+/*
+/* This file defines colors for the whole app, they are mapped to Bootstrap
+/* variables in bootstrap_reset.scss file. Try and reuse similar colors to
+/* avoid a christmas tree look, use http://chir.ag/projects/name-that-color
+/* for color names
+/*
+/* Rule when adding a new color is to prefix it with $color- to help with
+/* autocomplete
+/*
+
+/* *******************
+
+      APP COLORS
+
+********************* */
+
+// Grayscale
+$color-white:             #ffffff;
+$color-alabaster:         #fafafa;
+$color-wild-sand:         #f5f5f5; // 100
+$color-athens-gray:       #eeeeef; // 200
+$color-geyser:            #dee2e6; // 300
+$color-ghost:             #ced4da; // 400
+$color-hit-gray:          #adb5bd; // 500
+$color-oslo-gray:         #868e96; // 600
+$color-trout:             #495057; // 700
+$color-shark:             #212529; // 900
+$color-black:             #000000;
+
+// Rainbow
+$color-picton-blue:       #2e8fe7;
+$color-studio:            #9b48b3;
+$color-amaranth:          #ef4853;
+$color-burning-orange:    #ff672c;
+$color-gold:              #ffd200;
+$color-my-sin:            #ffac1f;
+$color-emerald:           #3bbf74;
+$color-east-bay:          #39537a;
+$color-waikawa-gray:      #576d8e;
+$color-casper:            #b0bfd5;
+$color-heather:           #b7c1cf;
+$color-buttermilk:        #ffecb3;
+$color-buttery-white:     #fffceb;
+$color-zircon:            #fafcff;
+$color-mystic:            #dfe5eb;
+
+// New colors
+
+// These are currently only used in audit dashboard and generally shouldn't be
+// used anywhere else _yet_. Once we apply them across the entire app, they will
+// be moved above and used in mappings below.
+$color-alto:              #e0e0e0;
+$color-froly:             #f26d75;
+$color-fire-bush:         #e6942c;
+$color-texas-rose:        #ffbd4c;
+
+// Statuses
+$color-light-wisteria:    #d18edd;
+$color-wisteria:          #9e5baa;
+$color-cornflower-blue:   #58a5ec;
+$color-regent-gray:       #8c9ba5;
+
+/* stylelint-enable color-no-hex */

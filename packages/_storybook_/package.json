@@ -1,0 +1,35 @@
+{
+  "name": "@reciprocity/storybook",
+  "version": "0.0.1",
+  "description": "A storybook website for library components",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@reciprocity/bootstrap": "^0.0.1",
+    "@reciprocity/button": "^0.0.1",
+    "bootstrap": "^4.3.1",
+    "bootstrap-vue": "^2.0.0-rc.27",
+    "vue": "^2.6.10"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@storybook/addon-actions": "^5.1.9",
+    "@storybook/addon-links": "^5.1.9",
+    "@storybook/addons": "^5.1.9",
+    "@storybook/preset-scss": "^1.0.2",
+    "@storybook/vue": "^5.1.9",
+    "babel-loader": "^8.0.6",
+    "babel-preset-vue": "^2.0.2",
+    "css-loader": "^3.1.0",
+    "node-sass": "^4.12.0",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "vue-loader": "^15.7.1"
+  }
+}

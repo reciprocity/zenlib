@@ -2,8 +2,12 @@
   "name": "@reciprocity/button",
   "version": "0.0.1",
   "description": "A generic button component",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {},
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "peerDependencies": {
+    "bootstrap-vue": "2.x"
+  },
+  "dependencies": {}
 }
