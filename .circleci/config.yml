@@ -1,25 +1,73 @@
+defaults: &defaults
+  docker:
+    - image: circleci/node:10
+
 version: 2
 jobs:
-  build:
-
-    docker:
-      - image: circleci/node:10
-
-    working_directory: ~/zenlib
-
+  prepare:
+    <<: *defaults
     steps:
       - checkout
-
       - restore_cache:
           keys:
-            - v1-dependencies-{{ checksum "package.json" }}
-            - v1-dependencies-
-
-      - run: npm install && npx lerna bootstrap
-
+          - v1-dependencies-{{ checksum "package.json" }}
+      - run: npm install & npx lerna bootstrap
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-
+      - persist_to_workspace:
+          root: .
+          paths:
+            - node_modules
+  build:
+    <<: *defaults
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run: npm run build
+  test:
+    <<: *defaults
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
       - run: npm run test
+      - persist_to_workspace:
+          root: .
+          paths:
+            - coverage
+  lint:
+    <<: *defaults
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run: npm run eslint
+  coverage:
+    <<: *defaults
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run: cat coverage/lcov.info | npx coveralls
+
+workflows:
+  version: 2
+  pr-checks:
+    jobs:
+      - prepare
+      - lint:
+          requires:
+            - prepare
+      - test:
+          requires:
+            - prepare
+      - build:
+          requires:
+            - lint
+            - test
+      - coverage:
+          requires:
+            - test

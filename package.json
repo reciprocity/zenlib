@@ -3,7 +3,7 @@
   "scripts": {
     "build": "lerna exec --ignore \"**/@(storybook|bootstrap)\" -- rollup -c \\$LERNA_ROOT_PATH/rollup.config.js",
     "build:watch": "lerna exec --ignore \"**/@(storybook|bootstrap)\" -- rollup -w -c \\$LERNA_ROOT_PATH/rollup.config.js",
-    "test": "jest",
+    "test": "jest --coverage",
     "eslint": "eslint \"packages/**/*.{js,vue}\"",
     "eslint:fix": "eslint --fix \"packages/**/*.{js,vue}\""
   },
