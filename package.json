@@ -47,6 +47,7 @@
     "collectCoverage": true,
     "collectCoverageFrom": [
       "packages/**/*.{js,vue}",
+      "!packages/_storybook_/**",
       "!**/node_modules/**",
       "!**/dist/**"
     ]
