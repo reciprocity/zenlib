@@ -55,7 +55,7 @@ jobs:
 
 workflows:
   version: 2
-  pr-checks:
+  test-and-build:
     jobs:
       - prepare
       - lint:
