@@ -27,6 +27,10 @@ jobs:
       - attach_workspace:
           at: .
       - run: npm run build
+      - persist_to_workspace:
+          root: .
+          paths:
+            - packages
   test:
     <<: *defaults
     steps:
@@ -52,10 +56,17 @@ jobs:
       - attach_workspace:
           at: .
       - run: cat coverage/lcov.info | npx coveralls
+  publish:
+    <<: *defaults
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run: npx lerna publish
 
 workflows:
   version: 2
-  test-and-build:
+  test-build-publish:
     jobs:
       - prepare
       - lint:
@@ -66,8 +77,17 @@ workflows:
             - prepare
       - build:
           requires:
-            - lint
-            - test
+            - prepare
       - coverage:
           requires:
             - test
+      - publish:
+          requires:
+            - lint
+            - test
+            - build
+          filters:
+            tags:
+              only: /.*/
+            branches:
+              ignore: /.*/
