@@ -1,6 +1,6 @@
 {
   "name": "@reciprocity/storybook",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A storybook website for library components",
   "main": "index.js",
   "scripts": {
@@ -11,8 +11,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@reciprocity/bootstrap": "^0.0.1",
-    "@reciprocity/button": "^0.0.1",
+    "@reciprocity/bootstrap": "^0.1.0",
+    "@reciprocity/button": "^0.1.0",
     "bootstrap": "^4.3.1",
     "bootstrap-vue": "^2.0.0-rc.27",
     "vue": "^2.6.10"
