@@ -3,9 +3,13 @@
   "scripts": {
     "build": "lerna exec --ignore \"**/@(storybook|bootstrap)\" -- rollup -c \\$LERNA_ROOT_PATH/rollup.config.js",
     "build:watch": "lerna exec --ignore \"**/@(storybook|bootstrap)\" -- rollup -w -c \\$LERNA_ROOT_PATH/rollup.config.js",
-    "test": "jest --coverage",
+    "bootstrap": "lerna bootstrap",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "test:watch": "jest --watch",
     "eslint": "eslint \"packages/**/*.{js,vue}\"",
-    "eslint:fix": "eslint --fix \"packages/**/*.{js,vue}\""
+    "eslint:fix": "eslint --fix \"packages/**/*.{js,vue}\"",
+    "storybook": "cd packages/_storybook_ && npm run storybook"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",
