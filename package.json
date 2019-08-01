@@ -3,7 +3,7 @@
   "scripts": {
     "build": "lerna exec --ignore \"**/@(storybook|bootstrap)\" -- rollup -c \\$LERNA_ROOT_PATH/rollup.config.js",
     "build:watch": "lerna exec --ignore \"**/@(storybook|bootstrap)\" -- rollup -w -c \\$LERNA_ROOT_PATH/rollup.config.js",
-    "bootstrap": "lerna bootstrap",
+    "bootstrap": "npx lerna bootstrap",
     "test": "jest",
     "test:coverage": "jest --coverage",
     "test:watch": "jest --watch",
