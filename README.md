@@ -5,12 +5,12 @@
 
 Install dependencies, packages dependencies and link package inter dependencies.
 
-`npm install && npx lerna bootstrap`
+`npm install && npm run bootstrap`
 
 
 ### Start Storybook website
 
-`cd packages/_storybook_ && npm run storybook`
+`npm run storybook`
 
 ### Watch and build components changes
 
