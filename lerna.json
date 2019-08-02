@@ -4,7 +4,7 @@
   ],
   "command": {
     "version": {
-      "message": "chore(release): updated package versions"
+      "message": "chore(release): [skip ci] updated package versions"
     }
   },
   "version": "independent"
