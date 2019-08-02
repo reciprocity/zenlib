@@ -11,7 +11,7 @@
 import { BButton } from "bootstrap-vue";
 
 export default {
-  name: "Button",
+  name: "TestingButton",
   components: { BButton },
   props: {
     showLoader: {
