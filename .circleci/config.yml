@@ -48,7 +48,7 @@ jobs:
       - checkout
       - attach_workspace:
           at: .
-      - run: npm run eslint
+      - run: npm run lint
   coverage:
     <<: *defaults
     steps:
@@ -62,7 +62,7 @@ jobs:
       - checkout
       - attach_workspace:
           at: .
-      - run: npx lerna publish
+      - run: npm run publish
 
 workflows:
   version: 2

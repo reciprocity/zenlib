@@ -2,7 +2,6 @@
   <b-button v-bind="$attrs" :class="{ loading: showLoader }" v-on="$listeners">
     <i v-if="showLoader" class="fa fa-circle-o-notch fa-spin spinner" />
     <span class="text">
-      <!-- Add comment for build testing -->
       <slot />
     </span>
   </b-button>

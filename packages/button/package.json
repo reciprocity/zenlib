@@ -8,5 +8,8 @@
   "license": "ISC",
   "peerDependencies": {
     "bootstrap-vue": "2.x"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

@@ -7,8 +7,9 @@
     "test": "jest",
     "test:coverage": "jest --coverage",
     "test:watch": "jest --watch",
-    "eslint": "eslint \"packages/**/*.{js,vue}\"",
-    "eslint:fix": "eslint --fix \"packages/**/*.{js,vue}\"",
+    "lint": "eslint \"packages/**/*.{js,vue}\"",
+    "lint:fix": "eslint --fix \"packages/**/*.{js,vue}\"",
+    "publish": "npx lerna publish from-package -y",
     "storybook": "cd packages/_storybook_ && npm run storybook"
   },
   "devDependencies": {
@@ -23,6 +24,7 @@
     "eslint-config-prettier": "^6.0.0",
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-vue": "^5.2.3",
+    "husky": "^3.0.2",
     "jest": "^24.8.0",
     "jest-cli": "^24.8.0",
     "lerna": "^3.16.4",
@@ -55,5 +57,10 @@
       "!**/node_modules/**",
       "!**/dist/**"
     ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "npm run lint && npm run test"
+    }
   }
 }
