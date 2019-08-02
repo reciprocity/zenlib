@@ -62,7 +62,7 @@ jobs:
       - checkout
       - attach_workspace:
           at: .
-      - run: npm run publish
+      - run: npm run release
 
 workflows:
   version: 2
@@ -87,5 +87,6 @@ workflows:
             - test
             - build
           filters:
-            tags:
-              only: /.*/
+            branches:
+              only:
+                - master

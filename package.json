@@ -9,7 +9,7 @@
 		"test:watch": "jest --watch",
 		"lint": "eslint \"packages/**/*.{js,vue}\"",
 		"lint:fix": "eslint --fix \"packages/**/*.{js,vue}\"",
-		"publish": "npx lerna publish from-package -y",
+		"release": "npx lerna version --conventional-commits --no-changelog -y && npx lerna publish from-package -y",
 		"storybook": "cd packages/_storybook_ && npm run storybook"
 	},
 	"devDependencies": {

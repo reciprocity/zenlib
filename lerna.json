@@ -4,7 +4,7 @@
   ],
   "command": {
     "version": {
-      "message": "chore: publish"
+      "message": "chore(release): updated package versions"
     }
   },
   "version": "independent"
