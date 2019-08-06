@@ -10,6 +10,9 @@
 // General
 $color-app-primary:     $color-picton-blue;
 
+// Layout
+$spacer: 1rem;
+
 // Text
 $color-text-default:    $color-shark;
 
@@ -18,6 +21,11 @@ $color-success:         $color-emerald;
 $color-error:           $color-amaranth;
 $color-warning:         $color-my-sin;
 
+$status-colors: (
+  light-purple: $color-light-wisteria,
+  purple: $color-wisteria,
+  light-blue: $color-cornflower-blue,
+);
 
 //  BORDER
 $border-width-default:  1px;
