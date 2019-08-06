@@ -42,13 +42,13 @@ $theme-colors: ();
 $theme-colors: map-merge(
   (
     primary: $color-app-primary,
-    secondary: $color-oslo-gray,
+    secondary: $color-regent-gray,
     success: $color-success,
     info: $cyan,
     warning: $color-warning,
     danger: $color-error,
     error: $color-error,
-    light: $color-wild-sand,
+    light: $color-iron,
     dark: $gray-800
   ),
   $theme-colors
@@ -70,6 +70,7 @@ $grid-breakpoints: (
 );
 
 // General
+$body-bg: $color-wild-sand;
 $hr-border-color: $border-color-default;
 $border-radius: 0.125rem;
 $border-radius-lg: $border-radius;
@@ -105,6 +106,7 @@ $input-border-color: $border-color-default;
 $custom-select-bg: $input-bg;
 $input-group-addon-bg: $color-white;
 $enable-validation-icons: false;
+$form-group-margin-bottom: 1.5rem;
 
 // Dropdowns
 $dropdown-min-width: 100%;
