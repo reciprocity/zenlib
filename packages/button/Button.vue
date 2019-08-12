@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import { BButton } from "bootstrap-vue";
+import BButton from "bootstrap-vue/es/components/button/button";
 
 export default {
   name: "Button",
