@@ -1,0 +1,224 @@
+// Layout
+.flex- {
+  &stretch { flex: 1; }
+  &no-shrink { flex-shrink: 0; }
+
+  &full-height- {
+    &column,
+    &row {
+      display: flex;
+      flex: 1;
+    }
+
+    &column { flex-direction: column; }
+  }
+}
+
+.container-narrow {
+  @extend .container;
+  @include media-breakpoint-up("md") {
+    max-width: map_get($container-max-widths, "md");
+  }
+}
+
+// Buttons
+.btn {
+  white-space: nowrap;
+
+  &-icon {
+    font-size: 1.25rem !important;
+    line-height: 0.7 !important;
+    padding: $input-btn-padding-y;
+
+    &.btn-sm {
+      font-size: 1rem !important;
+      line-height: 0.75 !important;
+      padding: $input-btn-padding-y-sm;
+    }
+  }
+
+  &-link:focus { box-shadow: $input-btn-focus-box-shadow; }
+
+  &-light {
+    &:hover,
+    &:not(:disabled):not(.disabled):active,
+    &:not(:disabled):not(.disabled).active,
+    .show > &.dropdown-toggle { color: $color-text-default; }
+  }
+}
+
+[class*=btn-outline-] {
+  background: $color-white;
+}
+
+// Forms
+.custom-select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.form-control.flatpickr-input[readonly] { background: $input-bg; }
+.input-group-addon { padding: 0.5rem 1rem; }
+
+// Dropdowns
+.dropdown-toggle {
+  &::after,
+  &:empty::after {
+    margin-left: $caret-width * 1.6;
+    vertical-align: $caret-width * 0.7;
+  }
+
+  &.no-arrow::after { display: none; }
+}
+
+button.dropdown-item:focus { outline: 0; }
+
+// Forms
+label:not(.form-check-label) { display: block; }
+
+// Tables
+.table {
+  border: 1px solid $color-athens-gray;
+
+  th {
+    background: $color-mystic;
+    color: $color-east-bay;
+    font-size: 0.86rem;
+    letter-spacing: 0.042em;
+
+    &:focus {
+      outline: none;
+      box-shadow: inset 0 0 6px rgba($color-east-bay, 0.5);
+    }
+  }
+
+  td {
+    border-bottom: 1px solid $color-athens-gray;
+    font-size: 13px;
+  }
+
+  &.table-sm {
+    th {
+      padding: 0.45rem 1rem;
+      &.sorting::before,
+      &.sorting::after { padding-bottom: 0.35rem !important; }
+    }
+    td { padding: 0.75rem 1rem 0.7rem; }
+  }
+}
+
+// Tabs
+.nav-tabs {
+  margin-left: -20px;
+  margin-right: -20px;
+  padding: 0 20px;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  overflow-x: auto;
+
+  .nav-item {
+    margin-bottom: 0;
+
+    &:not(:last-child) { margin-right: 24px; }
+  }
+
+  .nav-link {
+    border-width: 0 0 2px 0;
+    color: $color-oslo-gray;
+    font-size: 12px;
+    font-weight: bold;
+    margin: 0;
+    padding: 5px 16px;
+
+    @media (max-width: 1199px) {
+      padding: 5px 8px;
+    }
+  }
+}
+
+// Alternative (top-level) tabs
+.nav-tabs.top-level {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  position: relative;
+
+  .nav-item {
+    margin-right: 0 !important;
+  }
+
+  .nav-link {
+    display: block;
+    position: relative;
+    border-radius: 0;
+    padding: 12px 32px;
+    border: 0;
+    border-bottom: 1px solid transparent;
+    border-top: 4px solid transparent;
+    color: $color-oslo-gray;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 1;
+
+    &.disabled { opacity: 0.3; }
+
+    &:hover,
+    &:focus {
+      background: $color-athens-gray;
+      text-decoration: none;
+      background-clip: padding-box;
+      border-bottom: 1px solid $nav-tabs-link-hover-border-color;
+    }
+
+    &.active,
+    &.active:hover {
+      font-weight: bold;
+      background: $color-white;
+      color: $color-shark;
+      z-index: 2;
+      border-top-color: $nav-tabs-link-active-border-color;
+      border-bottom-color: $color-white;
+
+      .highlight { color: $nav-tabs-link-active-border-color; }
+    }
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-bottom: 1px solid $nav-tabs-link-hover-border-color;
+  }
+}
+
+.tab-pane { outline: 0; }
+
+// Vertical tabs
+.tabs.vertical {
+  margin: 0;
+
+  > .col-auto {
+    padding: 0;
+    background: $color-mystic;
+  }
+
+  .nav-tabs {
+    margin: 0;
+    padding: 3rem 0;
+    width: 200px;
+    white-space: normal;
+  }
+
+  .nav-item { margin: 0; }
+
+  .nav-tabs .nav-link {
+    padding: 0.5rem 1rem;
+    font-size: 14px;
+    text-transform: uppercase;
+    border: 0;
+
+    &.active { background: $color-white; }
+  }
+}
