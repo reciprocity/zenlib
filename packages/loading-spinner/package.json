@@ -6,10 +6,10 @@
   "scripts": {},
   "author": "",
   "license": "MIT",
-  "peerDependencies": {
-    "@reciprocity/bootstrap": "0.x"
-  },
   "publishConfig": {
     "access": "public"
+  },
+  "dependencies": {
+    "@reciprocity/bootstrap": "^0.2.0"
   }
 }

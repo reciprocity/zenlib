@@ -2,10 +2,6 @@
 
 A component that renders an animated spinner circle next to a "Loading..." or a custom text.
 
-#### Dependencies
-
-_This component depends on `@reciprocity/bootstrap`. So make sure you have it installed and imported wherever you're gonna use this component._
-
 ## Installation
 
 ```
