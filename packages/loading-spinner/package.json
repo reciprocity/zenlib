@@ -1,6 +1,6 @@
 {
   "name": "@reciprocity/loading-spinner",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Displays an animated spinner with some text",
   "main": "dist/index.js",
   "scripts": {},
@@ -10,6 +10,6 @@
     "access": "public"
   },
   "dependencies": {
-    "@reciprocity/bootstrap": "^0.3.0"
+    "@reciprocity/bootstrap": "^0.4.0"
   }
 }
