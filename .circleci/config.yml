@@ -38,7 +38,7 @@ jobs:
       - checkout
       - attach_workspace:
           at: .
-      - run: npm run test:coverage
+      - run: npm install && npm run bootstrap && npm run test:coverage
       - persist_to_workspace:
           root: .
           paths:
