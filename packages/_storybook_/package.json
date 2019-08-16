@@ -1,6 +1,6 @@
 {
   "name": "@reciprocity/storybook",
-  "version": "0.2.3",
+  "version": "0.3.0",
   "description": "A storybook website for library components",
   "main": "index.js",
   "private": true,
