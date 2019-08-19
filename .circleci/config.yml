@@ -20,13 +20,14 @@ jobs:
           root: .
           paths:
             - node_modules
+            - packages
   build:
     <<: *defaults
     steps:
       - checkout
       - attach_workspace:
           at: .
-      - run: npm install && npm run bootstrap && npm run build
+      - run: npm run build
       - persist_to_workspace:
           root: .
           paths:
@@ -37,7 +38,7 @@ jobs:
       - checkout
       - attach_workspace:
           at: .
-      - run: npm install && npm run bootstrap && npm run test:coverage
+      - run: npm run test:coverage
       - persist_to_workspace:
           root: .
           paths:
