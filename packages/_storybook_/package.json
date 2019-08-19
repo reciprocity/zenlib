@@ -14,7 +14,6 @@
   "dependencies": {
     "@reciprocity/bootstrap": "^0.5.0",
     "@reciprocity/button": "^0.1.8",
-    "@reciprocity/color-input": "^0.1.0",
     "@reciprocity/day-selector": "^0.1.0",
     "@reciprocity/loading-spinner": "^0.1.2",
     "bootstrap": "^4.3.1",
