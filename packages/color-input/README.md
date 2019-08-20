@@ -1,19 +1,15 @@
 # Button
 
-A generic button Vue.js component.
-
-#### Dependencies
-
-_This component depends on `bootstrap`, `bootstrap-vue`, and `@reciprocity/bootstrap` packages. So make sure you have those installed and imported wherever you're gonna use this component._
+An input field that includes a color picker
 
 ## Installation
 
 ```
-npm install @reciprocity/button
+npm install @reciprocity/color-input
 ```
 or
 ```
-yarn add @reciprocity/button
+yarn add @reciprocity/color-input
 ```
 
 ## Usage
@@ -26,15 +22,15 @@ app.vue
 
 ```vue
 <template>
-	<zen-button>Click me!</zen-button>
+	<color-input value="#0099FF" />
 </template>
 <script>
-	import ZenButton from '@reciprocity/button';
+	import ColorInput from '@reciprocity/color-input';
 
 	export default Vue.extend({
 		name: 'My App',
 		components: {
-			ZenButton
+			ColorInput
 		}
 	};
 </script>
