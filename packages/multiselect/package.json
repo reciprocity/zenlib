@@ -1,0 +1,18 @@
+{
+  "name": "@reciprocity/multiselect",
+  "version": "0.0.0",
+  "description": "A select component with multi value support",
+  "main": "dist/index.js",
+  "scripts": {},
+  "author": "",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@reciprocity/bootstrap": "^0.5.0",
+    "bootstrap": "^4.3.1",
+    "lodash.isobject": "^3.0.2",
+    "vue-multiselect": "^2.1.6"
+  }
+}
