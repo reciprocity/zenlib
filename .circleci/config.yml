@@ -50,6 +50,13 @@ jobs:
       - attach_workspace:
           at: .
       - run: npm run lint
+  bundlesize:
+    <<: *defaults
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run: npm run bundlesize
   coverage:
     <<: *defaults
     steps:
@@ -74,6 +81,9 @@ workflows:
     jobs:
       - prepare
       - lint:
+          requires:
+            - prepare
+      - bundlesize:
           requires:
             - prepare
       - test:
