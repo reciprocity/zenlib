@@ -40,6 +40,7 @@
 		"typescript": "^3.5.3",
 		"vue": "^2.6.10",
 		"vue-jest": "^3.0.4",
+		"vue-multiselect": "^2.1.6",
 		"vue-template-compiler": "^2.6.10"
 	},
 	"jest": {
