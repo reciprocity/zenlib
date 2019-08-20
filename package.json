@@ -9,6 +9,7 @@
 		"test:watch": "jest --watch",
 		"lint": "eslint \"packages/**/*.{js,vue}\"",
 		"lint:fix": "eslint --fix \"packages/**/*.{js,vue}\"",
+		"bundlesize": "npx bundlesize",
 		"release": "npx lerna version --conventional-commits --no-changelog -y && npx lerna publish from-package -y",
 		"storybook": "cd packages/_storybook_ && npm run storybook"
 	},
@@ -21,6 +22,7 @@
 		"babel-core": "^7.0.0-bridge.0",
 		"babel-jest": "^24.8.0",
 		"bootstrap-vue": "^2.0.0-rc.27",
+		"bundlesize": "^0.18.0",
 		"coveralls": "^3.0.5",
 		"eslint": "^6.1.0",
 		"eslint-config-prettier": "^6.0.0",
