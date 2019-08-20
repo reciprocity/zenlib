@@ -85,7 +85,7 @@ workflows:
             - prepare
       - bundlesize:
           requires:
-            - prepare
+            - build
       - test:
           requires:
             - prepare
