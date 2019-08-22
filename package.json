@@ -9,6 +9,7 @@
 		"test:watch": "jest --watch",
 		"lint": "eslint \"packages/**/*.{js,vue}\"",
 		"lint:fix": "eslint --fix \"packages/**/*.{js,vue}\"",
+		"bundlesize": "npx bundlesize",
 		"release": "npx lerna version --conventional-commits --no-changelog -y && npx lerna publish from-package -y",
 		"storybook": "cd packages/_storybook_ && npm run storybook"
 	},
@@ -21,6 +22,7 @@
 		"babel-core": "^7.0.0-bridge.0",
 		"babel-jest": "^24.8.0",
 		"bootstrap-vue": "^2.0.0-rc.27",
+		"bundlesize": "^0.18.0",
 		"coveralls": "^3.0.5",
 		"eslint": "^6.1.0",
 		"eslint-config-prettier": "^6.0.0",
@@ -32,9 +34,10 @@
 		"lerna": "^3.16.4",
 		"prettier": "1.18.2",
 		"rollup": "^1.17.0",
+		"rollup-plugin-babel": "^4.3.3",
 		"rollup-plugin-commonjs": "^10.0.1",
 		"rollup-plugin-node-resolve": "^5.2.0",
-		"rollup-plugin-typescript": "^1.0.1",
+		"rollup-plugin-postcss": "^2.0.3",
 		"rollup-plugin-vue": "^5.0.1",
 		"tslib": "^1.10.0",
 		"typescript": "^3.5.3",
@@ -49,6 +52,9 @@
 			"json",
 			"vue"
 		],
+		"moduleNameMapper": {
+			"\\.(css)$": "<rootDir>/__mocks__/style.js"
+		},
 		"transform": {
 			".*\\.(vue)$": "vue-jest",
 			"^.+\\.js$": "babel-jest"
@@ -66,5 +72,6 @@
 			"pre-push": "npm run lint && npm run test",
 			"commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
 		}
-	}
+	},
+	"dependencies": {}
 }

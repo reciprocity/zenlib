@@ -1,0 +1,16 @@
+{
+  "name": "@reciprocity/color-input",
+  "version": "0.1.2",
+  "description": "An input field for color values that includes a color picker",
+  "main": "dist/index.js",
+  "scripts": {},
+  "author": "",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@reciprocity/bootstrap": "^0.5.2",
+    "@simonwep/pickr": "^1.2.7"
+  }
+}
