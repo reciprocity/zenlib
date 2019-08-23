@@ -61,6 +61,7 @@
 <script>
 import VueMultiselect from "vue-multiselect";
 import isObject from "lodash.isobject";
+import "vue-multiselect/dist/vue-multiselect.min.css";
 
 const formatOptions = options => {
   return options.forEach(option => {
