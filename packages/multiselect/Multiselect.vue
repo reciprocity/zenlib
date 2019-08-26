@@ -8,6 +8,7 @@
     :option-height="35"
     :value="value"
     :allow-empty="allowEmpty"
+    :show-labels="false"
     v-bind="$attrs"
     v-on="$listeners"
   >
