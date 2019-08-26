@@ -12,7 +12,7 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import Vue from "vue";
 import capitalize from "lodash.capitalize";
 import cloneDeep from "lodash.clonedeep";

@@ -12,7 +12,7 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import Vue from "vue";
 import Pickr from "@simonwep/pickr";
 import BFormInput from "bootstrap-vue/es/components/form-input/form-input";

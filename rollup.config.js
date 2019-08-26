@@ -31,7 +31,7 @@ export default {
     }),
     babel({
       rootMode: "upward",
-      extensions: [".js", ".vue"]
+      extensions: [".ts", ".js", ".vue"]
     }),
     postcss()
   ]
