@@ -4,7 +4,7 @@
       :value="value"
       :required="required"
       pattern="#[0-9A-Fa-f]{6}"
-      @input="updateColor"
+      @input="onColorTextChange"
     />
     <div :style="colorCircleStyle" :class="colorCircleClass">
       <div ref="colorCircle" class="clickable-area" />
@@ -54,9 +54,13 @@ export default Vue.extend({
   },
   watch: {
     value: {
-      handler(newColor) {
-        if (isValidColor(newColor)) {
-          this.pickr.setColor(newColor);
+      handler(color) {
+        const current = this.pickr
+          .getColor()
+          .toHEXA()
+          .toString();
+        if (color !== current && isValidColor(color)) {
+          this.setPickrColor(color);
         }
       }
     }
@@ -83,15 +87,22 @@ export default Vue.extend({
       }
     });
     this.pickr.on("change", newColor => {
-      this.updateColor(newColor.toHEXA().toString());
+      this.onPickrColorChange(newColor.toHEXA().toString());
     });
   },
   beforeDestroy() {
     this.pickr.destroy();
   },
   methods: {
-    updateColor(newColor) {
-      this.$emit("input", newColor);
+    onColorTextChange(color) {
+      this.setPickrColor(color);
+    },
+    onPickrColorChange(color) {
+      this.$emit("input", color);
+    },
+    setPickrColor(color) {
+      this.pickr.setColor(color);
+      this.onPickrColorChange(color);
     }
   }
 });

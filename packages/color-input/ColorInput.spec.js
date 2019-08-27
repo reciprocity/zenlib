@@ -1,13 +1,24 @@
 import ColorInput from "./ColorInput.vue";
-import { shallowMount } from "@vue/test-utils";
+import { shallowMount, mount } from "@vue/test-utils";
 
 jest.mock("@simonwep/pickr", () => {
+  let value;
   return {
-    create: () => ({
-      on: jest.fn(),
-      destroy: jest.fn(),
-      setColor: jest.fn()
-    })
+    create: () => {
+      value = "";
+      return {
+        on: jest.fn(),
+        destroy: jest.fn(),
+        setColor: jest.fn().mockImplementation(color => {
+          value = color;
+        }),
+        getColor: jest.fn().mockImplementation(() => ({
+          toHEXA: () => ({
+            toString: () => value
+          })
+        }))
+      };
+    }
   };
 });
 
@@ -56,6 +67,20 @@ describe("ColorInput", () => {
     expect(wrapper.vm.pickr.setColor).not.toHaveBeenCalled();
     wrapper.setProps({ value: "#FF00FF" });
     expect(wrapper.vm.pickr.setColor).toHaveBeenCalledWith("#FF00FF");
+  });
+
+  it("should update pickr color after updating text input", () => {
+    const wrapper = mount(ColorInput, {
+      propsData: {
+        value: "#0099FF"
+      }
+    });
+
+    const input = wrapper.find("input");
+    expect(wrapper.vm.pickr.setColor).not.toHaveBeenCalled();
+
+    input.setValue("#FF00FF");
+    expect(wrapper.vm.pickr.setColor).toHaveBeenCalled();
   });
 
   it("should update circle background with the selected color if valid", () => {
