@@ -103,6 +103,7 @@ $input-padding-x: 0.5rem;
 $input-padding-x-lg: 0.5rem;
 $input-bg: $color-white;
 $input-border-color: $border-color-default;
+$input-focus-border-color: lighten($color-app-primary, 25%);
 $custom-select-bg: $input-bg;
 $input-group-addon-bg: $color-white;
 $enable-validation-icons: false;
@@ -164,3 +165,4 @@ $alert-color-level: 2;
 $badge-font-size: 0.75rem;
 
 /* stylelint-enable color-no-hex */
+
