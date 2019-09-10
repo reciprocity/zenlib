@@ -34,7 +34,7 @@ First, you'll need to install all packages dependencies and interlink packages l
 
 #### Storybook packages
 
-Second, navigate to /packages/_storybook_ and install all packages dependencies of the storybook website. Run this command to do it:
+Second, navigate to /packages/&#95;storybook&#95; and install all packages dependencies of the storybook website. Run this command to do it:
 
 `npm install`
 
