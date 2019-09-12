@@ -32,12 +32,6 @@ First, you'll need to install all packages dependencies and interlink packages l
 
 `npm install && npm run bootstrap`
 
-#### Storybook packages
-
-Second, navigate to /packages/&#95;storybook&#95; and install all packages dependencies of the storybook website. Run this command to do it:
-
-`npm install`
-
 #### Run storybook
 
 You'll want to start the storybook website so you can browse all demos and stories for the existing components.
