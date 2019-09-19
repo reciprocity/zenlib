@@ -189,7 +189,7 @@ $vue-ms-tag-bg: $color-ghost;
 $vue-ms-tag-font-size: $badge-font-size;
 $vue-ms-tag-font-weight: normal;
 $vue-ms-tag-icon-size: 1.7rem;
-$vue-ms-tag-icon-color: $vue-ms-tag-color;
+$vue-ms-tag-icon-color: $color-oslo-gray;
 $vue-ms-tag-icon-color-hover: $color-white;
 $vue-ms-tag-icon-bg-hover: $color-oslo-gray;
 $vue-ms-tag-padding-x: 0.4rem;
@@ -381,12 +381,16 @@ fieldset[disabled] .multiselect {
   font-weight: $vue-ms-tag-font-weight;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .multiselect__tag-icon::after {
   content: "×";
   color: $vue-ms-tag-icon-color;
-  font-size: 220%;
+  font-size: 343%;
+  font-weight: 500;
 }
 
 .multiselect__tag-icon:focus,
