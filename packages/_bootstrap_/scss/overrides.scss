@@ -76,6 +76,58 @@ button.dropdown-item:focus { outline: 0; }
 // Forms
 label:not(.form-check-label) { display: block; }
 
+// Form validation
+form.was-validated {
+  .form-control{
+    &:valid {
+      border-color: $border-color-default;
+
+      &:focus {
+        box-shadow: 0 0 0 0.2rem rgba($color-app-primary, 0.25);
+        border-color: $input-focus-border-color;
+      }
+    }
+  } 
+
+  .custom-control-input {
+    &:valid {
+      & ~ .custom-control-label {
+        color:  $gray-900;
+
+        &:before {
+          border-color: $border-color-default;
+        }
+      }
+
+      &:focus {
+        & ~ .custom-control-label {
+          &:before {
+            box-shadow: 0 0 0 0.2rem rgba($color-app-primary, 0.25);
+            border-color: $input-focus-border-color;
+          }
+        }
+
+        &:not(:checked) {
+          & ~ .custom-control-label {
+            &:before {
+              border-color: $input-focus-border-color;
+            }
+          }
+        }
+      }
+
+      &:checked {
+        & ~ .custom-control-label {
+          &:before {
+            border-color: $color-app-primary;
+            background-color: $color-app-primary;
+          }
+        }
+      }
+    }
+  }
+}
+
 // Tables
 .table {
   border: 1px solid $color-athens-gray;
