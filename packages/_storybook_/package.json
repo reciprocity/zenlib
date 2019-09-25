@@ -1,6 +1,6 @@
 {
   "name": "@reciprocity/storybook",
-  "version": "0.4.10",
+  "version": "0.4.11",
   "description": "A storybook website for library components",
   "main": "index.js",
   "private": true,
@@ -13,8 +13,8 @@
   "license": "ISC",
   "dependencies": {
     "@reciprocity/bootstrap": "^0.6.0",
-    "@reciprocity/button": "^0.1.10",
-    "@reciprocity/color-input": "^0.1.5",
+    "@reciprocity/button": "^0.1.11",
+    "@reciprocity/color-input": "^0.1.6",
     "@reciprocity/day-selector": "^0.1.4",
     "@reciprocity/loading-spinner": "^0.1.5",
     "@reciprocity/multiselect": "^0.2.2",
