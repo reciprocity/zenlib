@@ -15,7 +15,7 @@
 <script>
 import Vue from "vue";
 import Pickr from "@simonwep/pickr";
-import BFormInput from "bootstrap-vue/es/components/form-input/form-input";
+import { BFormInput } from "bootstrap-vue";
 
 import "@simonwep/pickr/dist/themes/classic.min.css";
 
