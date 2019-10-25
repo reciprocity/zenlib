@@ -1,6 +1,7 @@
 <template>
   <div class="d-flex align-items-center">
     <b-form-input
+      v-if="showFormInput"
       :value="value"
       :required="required"
       pattern="#[0-9A-Fa-f]{6}"
@@ -32,6 +33,18 @@ export default Vue.extend({
       required: true
     },
     required: {
+      type: Boolean,
+      default: false
+    },
+    showFormInput: {
+      type: Boolean,
+      default: true
+    },
+    showColorInput: {
+      type: Boolean,
+      default: false
+    },
+    showSaveButton: {
       type: Boolean,
       default: false
     }
@@ -80,9 +93,9 @@ export default Vue.extend({
           hsla: false,
           hsva: false,
           cmyk: false,
-          input: false,
+          input: this.showColorInput,
           clear: false,
-          save: false
+          save: this.showSaveButton
         }
       }
     });
@@ -117,6 +130,7 @@ $circle-size: 25px;
 
 .form-control {
   max-width: 175px;
+  margin-right: 15px;
 }
 
 .color-circle {
@@ -124,7 +138,6 @@ $circle-size: 25px;
   border-radius: 50%;
   flex: none;
   height: $circle-size;
-  margin-left: 15px;
   position: relative;
   width: $circle-size;
 
@@ -145,5 +158,53 @@ $circle-size: 25px;
   cursor: pointer;
   height: 100%;
   width: 100%;
+}
+</style>
+
+<style lang="scss">
+@import "@reciprocity/bootstrap/scss/variables";
+@import "@reciprocity/bootstrap/scss/custom";
+
+.pcr-app[data-theme="classic"] {
+  max-width: 235px;
+}
+.pcr-app[data-theme="classic"] {
+  .pcr-interaction {
+    .pcr-result {
+      border: 1px solid $gray-400;
+      color: $gray-700;
+      background: $color-white;
+      border-radius: $border-radius-sm;
+      font-size: $font-size-sm;
+      font-family: $font-family-base;
+      padding: $input-padding-x-sm;
+      &:hover {
+        filter: none;
+      }
+      &:focus {
+        border-color: $input-focus-border-color;
+        box-shadow: 0 0 0 0.2rem rgba($color-app-primary, 0.25);
+      }
+    }
+    .pcr-save {
+      padding: $input-btn-padding-y-sm $input-btn-padding-x-sm;
+      border-radius: $border-radius;
+      background-color: $color-app-primary;
+      border: 1px solid $color-app-primary;
+      font-size: $font-size-sm;
+      transition: none;
+      font-family: $font-family-base;
+      letter-spacing: 0;
+      &:hover {
+        filter: none;
+        background-color: darken($color-app-primary, 7.5%);
+      }
+      &:focus {
+        border-color: $input-focus-border-color;
+        background-color: darken($color-app-primary, 7.5%);
+        box-shadow: 0 0 0 0.2rem rgba($color-app-primary, 0.25);
+      }
+    }
+  }
 }
 </style>
