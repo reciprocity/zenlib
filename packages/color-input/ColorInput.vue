@@ -1,7 +1,7 @@
 <template>
   <div class="d-flex align-items-center">
     <b-form-input
-      :value="value"
+      v-model="value"
       :required="required"
       pattern="#[0-9A-Fa-f]{6}"
       @input="$emit('input', value)"
