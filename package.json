@@ -9,9 +9,14 @@
 		"test:watch": "jest --watch",
 		"lint": "eslint \"packages/**/*.{js,vue}\"",
 		"lint:fix": "eslint --fix \"packages/**/*.{js,vue}\"",
+
 		"bundlesize": "npx bundlesize",
 		"release": "npx lerna version --conventional-commits --no-changelog -y && npx lerna publish from-package -y",
-		"storybook": "cd packages/_storybook_ && npm run storybook"
+
+		"storybook": "cd packages/_storybook_ && npm run storybook",
+		"build-storybook": "cd packages/_storybook_ && npm run build",
+		"build-storybook-branch": "cd packages/_storybook_ && npm run build-branch",
+		"deploy-storybook": "cd packages/_storybook_ && npm run deploy"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.5.5",

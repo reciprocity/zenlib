@@ -74,6 +74,24 @@ jobs:
       - run: git config user.name "Circle CI"
       - run: git config user.email "circleci@circleci.com"
       - run: npm run release
+  build-storybook:
+    <<: *defaults
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run: npm run build-storybook-branch
+      - persist_to_workspace:
+          root: .
+          paths:
+            - packages/_storybook_/dist
+  deploy-storybook:
+    <<: *defaults
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run: npm run deploy-storybook
 
 workflows:
   version: 2
@@ -104,3 +122,9 @@ workflows:
             branches:
               only:
                 - master
+      - build-storybook:
+          requires:
+              - build
+      - deploy-storybook:
+          requires:
+              - build-storybook
