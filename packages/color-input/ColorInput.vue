@@ -12,7 +12,7 @@
 
 <script>
 import Vue from "vue";
-import ColorPicker from "../color-picker";
+import ColorPicker from "@reciprocity/color-picker";
 import { BFormInput } from "bootstrap-vue";
 
 export default Vue.extend({
