@@ -11,6 +11,6 @@
   },
   "dependencies": {
     "@reciprocity/bootstrap": "^0.6.0",
-    "@simonwep/pickr": "^1.2.7"
+    "@reciprocity/color-picker": "0.1.7"
   }
 }
