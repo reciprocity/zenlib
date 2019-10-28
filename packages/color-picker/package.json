@@ -1,6 +1,6 @@
 {
   "name": "@reciprocity/color-picker",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "A color picker where you can select the color or type the relevant HEX value.",
   "main": "dist/index.js",
   "scripts": {},
