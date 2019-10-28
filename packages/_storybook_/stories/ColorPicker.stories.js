@@ -1,6 +1,6 @@
 import { storiesOf } from "@storybook/vue";
 import { action } from "@storybook/addon-actions";
-import ColorPicker from "@reciprocity/color-picker";
+import ColorPicker from "../../color-picker";
 
 storiesOf("ColorPicker", module).add("default", () => ({
   data() {

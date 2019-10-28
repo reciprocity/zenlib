@@ -1,4 +1,4 @@
-# Button
+# Color Picker
 
 A color picker where you can select the color or type the relevant HEX value.
 
