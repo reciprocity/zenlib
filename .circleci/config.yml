@@ -91,6 +91,8 @@ jobs:
       - checkout
       - attach_workspace:
           at: .
+      - run: git config user.name "Circle CI"
+      - run: git config user.email "circleci@circleci.com"
       - run: npm run deploy-storybook
 
 workflows:
