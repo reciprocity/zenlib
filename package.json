@@ -9,10 +9,8 @@
 		"test:watch": "jest --watch",
 		"lint": "eslint \"packages/**/*.{js,vue}\"",
 		"lint:fix": "eslint --fix \"packages/**/*.{js,vue}\"",
-
 		"bundlesize": "npx bundlesize",
 		"release": "npx lerna version --conventional-commits --no-changelog -y && npx lerna publish from-package -y",
-
 		"storybook": "cd packages/_storybook_ && npm run storybook",
 		"build-storybook": "cd packages/_storybook_ && npm run build",
 		"build-storybook-branch": "cd packages/_storybook_ && npm run build-branch",
@@ -23,6 +21,7 @@
 		"@babel/preset-env": "^7.5.5",
 		"@commitlint/cli": "^8.1.0",
 		"@commitlint/config-conventional": "^8.1.0",
+		"@octokit/rest": "^16.34.0",
 		"@vue/test-utils": "^1.0.0-beta.29",
 		"babel-core": "^7.0.0-bridge.0",
 		"babel-jest": "^24.8.0",
@@ -37,6 +36,7 @@
 		"jest": "^24.8.0",
 		"jest-cli": "^24.8.0",
 		"lerna": "^3.16.4",
+		"lodash.some": "^4.6.0",
 		"prettier": "1.18.2",
 		"rollup": "^1.17.0",
 		"rollup-plugin-babel": "^4.3.3",

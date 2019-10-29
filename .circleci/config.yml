@@ -104,6 +104,13 @@ jobs:
       - run: git config user.name "Circle CI"
       - run: git config user.email "circleci@circleci.com"
       - run: npm run deploy-storybook
+  pr-comment:
+    <<: *defaults
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run: ./scripts/pr-comment.js "🔬 [Click here](https://reciprocity.github.io/zenlib/branches/$CIRCLE_BRANCH) to test your changes on Storybook"
 
 workflows:
   version: 2
@@ -150,4 +157,11 @@ workflows:
           filters:
             branches:
               only:
+                - master
+      - pr-comment:
+          requires:
+              - deploy-storybook-branch
+          filters:
+            branches:
+              ignore:
                 - master
