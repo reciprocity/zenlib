@@ -1,4 +1,4 @@
-# Button
+# DaySelector
 
 A component that lets you pick days of the week.
 

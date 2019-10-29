@@ -1,4 +1,4 @@
-# Button
+# ColorInput
 
 An input field that includes a color picker
 
