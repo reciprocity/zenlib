@@ -1,6 +1,6 @@
 {
   "name": "@reciprocity/day-selector",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "A component that lets you pick days of the week",
   "main": "dist/index.js",
   "scripts": {},
