@@ -36,6 +36,7 @@
 		"jest": "^24.8.0",
 		"jest-cli": "^24.8.0",
 		"lerna": "^3.16.4",
+		"lodash.some": "^4.6.0",
 		"prettier": "1.18.2",
 		"rollup": "^1.17.0",
 		"rollup-plugin-babel": "^4.3.3",

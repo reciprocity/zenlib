@@ -7,7 +7,10 @@ const {
   CIRCLE_PULL_REQUEST
 } = process.env;
 
+const BOT_NAME = "zenbot-0";
+
 const OctoKit = require("@octokit/rest");
+const some = require("lodash.some");
 
 const octokit = OctoKit({
   auth: GITHUB_ACCESS_TOKEN
@@ -20,9 +23,21 @@ const issue_number = CIRCLE_PULL_REQUEST.split("/")[6];
 
 const body = process.argv[2];
 
-octokit.issues.createComment({
+const params = {
   owner: CIRCLE_PROJECT_USERNAME,
   repo: CIRCLE_PROJECT_REPONAME,
-  issue_number,
-  body
+  issue_number
+};
+
+octokit.issues.listComments(params).then(response => {
+  const comments = response.data;
+  const exists = some(comments, comment => comment.user.login === BOT_NAME);
+
+  // Only post the comment once
+  if (!exists) {
+    return octokit.issues.createComment({
+      ...params,
+      body
+    });
+  }
 });
