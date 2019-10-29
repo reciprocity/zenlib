@@ -85,12 +85,22 @@ jobs:
           root: .
           paths:
             - packages/_storybook_/dist
-  deploy-storybook:
+  deploy-storybook-branch:
     <<: *defaults
     steps:
       - checkout
       - attach_workspace:
           at: .
+      - run: git config user.name "Circle CI"
+      - run: git config user.email "circleci@circleci.com"
+      - run: npm run deploy-storybook
+  deploy-storybook-master:
+    <<: *defaults
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run: cd packages/_storybook_; cp -R dist/branches/master/* dist/
       - run: git config user.name "Circle CI"
       - run: git config user.email "circleci@circleci.com"
       - run: npm run deploy-storybook
@@ -127,6 +137,17 @@ workflows:
       - build-storybook:
           requires:
               - build
-      - deploy-storybook:
+      - deploy-storybook-branch:
           requires:
               - build-storybook
+          filters:
+            branches:
+              ignore:
+                - master
+      - deploy-storybook-master:
+          requires:
+              - build-storybook
+          filters:
+            branches:
+              only:
+                - master

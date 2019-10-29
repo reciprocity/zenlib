@@ -8,7 +8,7 @@
     "storybook": "start-storybook -p 6006",
     "build": "build-storybook -o dist",
     "build-branch": "build-storybook -o dist/branches/$CIRCLE_BRANCH",
-    "deploy": "gh-pages -m 'chore: [skip ci] deployed storybook site' -d dist"
+    "deploy": "gh-pages -m 'chore: [skip ci] deployed storybook site' -d dist -a"
   },
   "author": "",
   "license": "ISC",
