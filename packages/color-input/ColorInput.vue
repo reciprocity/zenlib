@@ -1,7 +1,7 @@
 <template>
   <div class="d-flex align-items-center">
     <b-form-input
-      :value="value"
+      v-model="value"
       :required="required"
       pattern="#[0-9A-Fa-f]{6}"
       @input="$emit('input', value)"
@@ -12,7 +12,7 @@
 
 <script>
 import Vue from "vue";
-import ColorPicker from "../color-picker";
+import ColorPicker from "@reciprocity/color-picker";
 import { BFormInput } from "bootstrap-vue";
 
 export default Vue.extend({
