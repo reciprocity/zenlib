@@ -1,8 +1,14 @@
 import { storiesOf } from "@storybook/vue";
 import { action } from "@storybook/addon-actions";
 import Multiselect from "@reciprocity/multiselect";
+import README from "../../multiselect/README.md";
 
 storiesOf("Multiselect", module)
+  .addParameters({
+    readme: {
+      sidebar: README
+    }
+  })
   .add("single", () => ({
     data() {
       return {

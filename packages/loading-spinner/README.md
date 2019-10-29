@@ -1,4 +1,4 @@
-# Button
+# LoadingSpinner
 
 A component that renders an animated spinner circle next to a "Loading..." or a custom text.
 
