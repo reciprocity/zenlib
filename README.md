@@ -28,7 +28,7 @@ To start working with the library you'll need to have Node.js and npm installed 
 
 #### Bootstrap packages
 
-First, you'll need to install all packages dependencies, interlink packages locally and build them. Run this commands to do it:
+First, you'll need to install all packages dependencies, interlink packages locally and build them. Run these commands to do it:
 
 `npm install && npm run bootstrap && npm run build`
 
