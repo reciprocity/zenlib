@@ -1,4 +1,4 @@
-import { configure, addDecorator, addParameters } from '@storybook/vue';
+import { configure, addDecorator } from '@storybook/vue';
 import { addReadme } from 'storybook-readme/vue';
 
 const withPadding = () => {
@@ -9,13 +9,6 @@ const withPadding = () => {
 
 addDecorator(withPadding);
 addDecorator(addReadme);
-
-addParameters({
-  options: {
-    showPanel: true,
-    panelPosition: 'right'
-  }
-});
 
 // automatically import all files ending in *.stories.js
 const req = require.context('../stories', true, /\.stories\.js$/);
