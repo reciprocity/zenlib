@@ -111,6 +111,13 @@ jobs:
       - attach_workspace:
           at: .
       - run: ./scripts/pr-comment.js "🔬 [Click here](https://reciprocity.github.io/zenlib/branches/$CIRCLE_BRANCH) to test your changes on Storybook"
+  slack-message:
+    <<: *defaults
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run: ./scripts/slack-message.js "$(git log -1 --pretty=%B)"
 
 workflows:
   version: 2
@@ -164,4 +171,11 @@ workflows:
           filters:
             branches:
               ignore:
+                - master
+      - slack-message:
+          requires:
+              - publish
+          filters:
+            branches:
+              only:
                 - master
