@@ -12,11 +12,11 @@ Eg.
 or
 `yarn add @reciprocity/button`
 
-**Each component will have its own instructions on importing and usage. You should find a README.md file in each component's directory**
+*Each component will have its own instructions on importing and usage. You should find a `README.md` file in each component's directory*
+
+To see component demos and documentation checkout https://reciprocity.github.io/zenlib.
 
 To browse a list of available components go to [Reciprocity's NPM page](https://www.npmjs.com/org/reciprocity).
-
-_There will eventually be a live storybook website with all of the components demos_
 
 ## Contributing
 
@@ -28,14 +28,13 @@ To start working with the library you'll need to have Node.js and npm installed 
 
 #### Bootstrap packages
 
-First, you'll need to install all packages dependencies, interlink packages locally and build them. Run this command to do it:
+First, you'll need to install all packages dependencies, interlink packages locally and build them. Run these commands to do it:
 
 `npm install && npm run bootstrap && npm run build`
 
-#### Run storybook
+#### Run storybook locally
 
-You'll want to start the storybook website so you can browse all demos and stories for the existing components.
-Do that with the following command:
+To run the storybook website locally you can do it by running
 
 `npm run storybook`
 
