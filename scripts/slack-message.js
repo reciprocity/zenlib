@@ -10,7 +10,7 @@ const RELEASE_MESSAGE_SNIPPET =
 
 if (COMMIT_MESSAGE.indexOf(RELEASE_MESSAGE_SNIPPET) !== -1) {
   const packages = COMMIT_MESSAGE.split("\n").splice(2);
-  const message = `🚀 New packages versions published to NPM! \n\n ${packages.join(
+  const message = `🚀 New packages versions published to NPM! \n\n${packages.join(
     "\n"
   )}`;
 
