@@ -1,6 +1,6 @@
 {
   "name": "@reciprocity/storybook",
-  "version": "0.5.4",
+  "version": "0.5.5",
   "description": "A storybook website for library components",
   "main": "index.js",
   "private": true,
@@ -15,7 +15,7 @@
   "dependencies": {
     "@reciprocity/bootstrap": "^0.6.0",
     "@reciprocity/button": "^0.1.11",
-    "@reciprocity/color-input": "^0.2.2",
+    "@reciprocity/color-input": "^0.2.3",
     "@reciprocity/color-picker": "^0.1.8",
     "@reciprocity/day-selector": "^0.1.5",
     "@reciprocity/loading-spinner": "^0.1.6",
