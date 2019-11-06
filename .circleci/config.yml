@@ -117,6 +117,7 @@ jobs:
       - checkout
       - attach_workspace:
           at: .
+      - run: git pull
       - run: ./scripts/slack-message.js "$(git log -1 --pretty=%B)"
 
 workflows:
