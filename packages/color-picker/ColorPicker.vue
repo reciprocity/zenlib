@@ -5,14 +5,12 @@
 </template>
 
 <script>
-import Vue from "vue";
 import Pickr from "@simonwep/pickr";
-
 import "@simonwep/pickr/dist/themes/classic.min.css";
 
 const isValidColor = hexColor => /^#[0-9A-Fa-f]{6}$/i.test(hexColor);
 
-export default Vue.extend({
+export default {
   name: "ColorPicker",
   props: {
     value: {
@@ -97,7 +95,7 @@ export default Vue.extend({
       this.onPickrColorChange(color);
     }
   }
-});
+};
 </script>
 
 <style lang="scss" scoped>
