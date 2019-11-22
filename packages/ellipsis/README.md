@@ -1,4 +1,4 @@
-# ColorInput
+# Ellipsis
 
 A wrapper component that can shorten long text blocks to two lines and then expands when user clicks on `More` link.
 
