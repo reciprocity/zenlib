@@ -17,7 +17,7 @@ with any third party without the express written consent of Reciprocity, Inc.
 
 <script>
 export default {
-  name: "ZenEllipsis",
+  name: "Ellipsis",
   data() {
     return {
       expanded: false
