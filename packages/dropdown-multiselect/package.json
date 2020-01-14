@@ -1,6 +1,6 @@
 {
   "name": "@reciprocity/dropdown-multiselect",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A dropdown component with multi value support",
   "main": "dist/index.js",
   "scripts": {},
