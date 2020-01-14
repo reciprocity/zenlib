@@ -20,6 +20,7 @@
     "@reciprocity/day-selector": "^0.1.5",
     "@reciprocity/loading-spinner": "^0.1.6",
     "@reciprocity/multiselect": "^0.2.2",
+    "@reciprocity/dropdown-multiselect": "^0.0.1",
     "bootstrap": "^4.3.1",
     "bootstrap-vue": "^2.0.2",
     "vue": "^2.6.10"
