@@ -1,6 +1,6 @@
 {
   "name": "@reciprocity/dropdown-multiselect",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A dropdown component with multi value support",
   "main": "dist/index.js",
   "scripts": {},
@@ -10,7 +10,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@reciprocity/bootstrap": "^0.6.0",
+    "@reciprocity/bootstrap": "^0.7.0",
     "bootstrap": "^4.3.1",
     "vue-multiselect": "^2.1.6"
   }
