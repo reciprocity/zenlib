@@ -11,6 +11,14 @@ $font-size-sm: 0.75rem; // 12px
 $paragraph-margin-bottom: 1rem;
 $headings-margin-bottom: 0.5rem;
 
+// Header sizing
+$h1-font-size: 2.25rem;   // X-Large
+$h2-font-size: 1.75rem;   // Large
+$h3-font-size: 1.25rem;   // Medium
+$h4-font-size: 1.125rem;  // Small
+$h5-font-size: 1rem;      // Heading
+$h6-font-size: 0.75rem;   // Caption
+
 // Color mapping
 // Don't add colors here. If you use one of the non named colors bellow, add it
 // to colors.scss and name it, then add mapping here.
