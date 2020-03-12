@@ -17,6 +17,7 @@
     "@reciprocity/button": "^0.1.11",
     "@reciprocity/color-input": "^0.2.5",
     "@reciprocity/color-picker": "^0.1.10",
+    "@reciprocity/date-picker": "^0.0.1",
     "@reciprocity/day-selector": "^0.1.6",
     "@reciprocity/dropdown-multiselect": "^0.1.1",
     "@reciprocity/loading-spinner": "^0.1.7",
