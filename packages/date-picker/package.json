@@ -10,6 +10,7 @@
     "access": "public"
   },
   "dependencies": {
+    "@reciprocity/bootstrap": "^0.7.0",
     "vue2-datepicker": "^3.4.1"
   }
 }
