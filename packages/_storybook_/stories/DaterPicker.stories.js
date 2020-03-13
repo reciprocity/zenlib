@@ -12,12 +12,12 @@ storiesOf("DatePicker", module)
   .add("basic", () => ({
     data() {
       return {
-        time: null
+        time: "1984-07-06"
       };
     },
     components: { DatePicker },
     template: `<div>
-        <date-picker :value="time" valueType="format" @input="handleInput" :clearable="false" />
+        <date-picker :value="time" @input="handleInput" :clearable="false" />
         <span>Selected date value: {{time}}</span>
       </div>`,
     methods: {
@@ -36,7 +36,7 @@ storiesOf("DatePicker", module)
     },
     components: { DatePicker },
     template: `<div>
-    <date-picker v-model="time" type="datetime" :format="format" :altInput="false"/>
+    <date-picker v-model="time" valueType="date" type="datetime" :format="format" :altInput="false"/>
     <div>Selected date value: {{time}}</div>
   </div>`
   }))

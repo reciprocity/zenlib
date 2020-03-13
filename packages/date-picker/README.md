@@ -48,7 +48,7 @@ export default Vue.extend({
 | type                | select the type of picker                      | date \|datetime\|year\|month\|time\|week    | 'date'                 |
 | range               | if true, pick the range date                   | `boolean`                                   | false                  |
 | format              | to set the date format. similar to moment.js   | [token](#token)                             | 'YYYY-MM-DD'           |
-| value-type          | data type of the binding value                 | [value-type](#value-type)                   | 'date'                 |
+| value-type          | data type of the binding value                 | [value-type](#value-type)                   | 'format'                 |
 | default-value       | default date of the calendar                   | `Date`                                      | new Date()             |
 | lang                | override the default locale                    | `object`                                    | [here](#default-locale)|
 | placeholder         | input placeholder text                         | `string`                                    | ''                     |

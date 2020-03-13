@@ -3,6 +3,7 @@
     class="date-picker"
     :lang="lang"
     :format="format"
+    :value-type="valueType"
     :time-title-format="printFormat"
     :title-format="printFormat"
     v-bind="$attrs"
@@ -25,7 +26,8 @@
 import Vue from "vue";
 import DatePicker from "vue2-datepicker";
 import "./datepicker.scss";
-import { format, parse as parseDate } from "date-format-parse";
+import { addDays } from "date-fns";
+import { format as formatDate, parse as parseDate } from "date-format-parse";
 
 export default Vue.extend({
   components: {
@@ -39,6 +41,10 @@ export default Vue.extend({
           monthFormat: "MMMM"
         };
       }
+    },
+    valueType: {
+      type: String,
+      default: "format"
     },
     altInput: {
       type: Boolean,
@@ -73,18 +79,18 @@ export default Vue.extend({
   },
   methods: {
     formatDate(date) {
-      const { valueType } = this.$attrs;
+      const { valueType, printFormat, format } = this;
       let parsedDate;
       if (valueType === "timestamp") {
         parsedDate = new Date(date);
       } else if (valueType === "date" || !valueType) {
         parsedDate = date;
       } else if (valueType === "format") {
-        parsedDate = parseDate(date, this.format);
+        parsedDate = parseDate(date, format);
       } else {
         parsedDate = parseDate(date, valueType);
       }
-      return format(parsedDate, this.printFormat);
+      return formatDate(parsedDate, printFormat);
     }
   }
 });
