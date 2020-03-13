@@ -16,8 +16,10 @@ storiesOf("DatePicker", module)
       };
     },
     components: { DatePicker },
-    template:
-      '<date-picker :value="time" valueType="format" @input="handleInput"/>',
+    template: `<div>
+        <date-picker :value="time" valueType="format" @input="handleInput" :clearable="false" />
+        <span>Selected date value: {{time}}</span>
+      </div>`,
     methods: {
       handleInput(time) {
         this.time = time;
@@ -28,11 +30,15 @@ storiesOf("DatePicker", module)
   .add("datetime", () => ({
     data() {
       return {
-        time: null
+        time: null,
+        format: "DD MMM YYYY - HH:mm:ss"
       };
     },
     components: { DatePicker },
-    template: '<date-picker v-model="time" type="datetime"/>'
+    template: `<div>
+    <date-picker v-model="time" type="datetime" :format="format" :altInput="false"/>
+    <div>Selected date value: {{time}}</div>
+  </div>`
   }))
   .add("range", () => ({
     data() {
@@ -44,7 +50,8 @@ storiesOf("DatePicker", module)
       };
     },
     components: { DatePicker },
-    template: '<date-picker v-model="time" range :lang="lang">'
+    template:
+      '<date-picker v-model="time" range :lang="lang" valueType="timestamp"/>'
   }))
   .add("slots", () => ({
     data() {

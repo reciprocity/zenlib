@@ -8,6 +8,7 @@ $primary-color: $color-app-primary;
 @import "~vue2-datepicker/scss/index.scss";
 
 .mx-datepicker {
+  width: 100%;
   &-main {
     .mx-calendar {
       width: 334px;

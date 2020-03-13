@@ -84,6 +84,8 @@ export default Vue.extend({
 | show-time-header    | whether show header of time picker             | `boolean`                                   | false                  |
 | time-title-format   | format of the time header                      | [token](#token)                             | 'YYYY-MM-DD'           |
 | time-picker-options | set fixed time list to select                  | [time-picker-options](#time-picker-options) | null                   |
+| altInput            | flag to print the date in altFormat            | `boolean`                                   | true                   |
+| altFormat           | to be used in the input and placeholders       | `string`                                    | 'MM/DD/YYYY'           |
 
 #### Token
 
