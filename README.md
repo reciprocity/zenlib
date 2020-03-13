@@ -67,7 +67,7 @@ We run coverage checks on each PR so try not to ship code without tests ;)
 
 ### Adding a new package/component
 
-1. Create a folder under the `package` folder. Name it as the component, using Kebab case. It should contain an `index.js` file that export the main component.
+1. Create a folder under the `packages` folder. Name it as the component, using Kebab case. It should contain an `index.js` file that exports the main component.
 
 - Add a `README.md`
 - Add a `package.json` to handle the new component dependencies
