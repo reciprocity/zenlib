@@ -82,7 +82,7 @@ export default Vue.extend({
       let parsedDate;
       if (valueType === "timestamp") {
         parsedDate = new Date(date);
-      } else if (valueType === "date" || !valueType) {
+      } else if (valueType === "date") {
         parsedDate = date;
       } else if (valueType === "format") {
         parsedDate = parseDate(date, format);
