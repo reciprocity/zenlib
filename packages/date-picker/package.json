@@ -1,6 +1,6 @@
 {
   "name": "@reciprocity/date-picker",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A date picker / datetime picker component",
   "main": "dist/index.js",
   "scripts": {},

@@ -26,7 +26,6 @@
 import Vue from "vue";
 import DatePicker from "vue2-datepicker";
 import "./datepicker.scss";
-import { addDays } from "date-fns";
 import { format as formatDate, parse as parseDate } from "date-format-parse";
 
 export default Vue.extend({
