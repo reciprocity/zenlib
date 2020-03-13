@@ -59,7 +59,7 @@
 			"vue"
 		],
 		"moduleNameMapper": {
-			"\\.(css)$": "<rootDir>/__mocks__/style.js"
+			"\\.(css|scss)$": "<rootDir>/__mocks__/style.js"
 		},
 		"transform": {
 			".*\\.(vue)$": "vue-jest",

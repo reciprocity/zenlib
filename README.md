@@ -1,4 +1,5 @@
 # ZenLib is a Vue.js components library
+
 [![CircleCI](https://circleci.com/gh/reciprocity/zenlib.svg?style=svg)](https://circleci.com/gh/reciprocity/zenlib) [![Coverage Status](https://coveralls.io/repos/github/reciprocity/zenlib/badge.svg?branch=master)](https://coveralls.io/github/reciprocity/zenlib?branch=master)
 
 We made this library to put all the Vue.js components we share across projects.
@@ -63,6 +64,23 @@ _This will also be run automatically before pushing changes_
 If you want to generate a coverage report for the unit tests, there's an `npm run test:coverage` command that will generate a coverage directory with a report.
 
 We run coverage checks on each PR so try not to ship code without tests ;)
+
+### Adding a new package/component
+
+1. Create a folder under the `packages` folder. Name it as the component, using Kebab case. It should contain an `index.js` file that exports the main component.
+
+- Add a `README.md`
+- Add a `package.json` to handle the new component dependencies
+
+2. Add the component to Story Book
+
+- Add the package as a dependency in `packages/_storybook_/package.json`
+- Create a new story file under the `packages/_storybook_/stories/` folder
+- Re run [Bootstrap packages](#bootstrap-packages)
+
+#### Versioning
+
+Use [Semantic Versioning](https://semver.org/). Start by `0.0.1` and once the component is ready, change it to `0.1.0`
 
 ### Committing changes
 
