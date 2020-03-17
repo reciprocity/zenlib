@@ -298,6 +298,12 @@ $title-truncate-width: 50ch;
     max-width: 100%;
   }
 
+  .multiselect__single {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
   .multiselect__input {
     padding-left: 0;
     margin-bottom: 6px;
@@ -469,6 +475,7 @@ $title-truncate-width: 50ch;
     width: auto;
     min-width: 100%;
     max-height: 240px;
+    max-width: 100%;
     overflow: auto;
     border: $vue-ms-border-width solid $vue-ms-border-color;
     margin-top: -1px;
@@ -484,6 +491,7 @@ $title-truncate-width: 50ch;
     padding: 0;
     margin: 0;
     min-width: 100%;
+    max-width: 100%;
     vertical-align: top;
   }
 
@@ -511,7 +519,9 @@ $title-truncate-width: 50ch;
     text-transform: none;
     position: relative;
     cursor: pointer;
-    white-space: normal;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .multiselect__option::after {
