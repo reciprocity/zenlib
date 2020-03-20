@@ -63,4 +63,22 @@ storiesOf("DatePicker", module)
     template: `<date-picker v-model="time" valueType="format">
         <template v-slot:header> <span> Custom header </span></template>
         </date-picker>`
+  }))
+  .add("disabled", () => ({
+    data() {
+      return {
+        time: null
+      };
+    },
+    components: { DatePicker },
+    template: `<div>
+        <date-picker v-model="time" :clearable="false" inline :disabled-date="disabledDate"/>
+      </div>`,
+    methods: {
+      disabledDate(date) {
+        const refDate = new Date();
+        refDate.setDate(refDate.getDate() - 2);
+        return date < refDate;
+      }
+    }
   }));
