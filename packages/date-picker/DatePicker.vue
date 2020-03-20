@@ -6,6 +6,7 @@
     :value-type="valueType"
     :time-title-format="printFormat"
     :title-format="printFormat"
+    :disabled="disabled"
     v-bind="$attrs"
     v-on="$listeners"
   >
@@ -13,9 +14,13 @@
     <template v-if="!$slots.input" v-slot:input>
       <div>
         <input
-          class="date-picker__input"
+          :class="[
+            'date-picker__input',
+            { 'date-picker__input--disabled': disabled }
+          ]"
           :value="formattedDate"
           :readonly="true"
+          disabled="disabled"
         />
       </div>
     </template>
@@ -62,6 +67,10 @@ export default Vue.extend({
     rangeSeparator: {
       type: String,
       default: " ~ "
+    },
+    disabled: {
+      type: Boolean,
+      default: false
     }
   },
   computed: {
@@ -109,6 +118,11 @@ export default Vue.extend({
     background-clip: padding-box;
     border: $border-default;
     border-radius: 0.125rem;
+
+    &--disabled {
+      background-color: $color-athens-gray;
+      color: $color-oslo-gray;
+    }
   }
 }
 </style>
