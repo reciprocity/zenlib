@@ -13,9 +13,12 @@ $primary-color: $color-app-primary;
     .mx-calendar {
       width: 334px;
       padding: 16px;
-      padding-top: 6px;
 
       &-header {
+        color: $color-shark;
+        height: 28px;
+        line-height: 16px;
+
         .mx-btn-icon-double-left,
         .mx-btn-icon-double-right {
           display: none !important;
@@ -54,19 +57,9 @@ $primary-color: $color-app-primary;
           text-transform: uppercase;
           height: 30px;
         }
-        .mx-table-date td {
-          border-top: $border-default;
-          border-left: $border-default;
 
-          &:last-child {
-            border-right: $border-default;
-          }
-        }
-
-        .mx-table-date tr {
-          &:last-child td {
-            border-bottom: $border-default;
-          }
+        .cell.active {
+          background-color: $color-picton-blue
         }
       }
     }
