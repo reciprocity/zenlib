@@ -1,0 +1,12 @@
+{
+    "name": "@reciprocity/custom",
+    "version": "0.0.1",
+    "description": "Customized styles",
+    "scripts": {},
+    "author": "",
+    "license": "ISC",
+    "publishConfig": {
+      "access": "public"
+    }
+  }
+  

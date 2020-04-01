@@ -1,9 +1,9 @@
 import { storiesOf } from "@storybook/vue";
 import { action } from "@storybook/addon-actions";
 import DropdownMultiselect from "@reciprocity/dropdown-multiselect";
-import README from "../../dropdown-multiselect/README.md";
+import README from "../../../dropdown-multiselect/README.md";
 
-storiesOf("DropdownMultiselect", module)
+storiesOf("Components|DropdownMultiselect", module)
   .addParameters({
     readme: {
       sidebar: README

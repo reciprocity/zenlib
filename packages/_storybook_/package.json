@@ -14,6 +14,7 @@
   "license": "ISC",
   "dependencies": {
     "@reciprocity/bootstrap": "^0.7.0",
+    "@reciprocity/custom": "^0.0.1",
     "@reciprocity/button": "^0.1.11",
     "@reciprocity/color-input": "^0.2.5",
     "@reciprocity/color-picker": "^0.1.10",
@@ -22,6 +23,7 @@
     "@reciprocity/dropdown-multiselect": "^0.1.2",
     "@reciprocity/loading-spinner": "^0.1.7",
     "@reciprocity/multiselect": "^0.2.5",
+    "@reciprocity/file-dropzone": "^0.1.2",
     "bootstrap": "^4.3.1",
     "bootstrap-vue": "^2.0.2",
     "vue": "^2.6.10"

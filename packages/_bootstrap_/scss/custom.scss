@@ -31,20 +31,20 @@ $gray-400:  $color-ghost;
 $gray-500:  $color-hit-gray;
 $gray-600:  $color-oslo-gray;
 $gray-700:  $color-trout;
-$gray-800:  #343a40;
+$gray-800:  $color-gray;
 $gray-900:  $color-shark;
 $black:     $color-black;
 
 $blue:      $color-picton-blue;
-$indigo:    #6610f2;
-$purple:    #6f42c1;
-$pink:      #e83e8c;
+$indigo:    $color-indigo;
+$purple:    $color-purple;
+$pink:      $color-pink;
 $red:       $color-amaranth;
 $orange:    $color-my-sin;
 $yellow:    $color-gold;
 $green:     $color-emerald;
-$teal:      #20c997;
-$cyan:      #17a2b8;
+$teal:      $color-teal;
+$cyan:      $color-cyan;
 
 $theme-colors: ();
 $theme-colors: map-merge(

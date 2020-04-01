@@ -1,0 +1,105 @@
+/* *******************
+
+      CUSTOM ABSTRACT COLORS
+
+********************* */
+
+// Gray scale
+$color-abs-darklord:       #1e272c;
+$color-abs-shark:          #3e464c;
+$color-abs-oslo-gray:      #555e65;
+$color-abs-white:          #ffffff;
+$color-abs-alabaster:      #f4f7fa;
+$color-abs-wild-sand:      #f0f3f6;
+$color-abs-athens-grey:    #d7dce0;
+$color-abs-ghost:          #8c9ba5;
+$color-abs-lazy-sky:       #9a9ea1;
+
+// Blue scale
+$color-abs-primary-blue:    #2e8fe7;
+$color-abs-blue-dark:      #297FCD;
+$color-abs-blue-1:         #58a5ec;
+$color-abs-blue-2:         #82bcf1;
+$color-abs-blue-3:         #abd2f5;
+$color-abs-blue-4:         #d5e9fa;
+
+// Red scale
+$color-abs-simply-red:     #ef4853;
+$color-abs-red-1:          #f26d75;
+$color-abs-red-2:          #f59198;
+$color-abs-red-3:          #f9b6ba;
+$color-abs-red-4:          #fcdadd;
+
+// Green scale
+$color-abs-envy:           #3bbf74;
+$color-abs-green-1:        #62cc90;
+$color-abs-green-2:        #89d9ac;
+$color-abs-green-3:        #b1e5c7;
+$color-abs-green-4:        #d8f2e3;
+
+// Yellow scale
+$color-abs-sunny-day:      #ffac1f;
+$color-abs-yellow-1:       #ffbd4c;
+$color-abs-yellow-2:       #ffcd79;
+$color-abs-yellow-3:       #ffdea5;
+$color-abs-yellow-4:       #ffeed2;
+
+// Purple scale
+$color-abs-purple:         #9e5baa;
+$color-abs-purple-1:       #b875c4;
+$color-abs-purple-2:       #d18edd;
+$color-abs-purple-3:       #eba8f7;
+$color-abs-purple-4:       #ffdaff;
+
+
+// Export color variables.
+:export {
+  grayScale: {
+    color-abs-darklord: $color-abs-darklord;
+    color-abs-shark: $color-abs-shark;
+    color-abs-oslo-gray: $color-abs-oslo-gray;
+    color-abs-white: $color-abs-white;
+    color-abs-alabaster: $color-abs-alabaster;
+    color-abs-wild-sand: $color-abs-wild-sand;
+    color-abs-athens-grey: $color-abs-athens-grey;
+    color-abs-ghost: $color-abs-ghost;
+    color-abs-lazy-sky: $color-abs-lazy-sky;
+  };
+  blueScale: {
+    color-abs-blue-dark: $color-abs-blue-dark;
+    color-abs-primary-blue: $color-abs-primary-blue;
+    color-abs-blue-1: $color-abs-blue-1;
+    color-abs-blue-2: $color-abs-blue-2;
+    color-abs-blue-3: $color-abs-blue-3;
+    color-abs-blue-4: $color-abs-blue-4;
+  };
+  redScale: {
+    color-abs-simply-red: $color-abs-simply-red;
+    color-abs-red-1: $color-abs-red-1;
+    color-abs-red-2: $color-abs-red-2;
+    color-abs-red-3: $color-abs-red-3;
+    color-abs-red-4: $color-abs-red-4;
+  };
+  greenScale: {
+    color-abs-envy: $color-abs-envy;
+    color-abs-green-1: $color-abs-green-1;
+    color-abs-green-2: $color-abs-green-2;
+    color-abs-green-3: $color-abs-green-3;
+    color-abs-green-4: $color-abs-green-4;
+  };
+  yellowScale: {
+    color-abs-sunny-day: $color-abs-sunny-day;
+    color-abs-yellow-1: $color-abs-yellow-1;
+    color-abs-yellow-2: $color-abs-yellow-2;
+    color-abs-yellow-3: $color-abs-yellow-3;
+    color-abs-yellow-4: $color-abs-yellow-4;
+  };
+  purpleScale: {
+    color-abs-purple: $color-abs-purple;
+    color-abs-purple-1: $color-abs-purple-1;
+    color-abs-purple-2: $color-abs-purple-2;
+    color-abs-purple-3: $color-abs-purple-3;
+    color-abs-purple-4: $color-abs-purple-4;
+  }
+}
+/* stylelint-enable color-no-hex */

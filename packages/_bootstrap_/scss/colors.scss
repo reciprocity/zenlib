@@ -12,7 +12,7 @@
 
 /* *******************
 
-      APP COLORS
+      APP BOOTSTRAP COLORS
 
 ********************* */
 
@@ -26,8 +26,10 @@ $color-ghost:             #ced4da; // 400
 $color-hit-gray:          #adb5bd; // 500
 $color-oslo-gray:         #868e96; // 600
 $color-trout:             #495057; // 700
+$color-gray:              #343a40; // 800
 $color-shark:             #212529; // 900
 $color-black:             #000000;
+$color-ebony-clay:        #1e272c;
 
 // Rainbow
 $color-picton-blue:       #2e8fe7;
@@ -64,4 +66,61 @@ $color-regent-gray:       #8c9ba5;
 $color-iron:              #d7dce0;
 $color-kumera:            #8c641d;
 
+$color-indigo:            #6610f2;
+$color-purple:            #6f42c1;
+$color-pink:              #e83e8c;
+$color-teal:              #20c997;
+$color-cyan:              #17a2b8;
+
+// Export color variables.
+:export {
+  grayScale: {
+    color-white: $color-white;
+    color-alabaster: $color-alabaster;
+    color-wild-sand: $color-wild-sand;
+    color-athens-gray: $color-athens-gray;
+    color-geyser: $color-geyser;
+    color-ghost: $color-ghost;
+    color-hit-gray: $color-hit-gray;
+    color-oslo-gray: $color-oslo-gray;
+    color-trout: $color-trout;
+    color-gray: $color-gray;
+    color-shark: $color-shark;
+    color-black: $color-black;
+  };
+  rainbow: {
+    color-picton-blue: $color-picton-blue;
+    color-studio: $color-studio;
+    color-amaranth: $color-amaranth;
+    color-burning-orange: $color-burning-orange;
+    color-gold: $color-gold;
+    color-my-sin: $color-my-sin;
+    color-emerald: $color-emerald;
+    color-east-bay: $color-east-bay;
+    color-waikawa-gray: $color-waikawa-gray;
+    color-casper: $color-casper;
+    color-heather: $color-heather;
+    color-buttermilk: $color-buttermilk;
+    color-buttery-white: $color-buttery-white;
+    color-zircon: $color-zircon;
+    color-mystic: $color-mystic;
+  };
+  other: {
+    color-alto: $color-alto;
+    color-froly: $color-froly;
+    color-fire-bush: $color-fire-bush;
+    color-texas-rose: $color-texas-rose;
+    color-light-wisteria: $color-light-wisteria;
+    color-wisteria: $color-wisteria;
+    color-cornflower-blue: $color-cornflower-blue;
+    color-regent-gray: $color-regent-gray;
+    color-iron: $color-iron;
+    color-kumera: $color-kumera;
+    color-indigo: $color-indigo;
+    color-purple: $color-purple;
+    color-pink: $color-pink;
+    color-teal: $color-teal;
+    color-cyan: $color-cyan;
+  }
+}
 /* stylelint-enable color-no-hex */
