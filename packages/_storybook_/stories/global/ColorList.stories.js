@@ -2,10 +2,10 @@ import { storiesOf } from "@storybook/vue";
 import ColorList from "./ColorList.vue";
 
 import README_BOOTSTRAP from "../../../_bootstrap_/README.md";
-import README_CUSTOM from "../../../_custom_/README.md";
+import README_CUSTOM from "../../../_styles_/README.md";
 
 import bootstrapColors from "../../../_bootstrap_/scss/colors.scss";
-import customColors from "../../../_custom_/scss/colors.scss";
+import customColors from "../../../_styles_/scss/colors.scss";
 
 const scaleName = color => {
   const array = color.split("-")[0].split(/(?=[A-Z])/);

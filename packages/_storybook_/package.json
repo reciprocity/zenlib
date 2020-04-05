@@ -14,7 +14,7 @@
   "license": "ISC",
   "dependencies": {
     "@reciprocity/bootstrap": "^0.7.0",
-    "@reciprocity/custom": "^0.0.1",
+    "@reciprocity/styles": "^0.0.1",
     "@reciprocity/button": "^0.1.11",
     "@reciprocity/color-input": "^0.2.5",
     "@reciprocity/color-picker": "^0.1.10",

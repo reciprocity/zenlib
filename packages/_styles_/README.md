@@ -7,13 +7,13 @@ This package is intended to have our Reciprocity custom styles.
 Each scss file can be imported individually:
 
 ```
-@import "~@reciprocity/custom/scss/colors.scss";
+@import "~@reciprocity/styles/scss/colors.scss";
 ```
 
 And the way you import all the scss styles, it is importing the provided `scss/index.scss` file.
 
 ```
-@import "~@reciprocity/custom/scss/index.scss";
+@import "~@reciprocity/styles/scss/index.scss";
 ```
 
 This way, we can have our custom styles that we can share all across the apps.

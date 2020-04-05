@@ -1,8 +1,8 @@
 {
 	"name": "zenlib",
 	"scripts": {
-		"build": "lerna exec --ignore \"**/@(storybook|bootstrap|custom)\" -- rollup -c \\$LERNA_ROOT_PATH/rollup.config.js",
-		"build:watch": "lerna exec --ignore \"**/@(storybook|bootstrap|custom)\" -- rollup -w -c \\$LERNA_ROOT_PATH/rollup.config.js",
+		"build": "lerna exec --ignore \"**/@(storybook|bootstrap|styles)\" -- rollup -c \\$LERNA_ROOT_PATH/rollup.config.js",
+		"build:watch": "lerna exec --ignore \"**/@(storybook|bootstrap|styles)\" -- rollup -w -c \\$LERNA_ROOT_PATH/rollup.config.js",
 		"bootstrap": "npx lerna bootstrap",
 		"test": "jest",
 		"test:coverage": "jest --coverage",
