@@ -29,7 +29,9 @@
 </template>
 
 <script>
-import { BCard, BCardBody, BCardGroup } from "bootstrap-vue";
+import Vue from "vue";
+import { BCard, BCardBody, BCardGroup, ToastPlugin } from "bootstrap-vue";
+Vue.use(ToastPlugin);
 
 export default {
   name: "ColorList",
@@ -54,6 +56,13 @@ export default {
       text.select();
       let result = document.execCommand("copy");
       document.body.removeChild(text);
+      this.$bvToast.toast(`Copied to clipboard: ${color}`, {
+        noCloseButton: true,
+        appendToast: true,
+        variant: "info",
+        autoHideDelay: 1000
+      });
+
       return result;
     }
   }
@@ -61,7 +70,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../../styles/custom.scss";
+@import "../../../styles/custom.scss";
 
 .group {
   cursor: pointer;
@@ -70,13 +79,13 @@ export default {
 
   &__title {
     text-transform: capitalize;
-    color: $color-abs-oslo-gray;
+    color: $color-abs-colmo-gray;
   }
 }
 
 .color-block {
   height: 3rem;
-  border-bottom: 1px solid $color-abs-wild-sand;
+  border-bottom: 1px solid $color-abs-stone;
 }
 
 .card {
