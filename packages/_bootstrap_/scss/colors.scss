@@ -12,56 +12,128 @@
 
 /* *******************
 
-      APP COLORS
+      APP BOOTSTRAP COLORS
 
 ********************* */
 
-// Grayscale
+// Gray
 $color-white:             #ffffff;
 $color-alabaster:         #fafafa;
-$color-wild-sand:         #f5f5f5; // 100
-$color-athens-gray:       #eeeeef; // 200
-$color-geyser:            #dee2e6; // 300
-$color-ghost:             #ced4da; // 400
-$color-hit-gray:          #adb5bd; // 500
-$color-oslo-gray:         #868e96; // 600
-$color-trout:             #495057; // 700
-$color-shark:             #212529; // 900
+$color-wild-sand:         #f5f5f5;
+$color-athens-gray:       #eeeeef;
+$color-geyser:            #dee2e6;
+$color-ghost:             #ced4da;
+$color-hit-gray:          #adb5bd;
+$color-oslo-gray:         #868e96;
+$color-trout:             #495057;
+$color-gray:              #343a40;
+$color-shark:             #212529;
 $color-black:             #000000;
+$color-ebony-clay:        #1e272c;
+$color-iron:              #d7dce0;
+$color-regent-gray:       #8c9ba5;
 
-// Rainbow
+
+// Blue
 $color-picton-blue:       #2e8fe7;
-$color-studio:            #9b48b3;
+$color-cornflower-blue:   #58a5ec;
+
+// Red
 $color-amaranth:          #ef4853;
-$color-burning-orange:    #ff672c;
-$color-gold:              #ffd200;
-$color-my-sin:            #ffac1f;
-$color-emerald:           #3bbf74;
-$color-east-bay:          #39537a;
-$color-waikawa-gray:      #576d8e;
-$color-casper:            #b0bfd5;
-$color-heather:           #b7c1cf;
-$color-buttermilk:        #ffecb3;
-$color-buttery-white:     #fffceb;
-$color-zircon:            #fafcff;
-$color-mystic:            #dfe5eb;
-
-// New colors
-
-// These are currently only used in audit dashboard and generally shouldn't be
-// used anywhere else _yet_. Once we apply them across the entire app, they will
-// be moved above and used in mappings below.
-$color-alto:              #e0e0e0;
 $color-froly:             #f26d75;
-$color-fire-bush:         #e6942c;
+
+// Green
+$color-emerald:           #3bbf74;
+
+// Yellow
+$color-my-sin:            #ffac1f;
 $color-texas-rose:        #ffbd4c;
 
-// Statuses
-$color-light-wisteria:    #d18edd;
+// Purple
 $color-wisteria:          #9e5baa;
-$color-cornflower-blue:   #58a5ec;
-$color-regent-gray:       #8c9ba5;
-$color-iron:              #d7dce0;
-$color-kumera:            #8c641d;
+$color-light-wisteria:    #d18edd;
 
+
+// Others
+$color-burning-orange:    #ff672c;
+$color-alto:              #e0e0e0;
+$color-kumera:            #8c641d;
+$color-pink:              #e83e8c;
+$color-cyan:              #17a2b8;
+$color-teal:              #20c997;
+$color-east-bay:          #39537a;
+$color-waikawa-gray:      #576d8e;
+$color-zircon:            #fafcff;
+$color-mystic:            #dfe5eb;
+$color-casper:            #b0bfd5;
+$color-heather:           #b7c1cf;
+$color-fire-bush:         #e6942c;
+$color-gold:              #ffd200;
+$color-buttermilk:        #ffecb3;
+$color-buttery-white:     #fffceb;
+$color-indigo:            #6610f2;
+$color-purple:            #6f42c1;
+$color-studio:            #9b48b3;
+
+
+// Export color variables.
+:export {
+  gray: {
+    color-white: $color-white;
+    color-alabaster: $color-alabaster;
+    color-wild-sand: $color-wild-sand;
+    color-athens-gray: $color-athens-gray;
+    color-geyser: $color-geyser;
+    color-iron: $color-iron;
+    color-ghost: $color-ghost;
+    color-hit-gray: $color-hit-gray;
+    color-regent-gray: $color-regent-gray;
+    color-oslo-gray: $color-oslo-gray;
+    color-trout: $color-trout;
+    color-gray: $color-gray;
+    color-shark: $color-shark;
+    color-black: $color-black;
+    color-ebony-clay: $color-ebony-clay;
+  };
+  blue: {
+    color-picton-blue: $color-picton-blue;
+    color-cornflower-blue: $color-cornflower-blue;
+  };
+  red: {
+    color-amaranth: $color-amaranth;
+    color-froly: $color-froly;
+  };
+  green: {
+    color-emerald: $color-emerald;
+  };
+  yellow: {
+    color-my-sin: $color-my-sin;
+    color-texas-rose: $color-texas-rose;
+  };
+  purple: {
+    color-wisteria: $color-wisteria;
+    color-light-wisteria: $color-light-wisteria;
+  };
+  others: {
+    color-burning-orange: $color-burning-orange;
+    color-alto: $color-alto;
+    color-kumera: $color-kumera;
+    color-pink: $color-pink;
+    color-cyan: $color-cyan;
+    color-teal: $color-teal;
+    color-east-bay: $color-east-bay;
+    color-waikawa-gray: $color-waikawa-gray;
+    color-zircon: $color-zircon;
+    color-mystic: $color-mystic;
+    color-casper: $color-casper;
+    color-heather: $color-heather;
+    color-fire-bush: $color-fire-bush;
+    color-gold: $color-gold;
+    color-buttermilk: $color-buttermilk;
+    color-buttery-white: $color-buttery-white;
+    color-indigo: $color-indigo;
+    color-purple: $color-purple;
+    color-studio: $color-studio;
+  };
+}
 /* stylelint-enable color-no-hex */

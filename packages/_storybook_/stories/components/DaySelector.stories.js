@@ -1,9 +1,9 @@
 import { storiesOf } from "@storybook/vue";
 import { action } from "@storybook/addon-actions";
 import DaySelector from "@reciprocity/day-selector";
-import README from "../../day-selector/README.md";
+import README from "../../../day-selector/README.md";
 
-storiesOf("DaySelector", module)
+storiesOf("Components|DaySelector", module)
   .addParameters({
     readme: {
       sidebar: README

@@ -1,9 +1,9 @@
 import { storiesOf } from "@storybook/vue";
 import { action } from "@storybook/addon-actions";
-import ColorPicker from "@reciprocity/color-picker";
-import README from "../../color-picker/README.md";
+import ColorInput from "@reciprocity/color-input";
+import README from "../../../color-input/README.md";
 
-storiesOf("ColorPicker", module)
+storiesOf("Components|ColorInput", module)
   .addParameters({
     readme: {
       sidebar: README
@@ -15,9 +15,8 @@ storiesOf("ColorPicker", module)
         color: "#0099FF"
       };
     },
-    components: { ColorPicker },
-    template:
-      "<color-picker :value='color' :showColorInput='true' :showSaveButton='true' @input='change' />",
+    components: { ColorInput },
+    template: "<color-input :value='color' @input='change' />",
     methods: {
       change(color) {
         this.color = color;

@@ -1,0 +1,79 @@
+/* *******************
+
+      CUSTOM COLORS
+
+********************* */
+
+// Gray
+$color-abs-matto:          #3e464c;
+$color-abs-colmo-gray:     #555e65;
+$color-abs-lazy-sky:       #9a9ea1;
+$color-abs-castle:         #f4f7fa;
+$color-abs-stone:          #f0f3f6;
+
+// Blue
+$color-abs-blue-dark:      #297fcd;
+$color-abs-blue-1:         #82bcf1;
+$color-abs-blue-2:         #abd2f5;
+$color-abs-blue-3:         #d5e9fa;
+
+// Red
+$color-abs-red-1:          #f59198;
+$color-abs-red-2:          #f9b6ba;
+$color-abs-red-3:          #fcdadd;
+
+// Green
+$color-abs-green-1:        #62cc90;
+$color-abs-green-2:        #89d9ac;
+$color-abs-green-3:        #b1e5c7;
+$color-abs-green-4:        #d8f2e3;
+
+// Yellow
+$color-abs-yellow-1:       #ffcd79;
+$color-abs-yellow-2:       #ffdea5;
+$color-abs-yellow-3:       #ffeed2;
+
+// Purple
+$color-abs-purple-1:       #b875c4;
+$color-abs-purple-2:       #eba8f7;
+$color-abs-purple-3:       #ffdaff;
+
+
+// Export color variables.
+:export {
+  gray: {
+    color-abs-matto: $color-abs-matto;
+    color-abs-colmo-gray: $color-abs-colmo-gray;
+    color-abs-lazy-sky: $color-abs-lazy-sky;
+    color-abs-castle: $color-abs-castle;
+    color-abs-stone: $color-abs-stone;
+  };
+  blue: {
+    color-abs-blue-dark: $color-abs-blue-dark;
+    color-abs-blue-1: $color-abs-blue-1;
+    color-abs-blue-2: $color-abs-blue-2;
+    color-abs-blue-3: $color-abs-blue-3;
+  };
+  red: {
+    color-abs-red-1: $color-abs-red-1;
+    color-abs-red-2: $color-abs-red-2;
+    color-abs-red-3: $color-abs-red-3;
+  };
+  green: {
+    color-abs-green-1: $color-abs-green-1;
+    color-abs-green-2: $color-abs-green-2;
+    color-abs-green-3: $color-abs-green-3;
+    color-abs-green-4: $color-abs-green-4;
+  };
+  yellow: {
+    color-abs-yellow-1: $color-abs-yellow-1;
+    color-abs-yellow-2: $color-abs-yellow-2;
+    color-abs-yellow-3: $color-abs-yellow-3;
+  };
+  purple: {
+    color-abs-purple-1: $color-abs-purple-1;
+    color-abs-purple-2: $color-abs-purple-2;
+    color-abs-purple-3: $color-abs-purple-3;
+  }
+}
+/* stylelint-enable color-no-hex */

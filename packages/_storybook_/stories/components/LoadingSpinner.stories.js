@@ -1,8 +1,8 @@
 import { storiesOf } from "@storybook/vue";
 import LoadingSpinner from "@reciprocity/loading-spinner";
-import README from "../../loading-spinner/README.md";
+import README from "../../../loading-spinner/README.md";
 
-storiesOf("LoadingSpinner", module)
+storiesOf("Components|LoadingSpinner", module)
   .addParameters({
     readme: {
       sidebar: README

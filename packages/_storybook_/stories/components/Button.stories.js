@@ -1,10 +1,10 @@
 import { storiesOf } from "@storybook/vue";
 import ZenButton from "@reciprocity/button";
-import README from "../../button/README.md";
+import README from "../../../button/README.md";
 
-import "../styles/bootstrap.scss";
+import "../../styles/bootstrap.scss";
 
-storiesOf("Button", module)
+storiesOf("Components|Button", module)
   .addParameters({
     readme: {
       sidebar: README
