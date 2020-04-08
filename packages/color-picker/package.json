@@ -1,6 +1,6 @@
 {
   "name": "@reciprocity/color-picker",
-  "version": "0.1.10",
+  "version": "0.2.0",
   "description": "A color picker where you can select the color or type the relevant HEX value.",
   "main": "dist/index.js",
   "scripts": {},
@@ -10,7 +10,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@reciprocity/bootstrap": "^0.7.0",
+    "@reciprocity/bootstrap": "^0.8.0",
     "@simonwep/pickr": "^1.2.7"
   }
 }

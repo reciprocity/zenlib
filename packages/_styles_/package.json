@@ -1,12 +1,11 @@
 {
-    "name": "@reciprocity/styles",
-    "version": "0.0.1",
-    "description": "Customized styles",
-    "scripts": {},
-    "author": "",
-    "license": "ISC",
-    "publishConfig": {
-      "access": "public"
-    }
+  "name": "@reciprocity/styles",
+  "version": "0.0.2",
+  "description": "Customized styles",
+  "scripts": {},
+  "author": "",
+  "license": "ISC",
+  "publishConfig": {
+    "access": "public"
   }
-  
+}
