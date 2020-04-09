@@ -122,7 +122,7 @@ storiesOf("Components|DatePicker", module)
     },
     components: { DatePicker },
     template: `<div>
-        <date-picker v-model="time" confirm confirm-text="Apply" inline />
+        <date-picker v-model="time" confirm confirm-text="Apply" />
       </div>`,
     methods: {
       disabledDate(date) {
