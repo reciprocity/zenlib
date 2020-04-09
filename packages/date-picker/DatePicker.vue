@@ -1,6 +1,7 @@
 <template>
   <date-picker
     class="date-picker"
+    popup-class="date-picker-popup"
     :lang="lang"
     :format="format"
     :value-type="valueType"
@@ -122,6 +123,56 @@ export default Vue.extend({
     &--disabled {
       background-color: $color-athens-gray;
       color: $color-oslo-gray;
+    }
+  }
+}
+</style>
+
+<style lang="scss">
+@import "@reciprocity/bootstrap/scss/variables";
+@import "@reciprocity/bootstrap/scss/colors";
+
+.date-picker-popup.mx-datepicker-main {
+  display: flex;
+  align-items: stretch;
+
+  .mx-datepicker-sidebar {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0;
+    width: auto;
+  }
+
+  .mx-datepicker-content {
+    margin: 0;
+  }
+
+  .mx-datepicker-footer {
+    padding: 16px;
+
+    .mx-datepicker-btn-confirm {
+      color: white;
+      background-color: $color-app-primary;
+      border: 0;
+      padding: 10px 20px;
+
+      &:hover {
+        background-color: darken($color-app-primary, 5);
+      }
+    }
+  }
+
+  .mx-btn-shortcut {
+    border-radius: 0;
+    padding: 10px 20px;
+    font-size: 16px;
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    outline: none;
+
+    &:hover {
+      background-color: $color-wild-sand;
     }
   }
 }
