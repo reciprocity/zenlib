@@ -12,5 +12,5 @@ storiesOf("Components|Button", module)
   })
   .add("default", () => ({
     components: { ZenButton },
-    template: '<zen-button variant="outline-primary">Test Button</zen-button>'
+    template: '<zen-button variant="primary">Test Button</zen-button>'
   }));

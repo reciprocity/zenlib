@@ -81,4 +81,54 @@ storiesOf("Components|DatePicker", module)
         return date < refDate;
       }
     }
+  }))
+  .add("shortcuts", () => ({
+    data() {
+      return {
+        time: null,
+        shortcuts: [
+          {
+            text: "First shortcut",
+            onClick: () => {}
+          },
+          {
+            text: "Second shortcut",
+            onClick: () => {}
+          },
+          {
+            text: "Super long name shortcut",
+            onClick: () => {}
+          }
+        ]
+      };
+    },
+    components: { DatePicker },
+    template: `<div>
+        <date-picker v-model="time" :shortcuts="shortcuts" />
+      </div>`,
+    methods: {
+      disabledDate(date) {
+        const refDate = new Date();
+        refDate.setDate(refDate.getDate() - 2);
+        return date < refDate;
+      }
+    }
+  }))
+  .add("confirm button", () => ({
+    data() {
+      return {
+        time: null
+      };
+    },
+    components: { DatePicker },
+    template: `<div>
+        <date-picker v-model="time" confirm confirm-text="Apply" />
+      </div>`,
+    methods: {
+      disabledDate(date) {
+        const refDate = new Date();
+        refDate.setDate(refDate.getDate() - 2);
+        return date < refDate;
+      }
+    }
   }));
