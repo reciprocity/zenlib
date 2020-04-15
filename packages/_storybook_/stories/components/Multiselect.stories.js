@@ -41,12 +41,18 @@ storiesOf("Components|Multiselect", module)
     data() {
       return {
         value: null,
-        options: ["Argentina", "Slovenia", "United States"]
+        options: [
+          "Argentina",
+          "Slovenia",
+          "United States",
+          "China",
+          "Some very long country name that never existed"
+        ]
       };
     },
     components: { Multiselect },
     template:
-      "<div class='multiselect_improvements'><multiselect v-model='value' :options='options' @input='change' multiple /></div>",
+      "<div class='multiselect_improvements' style='max-width: 400px;'><multiselect v-model='value' :options='options' @input='change' multiple :close-on-select='false' /></div>",
     methods: {
       change: action("input")
     }
