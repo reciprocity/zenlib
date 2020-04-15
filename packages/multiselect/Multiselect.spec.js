@@ -57,7 +57,8 @@ describe("Multiselect.vue", () => {
           options,
           value: options[1],
           renderSelectElement: true
-        }
+        },
+        sync: false
       });
 
       expect(wrapper.contains("select.d-none")).toBe(true);
@@ -68,7 +69,8 @@ describe("Multiselect.vue", () => {
         propsData: {
           options,
           value: options[1]
-        }
+        },
+        sync: false
       });
 
       expect(wrapper.contains("select.d-none")).toBe(false);
@@ -80,7 +82,8 @@ describe("Multiselect.vue", () => {
           options,
           value: [options[0], options[2]],
           renderSelectElement: true
-        }
+        },
+        sync: false
       }).findAll("option");
 
       expect(wrapper.at(0).attributes("value")).toEqual("option1");
@@ -97,7 +100,8 @@ describe("Multiselect.vue", () => {
         propsData: {
           options,
           value: options[1]
-        }
+        },
+        sync: false
       }).find(".multiselect__clear-button");
 
       expect(wrapper.isVisible()).toBe(true);
@@ -107,7 +111,8 @@ describe("Multiselect.vue", () => {
       const wrapper = mount(Multiselect, {
         propsData: {
           options
-        }
+        },
+        sync: false
       }).find(".multiselect__clear-button");
 
       expect(wrapper.isVisible()).toBe(false);
@@ -118,7 +123,8 @@ describe("Multiselect.vue", () => {
         propsData: {
           options,
           allowEmpty: false
-        }
+        },
+        sync: false
       }).find(".multiselect__clear-button");
 
       expect(wrapper.isVisible()).toBe(false);
@@ -127,7 +133,8 @@ describe("Multiselect.vue", () => {
     it("clears selected values when clicking the clear button", () => {
       const wrapper = mount(Multiselect, {
         propsData: {
-          options
+          options,
+          sync: false
         }
       });
 
@@ -148,7 +155,8 @@ describe("Multiselect.vue", () => {
         propsData: {
           multiple: true,
           options
-        }
+        },
+        sync: false
       });
 
       expect(wrapper.emitted().input).toBeFalsy();
@@ -172,7 +180,8 @@ describe("Multiselect.vue", () => {
         },
         slots: {
           clear: '<div class="slot-content" />'
-        }
+        },
+        sync: false
       });
 
       expect(wrapper.contains(".slot-content")).toBe(true);

@@ -5,7 +5,7 @@
       :multiple="multiple"
       :disabled="disabled"
       :class="validationClass"
-      :options="options"
+      :options="myOptions"
       :option-height="35"
       :value="value"
       :allow-empty="allowEmpty"
@@ -14,6 +14,7 @@
       v-bind="$attrs"
       v-on="$listeners"
       @input="onChange"
+      @open="onOpen"
     >
       <!--
         TODO: clean up when this is merged:
@@ -73,6 +74,7 @@
 import VueMultiselect from "vue-multiselect";
 import isObject from "lodash.isobject";
 import "vue-multiselect/dist/vue-multiselect.min.css";
+import cloneDeep from "lodash.clonedeep";
 
 const formatOptions = options => {
   return options.forEach(option => {
@@ -126,7 +128,8 @@ export default {
   data: function() {
     return {
       newFlag: false,
-      myLimit: UNLIMITED
+      myLimit: UNLIMITED,
+      myOptions: []
     };
   },
   computed: {
@@ -145,6 +148,16 @@ export default {
     },
     isValueSet() {
       return !!this.valueArray.length;
+    }
+  },
+  watch: {
+    options: {
+      immediate: true,
+      handler: function(value) {
+        formatOptions(value);
+        this.myOptions = cloneDeep(value);
+        this.orderOptions();
+      }
     }
   },
   created: function() {
@@ -188,6 +201,28 @@ export default {
       this.$nextTick(() => {
         this.myLimit = this.calcLimit();
       });
+    },
+    onOpen() {
+      this.myOptions = cloneDeep(this.options);
+      this.orderOptions();
+      this.$nextTick(() => {
+        this.$el
+          .querySelectorAll(".multiselect__content-wrapper")[0]
+          .scroll(0, 0);
+      });
+    },
+    orderOptions() {
+      if (!Array.isArray(this.value)) return;
+
+      function isSelected(a, selected) {
+        for (let b of selected || []) {
+          if (b === a) return true;
+        }
+      }
+      // Reorder items, so that selected are on top:
+      let selected = this.myOptions.filter(a => isSelected(a, this.value));
+      let unSelected = this.myOptions.filter(a => !isSelected(a, this.value));
+      this.myOptions = selected.concat(unSelected);
     }
   }
 };
