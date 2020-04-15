@@ -113,6 +113,11 @@ export default {
       default: null
     }
   },
+  data: function() {
+    return {
+      newFlag: false
+    };
+  },
   computed: {
     validationClass() {
       if (this.valid === null) {
@@ -133,6 +138,18 @@ export default {
   },
   created: function() {
     formatOptions(this.options);
+  },
+  mounted: function() {
+    // Todo: remove once flag is removed and multiselect is in GA:
+    function anyParentWithClass(element, clas) {
+      return (
+        (element.className &&
+          element.className.split(" ").indexOf(clas) >= 0) ||
+        (element.parentNode && anyParentWithClass(element.parentNode, clas))
+      );
+    }
+
+    this.newFlag = anyParentWithClass(this.$el, "multiselect_improvements");
   },
   methods: {
     clearSelectedValue() {

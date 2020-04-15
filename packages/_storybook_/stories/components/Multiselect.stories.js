@@ -36,4 +36,18 @@ storiesOf("Components|Multiselect", module)
     methods: {
       change: action("input")
     }
+  }))
+  .add("multiple improved", () => ({
+    data() {
+      return {
+        value: null,
+        options: ["Argentina", "Slovenia", "United States"]
+      };
+    },
+    components: { Multiselect },
+    template:
+      "<div class='multiselect_improvements'><multiselect v-model='value' :options='options' @input='change' multiple /></div>",
+    methods: {
+      change: action("input")
+    }
   }));
