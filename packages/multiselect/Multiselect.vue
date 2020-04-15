@@ -34,6 +34,15 @@
         </span>
       </template>
 
+      <template slot="beforeList">
+        <span
+          class="multiselect__action multiselect__option"
+          :class="{ disabled: !isValueSet }"
+          @click="clearSelectedValue"
+          ><small>Clear selection</small></span
+        >
+      </template>
+
       <template v-slot:clear>
         <!-- Render hidden select element for form posting -->
         <select
@@ -697,6 +706,16 @@ $title-truncate-width: 50ch;
     background: $vue-ms-option-selected-highlight-bg;
     content: attr(data-deselect);
     color: $vue-ms-option-selected-highlight-color;
+  }
+
+  .multiselect__action {
+    &:hover {
+      color: $primary;
+    }
+    &.disabled {
+      color: $custom-select-disabled-color;
+      cursor: default;
+    }
   }
 
   .multiselect-enter-active,
