@@ -383,12 +383,16 @@ $title-truncate-width: 50ch;
   }
 
   .multiselect__tags-wrap {
-    display: inline;
+    display: flex;
+    flex-wrap: nowrap;
+    min-width: 0;
+    overflow: hidden;
   }
 
   .multiselect__tags {
     min-height: $vue-ms-min-height;
-    display: block;
+    display: flex;
+    flex-wrap: nowrap;
     padding: $vue-ms-padding-y calc(1em + 1rem + 25px) 0 $vue-ms-padding-x;
     border-radius: $vue-ms-border-radius;
     border: $vue-ms-border-width solid $vue-ms-border-color;
@@ -401,6 +405,11 @@ $title-truncate-width: 50ch;
       display: table;
       clear: both;
     }
+  }
+
+  .multiselect__limit-pill {
+    flex: 0 0 auto;
+    margin-left: 3px !important;
   }
 
   .multiselect__tag {

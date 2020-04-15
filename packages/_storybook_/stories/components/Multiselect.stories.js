@@ -46,7 +46,7 @@ storiesOf("Components|Multiselect", module)
           "Slovenia",
           "United States",
           "China",
-          "Some very long country name that never existed"
+          "Some very long country name that never existed plus some more"
         ]
       };
     },
