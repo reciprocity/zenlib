@@ -10,8 +10,10 @@
       :value="value"
       :allow-empty="allowEmpty"
       :show-labels="false"
+      :limit="myLimit"
       v-bind="$attrs"
       v-on="$listeners"
+      @input="onChange"
     >
       <!--
         TODO: clean up when this is merged:
@@ -23,6 +25,12 @@
         slot-scope="props"
       >
         <slot v-bind="props" :name="slotName" />
+      </template>
+
+      <template slot="limit">
+        <span class="multiselect__tag multiselect__limit-pill">
+          <span>+{{ (value || []).length - myLimit }}</span>
+        </span>
       </template>
 
       <template v-slot:clear>
@@ -75,6 +83,8 @@ const formatOptions = options => {
   });
 };
 
+const UNLIMITED = 99999;
+
 export default {
   name: "ZenMultiselect",
   components: { VueMultiselect },
@@ -115,7 +125,8 @@ export default {
   },
   data: function() {
     return {
-      newFlag: false
+      newFlag: false,
+      myLimit: UNLIMITED
     };
   },
   computed: {
@@ -155,6 +166,28 @@ export default {
     clearSelectedValue() {
       const emptyValue = this.multiple ? [] : "";
       this.$emit("input", emptyValue);
+    },
+    calcLimit() {
+      const items = this.$el.querySelectorAll(
+        ".multiselect__tags .multiselect__tag"
+      );
+      const width = this.$el.offsetWidth - 140;
+      let x = 0;
+      let i = 0;
+      while (items[i]) {
+        x += items[i].offsetWidth;
+        if (x > width) break;
+        i++;
+      }
+      return Math.max(i, 1);
+    },
+    onChange() {
+      if (!this.multiple) return;
+
+      this.myLimit = UNLIMITED;
+      this.$nextTick(() => {
+        this.myLimit = this.calcLimit();
+      });
     }
   }
 };
