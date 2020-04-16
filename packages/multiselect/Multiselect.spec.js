@@ -180,19 +180,25 @@ describe("Multiselect.vue", () => {
   });
 
   describe("renders validation classes", () => {
-    it("renders classes depending on the valid prop", () => {
+    it("renders classes depending on the valid prop", async () => {
       const wrapper = shallowMount(Multiselect);
       const multiselect = wrapper.find(VueMultiselect);
 
       expect(multiselect.attributes("class")).toEqual("");
 
       wrapper.setProps({ valid: true });
+      await wrapper.vm.$nextTick();
+
       expect(multiselect.attributes("class")).toEqual("is-valid");
 
       wrapper.setProps({ valid: true });
+      await wrapper.vm.$nextTick();
+
       expect(multiselect.attributes("class")).toEqual("is-valid");
 
       wrapper.setProps({ valid: false });
+      await wrapper.vm.$nextTick();
+
       expect(multiselect.attributes("class")).toEqual("is-invalid");
     });
   });

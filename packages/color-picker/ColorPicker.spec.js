@@ -57,7 +57,7 @@ describe("ColorPicker", () => {
     expect(wrapper.vm.pickr.destroy).toHaveBeenCalled();
   });
 
-  it("should update pickr color after updating value prop", () => {
+  it("should update pickr color after updating value prop", async () => {
     const wrapper = shallowMount(ColorPicker, {
       propsData: {
         value: "#0099FF"
@@ -66,10 +66,13 @@ describe("ColorPicker", () => {
 
     expect(wrapper.vm.pickr.setColor).not.toHaveBeenCalled();
     wrapper.setProps({ value: "#FF00FF" });
+
+    await wrapper.vm.$nextTick();
+
     expect(wrapper.vm.pickr.setColor).toHaveBeenCalledWith("#FF00FF");
   });
 
-  it("should update circle background with the selected color if valid", () => {
+  it("should update circle background with the selected color if valid", async () => {
     const wrapper = shallowMount(ColorPicker, {
       propsData: {
         value: "#0099FF"
@@ -82,12 +85,14 @@ describe("ColorPicker", () => {
     );
 
     wrapper.setProps({ value: "#FF00FF" });
+    await wrapper.vm.$nextTick();
 
     expect(circle.attributes("style")).toEqual(
       "background-color: rgb(255, 0, 255);"
     );
 
     wrapper.setProps({ value: "Invalid Color" });
+    await wrapper.vm.$nextTick();
 
     expect(circle.attributes("style")).toEqual("");
   });
