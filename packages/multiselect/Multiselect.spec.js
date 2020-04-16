@@ -95,6 +95,8 @@ describe("Multiselect.vue", () => {
   });
 
   describe("clear button", () => {
+    jest.useFakeTimers();
+
     it("shows a clear button if a value is set", () => {
       const wrapper = mount(Multiselect, {
         propsData: {
@@ -148,6 +150,63 @@ describe("Multiselect.vue", () => {
       expect(input).toBeTruthy();
       expect(input.length).toEqual(1);
       expect(input[0][0]).toEqual("");
+    });
+
+    it("recalculates limit on change", async () => {
+      const wrapper = mount(Multiselect, {
+        propsData: {
+          multiple: true,
+          options
+        },
+        data: () => ({
+          newFlag: true
+        }),
+        value: [options[2], options[0]],
+        sync: false
+      });
+
+      wrapper.setData({
+        newFlag: true
+      });
+
+      wrapper.vm.onChange();
+
+      jest.runAllTimers();
+      await wrapper.vm.$nextTick();
+
+      expect(wrapper.vm.myLimit).toBe(1);
+    });
+
+    it("reorders options on open", async () => {
+      const wrapper = mount(Multiselect, {
+        propsData: {
+          multiple: true,
+          options
+        },
+        data: () => ({
+          newFlag: true
+        }),
+        sync: false
+      });
+
+      wrapper.setData({
+        newFlag: true
+      });
+
+      expect(wrapper.vm.myOptions[0].label).toBe(options[0].label);
+
+      wrapper.setProps({
+        value: [options[2], options[1]]
+      });
+
+      expect(wrapper.vm.myOptions[0].label).toBe(options[0].label);
+
+      wrapper.vm.onOpen();
+      await wrapper.vm.$nextTick();
+
+      expect(wrapper.vm.myOptions[0].label).toBe(options[1].label);
+      expect(wrapper.vm.myOptions[1].label).toBe(options[2].label);
+      expect(wrapper.vm.myOptions[2].label).toBe(options[0].label);
     });
 
     it("clears selected values for instances with multiple prop", () => {

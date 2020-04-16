@@ -102,6 +102,7 @@
 <script>
 import VueMultiselect from "vue-multiselect";
 import isObject from "lodash.isobject";
+import isEqual from "lodash.isequal";
 import "vue-multiselect/dist/vue-multiselect.min.css";
 import cloneDeep from "lodash.clonedeep";
 
@@ -242,9 +243,10 @@ export default {
       this.myOptions = cloneDeep(this.options);
       this.orderOptions();
       this.$nextTick(() => {
-        this.$el
-          .querySelectorAll(".multiselect__content-wrapper")[0]
-          .scroll(0, 0);
+        let el = this.$el.querySelectorAll(".multiselect__content-wrapper")[0];
+        if (el.scroll) {
+          el.scroll(0, 0);
+        }
       });
     },
     onResize() {
@@ -263,7 +265,9 @@ export default {
     },
     isSelected(option) {
       for (let b of this.value || []) {
-        if (b === option) return true;
+        if (isEqual(b, option)) {
+          return true;
+        }
       }
     },
     orderOptions() {
