@@ -1,5 +1,8 @@
 <template>
-  <div class="multiselect-wrapper">
+  <div
+    class="multiselect-wrapper"
+    :class="{ calculating_limit: calculatingLimit }"
+  >
     <vue-multiselect
       :name="name"
       :multiple="multiple"
@@ -138,7 +141,8 @@ export default {
     return {
       newFlag: false,
       myLimit: UNLIMITED,
-      myOptions: []
+      myOptions: [],
+      calculatingLimit: false
     };
   },
   computed: {
@@ -201,12 +205,14 @@ export default {
         if (x > width) break;
         i++;
       }
+      this.calculatingLimit = false;
       return Math.max(i, 1);
     },
     onChange() {
       if (!this.multiple) return;
 
       this.myLimit = UNLIMITED;
+      this.calculatingLimit = true;
       this.$nextTick(() => {
         this.myLimit = this.calcLimit();
       });
@@ -401,6 +407,9 @@ $title-truncate-width: 50ch;
   .multiselect__input {
     padding-left: 0;
     margin-bottom: 6px;
+    order: -1;
+    flex: 1 1 auto;
+    margin-right: 3px;
   }
   .multiselect__input::placeholder {
     color: $vue-ms-placeholder-color;
@@ -431,6 +440,10 @@ $title-truncate-width: 50ch;
     flex-wrap: nowrap;
     min-width: 0;
     overflow: hidden;
+  }
+
+  &.calculating_limit .multiselect__tags-wrap {
+    display: block;
   }
 
   .multiselect__tags {
