@@ -37,6 +37,26 @@ storiesOf("Components|Multiselect", module)
       change: action("input")
     }
   }))
+  .add("single improved", () => ({
+    data() {
+      return {
+        value: null,
+        options: [
+          "Argentina",
+          "Slovenia",
+          "United States",
+          "China",
+          "Some very long country name that never existed plus some more"
+        ]
+      };
+    },
+    components: { Multiselect },
+    template:
+      "<div class='multiselect_improvements' style='max-width: 400px;'><multiselect v-model='value' :options='options' @input='change' /></div>",
+    methods: {
+      change: action("input")
+    }
+  }))
   .add("multiple improved", () => ({
     data() {
       return {

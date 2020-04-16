@@ -196,19 +196,14 @@ describe("Multiselect.vue", () => {
       expect(multiselect.attributes("class")).toEqual("");
 
       wrapper.setProps({ valid: true });
-      await wrapper.vm.$nextTick();
+      wrapper.vm.$nextTick(() => {
+        expect(multiselect.attributes("class")).toEqual("is-valid");
 
-      expect(multiselect.attributes("class")).toEqual("is-valid");
-
-      wrapper.setProps({ valid: true });
-      await wrapper.vm.$nextTick();
-
-      expect(multiselect.attributes("class")).toEqual("is-valid");
-
-      wrapper.setProps({ valid: false });
-      await wrapper.vm.$nextTick();
-
-      expect(multiselect.attributes("class")).toEqual("is-invalid");
+        wrapper.setProps({ valid: false });
+        wrapper.vm.$nextTick(() => {
+          expect(multiselect.attributes("class")).toEqual("is-invalid");
+        });
+      });
     });
   });
 });
