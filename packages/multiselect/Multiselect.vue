@@ -46,6 +46,23 @@
         >
       </template>
 
+      <template
+        v-if="multiple && showCheckboxes"
+        slot="option"
+        slot-scope="props"
+      >
+        <div class="checkbox_parent">
+          <input
+            type="checkbox"
+            class="multiselect__checkbox"
+            :checked="isSelected(props.option)"
+          />
+          <span>
+            {{ props.option }}
+          </span>
+        </div>
+      </template>
+
       <template v-slot:clear>
         <!-- Render hidden select element for form posting -->
         <select
@@ -135,6 +152,10 @@ export default {
     valid: {
       type: Boolean,
       default: null
+    },
+    showCheckboxes: {
+      type: Boolean,
+      default: true
     }
   },
   data: function() {
@@ -214,7 +235,7 @@ export default {
     },
     onChange() {
       if (!this.multiple) return;
-      this.debounceCalcLimit(16);
+      this.debounceCalcLimit(0);
     },
     onOpen() {
       this.myOptions = cloneDeep(this.options);
@@ -228,7 +249,7 @@ export default {
     onResize() {
       this.debounceCalcLimit();
     },
-    debounceCalcLimit(time) {
+    debounceCalcLimit(time = 300) {
       clearTimeout(this.calcLimitTimer);
       this.calcLimitTimer = setTimeout(() => {
         this.calculatingLimit = true;
@@ -236,19 +257,20 @@ export default {
         this.$nextTick(() => {
           this.myLimit = this.calcLimit();
         });
-      }, time || 300);
+      }, time);
+    },
+    isSelected(option) {
+      for (let b of this.value || []) {
+        if (b === option) return true;
+      }
     },
     orderOptions() {
       if (!Array.isArray(this.value)) return;
-
-      function isSelected(a, selected) {
-        for (let b of selected || []) {
-          if (b === a) return true;
-        }
-      }
       // Reorder items, so that selected are on top:
-      let selected = this.myOptions.filter(a => isSelected(a, this.value));
-      let unSelected = this.myOptions.filter(a => !isSelected(a, this.value));
+      let selected = this.myOptions.filter(a => this.isSelected(a, this.value));
+      let unSelected = this.myOptions.filter(
+        a => !this.isSelected(a, this.value)
+      );
       this.myOptions = selected.concat(unSelected);
     }
   }
@@ -661,6 +683,20 @@ $title-truncate-width: 50ch;
     padding-left: 20px;
     font-family: inherit;
     font-size: inherit;
+  }
+
+  .checkbox_parent {
+    display: flex;
+    align-items: center;
+  }
+
+  .multiselect__checkbox {
+    margin-right: 9px;
+  }
+
+  .multiselect__checkbox + span {
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
 
   .multiselect__option--highlight {
