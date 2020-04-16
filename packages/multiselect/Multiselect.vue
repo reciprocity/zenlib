@@ -187,6 +187,10 @@ export default {
     }
 
     this.newFlag = anyParentWithClass(this.$el, "multiselect_improvements");
+    if (typeof ResizeObserver !== "undefined") {
+      const observer = new ResizeObserver(this.onResize);
+      observer.observe(this.$el);
+    }
   },
   methods: {
     clearSelectedValue() {
@@ -210,12 +214,7 @@ export default {
     },
     onChange() {
       if (!this.multiple) return;
-
-      this.myLimit = UNLIMITED;
-      this.calculatingLimit = true;
-      this.$nextTick(() => {
-        this.myLimit = this.calcLimit();
-      });
+      this.debounceCalcLimit(16);
     },
     onOpen() {
       this.myOptions = cloneDeep(this.options);
@@ -225,6 +224,19 @@ export default {
           .querySelectorAll(".multiselect__content-wrapper")[0]
           .scroll(0, 0);
       });
+    },
+    onResize() {
+      this.debounceCalcLimit();
+    },
+    debounceCalcLimit(time) {
+      clearTimeout(this.calcLimitTimer);
+      this.calcLimitTimer = setTimeout(() => {
+        this.calculatingLimit = true;
+        this.myLimit = UNLIMITED;
+        this.$nextTick(() => {
+          this.myLimit = this.calcLimit();
+        });
+      }, time || 300);
     },
     orderOptions() {
       if (!Array.isArray(this.value)) return;
