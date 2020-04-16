@@ -1,6 +1,6 @@
 {
   "name": "@reciprocity/color-input",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "description": "An input field for color values that includes a color picker",
   "main": "dist/index.js",
   "scripts": {},
@@ -11,6 +11,6 @@
   },
   "dependencies": {
     "@reciprocity/bootstrap": "^0.8.0",
-    "@reciprocity/color-picker": "^0.2.0"
+    "@reciprocity/color-picker": "^0.2.1"
   }
 }
