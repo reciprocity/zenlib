@@ -1,4 +1,4 @@
-import Multiselect from "./Multiselect.vue";
+import Multiselect, { isEqual } from "./Multiselect.vue";
 import { shallowMount, mount } from "@vue/test-utils";
 import VueMultiselect from "vue-multiselect";
 
@@ -19,6 +19,29 @@ const options = [
 ];
 
 describe("Multiselect.vue", () => {
+  it("isEqual() works", () => {
+    expect(isEqual(1, 1)).toBe(true);
+    expect(isEqual(1, "1")).toBe(false);
+    expect(isEqual("one", "one")).toBe(true);
+    expect(isEqual({ a: 1, b: 2 }, { a: 1, b: 2 })).toBe(true);
+    expect(isEqual({ 0: 1, 1: 1 }, [1, 1])).toBe(false);
+    expect(
+      isEqual({ a: 1, b: { a: 1, b: 2 } }, { a: 1, b: { a: 1, b: 2 } })
+    ).toBe(true);
+    expect(
+      isEqual({ a: 1, b: { a: 1, b: 2 } }, { a: 1, b: { a: 1, b: 2, c: 3 } })
+    ).toBe(false);
+    expect(isEqual({ a: 1, b: [] }, { a: 1, b: [1, 2] })).toBe(false);
+  });
+
+  it("isEqual() handles circular references", () => {
+    let a = [1, 2, 3];
+    let c = [1, 2, 3];
+    a.push(c);
+    c.push(a);
+    expect(isEqual(a, a)).toBe(true);
+  });
+
   describe("uses VueMultiselect", () => {
     it("renders a vue-multiselect component", () => {
       const wrapper = shallowMount(Multiselect);

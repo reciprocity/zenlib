@@ -102,7 +102,6 @@
 <script>
 import VueMultiselect from "vue-multiselect";
 import isObject from "lodash.isobject";
-import isEqual from "lodash.isequal";
 import "vue-multiselect/dist/vue-multiselect.min.css";
 import cloneDeep from "lodash.clonedeep";
 
@@ -113,6 +112,34 @@ const formatOptions = options => {
       delete option["disabled"];
     }
   });
+};
+
+export const isEqual = (a, b) => {
+  if (typeof a !== typeof b) return false;
+  if (Array.isArray(a) !== Array.isArray(b)) return false;
+
+  if (typeof a === "object") {
+    // Prevent circular reference:
+    if (a === b) return true;
+
+    for (let key in a) {
+      if (!Object.prototype.hasOwnProperty.call(a, key)) continue;
+
+      if (typeof a[key] !== typeof b[key]) return false;
+
+      if (typeof a[key] === "object") {
+        if (!isEqual(a[key], b[key])) return false;
+      } else if (a[key] !== b[key]) {
+        return false;
+      }
+    }
+    // Check that every key from b also exists in a:
+    for (let key in b) {
+      if (typeof b[key] !== typeof a[key]) return false;
+    }
+    return true;
+  }
+  return a === b;
 };
 
 const UNLIMITED = 99999;
