@@ -2,6 +2,8 @@ import Multiselect, { isEqual } from "./Multiselect.vue";
 import { shallowMount, mount } from "@vue/test-utils";
 import VueMultiselect from "vue-multiselect";
 
+window.HTMLElement.prototype.scroll = jest.fn();
+
 const options = [
   {
     value: "option1",
@@ -193,6 +195,33 @@ describe("Multiselect.vue", () => {
       });
 
       wrapper.vm.onChange();
+
+      jest.runAllTimers();
+      await wrapper.vm.$nextTick();
+
+      expect(wrapper.vm.myLimit).toBe(1);
+    });
+
+    it("recalculates limit on resize", async () => {
+      const wrapper = mount(Multiselect, {
+        propsData: {
+          multiple: true,
+          options
+        },
+        data: () => ({
+          newFlag: true
+        }),
+        value: [options[2], options[0]],
+        sync: false
+      });
+
+      wrapper.setData({
+        newFlag: true
+      });
+
+      expect(wrapper.vm.myLimit).toBe(99999);
+
+      wrapper.vm.onResize();
 
       jest.runAllTimers();
       await wrapper.vm.$nextTick();

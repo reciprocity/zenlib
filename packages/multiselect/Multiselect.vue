@@ -1,5 +1,6 @@
 <template>
   <div
+    v-resize="onResize"
     class="multiselect-wrapper"
     :class="{ 'calculating-limit': calculatingLimit, 'new-flag': newFlag }"
   >
@@ -100,10 +101,14 @@
 </template>
 
 <script>
+import Vue from "vue";
 import VueMultiselect from "vue-multiselect";
 import isObject from "lodash.isobject";
 import "vue-multiselect/dist/vue-multiselect.min.css";
 import cloneDeep from "lodash.clonedeep";
+import VueResizeObserver from "vue-resize-observer";
+
+Vue.use(VueResizeObserver);
 
 const formatOptions = options => {
   return options.forEach(option => {
@@ -236,11 +241,6 @@ export default {
     }
 
     this.newFlag = anyParentWithClass(this.$el, "multiselect_improvements");
-
-    if (this.newFlag && typeof ResizeObserver !== "undefined") {
-      const observer = new ResizeObserver(this.onResize);
-      observer.observe(this.$el);
-    }
   },
   methods: {
     clearSelectedValue() {
@@ -248,6 +248,8 @@ export default {
       this.$emit("input", emptyValue);
     },
     async calcLimit() {
+      if (!this.newFlag || !this.multiple) return;
+
       this.calculatingLimit = true;
       this.myLimit = UNLIMITED;
       await this.$nextTick();
@@ -275,16 +277,13 @@ export default {
       this.orderOptions();
       this.$nextTick(() => {
         let el = this.$el.querySelectorAll(".multiselect__content-wrapper")[0];
-        if (el.scroll) {
-          el.scroll(0, 0);
-        }
+        el.scroll(0, 0);
       });
     },
     onResize() {
       this.debounceCalcLimit();
     },
     debounceCalcLimit(time = 300) {
-      if (!this.multiple || !this.newFlag) return;
       clearTimeout(this.calcLimitTimer);
       this.calcLimitTimer = setTimeout(this.calcLimit, time);
     },

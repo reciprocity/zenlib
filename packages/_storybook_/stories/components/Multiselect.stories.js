@@ -72,7 +72,7 @@ storiesOf("Components|Multiselect", module)
     },
     components: { Multiselect },
     template:
-      "<div class='multiselect_improvements' style='max-width: 400px;'><multiselect v-model='value' :options='options' @input='change' multiple :close-on-select='false' /></div>",
+      "<div class='multiselect_improvements' style='max-width: 700px;'><multiselect v-model='value' :options='options' @input='change' multiple :close-on-select='false' /></div>",
     methods: {
       change: action("input")
     }
