@@ -220,6 +220,7 @@ export default {
   watch: {
     options: {
       immediate: true,
+      deep: true,
       handler: function(value) {
         formatOptions(value);
         this.myOptions = cloneDeep(value);
