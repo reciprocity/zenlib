@@ -19,6 +19,7 @@
       v-on="$listeners"
       @input="onChange"
       @open="onOpen"
+      @close="onClose"
     >
       <!--
         TODO: clean up when this is merged:
@@ -280,6 +281,9 @@ export default {
         let el = this.$el.querySelectorAll(".multiselect__content-wrapper")[0];
         el.scroll(0, 0);
       });
+    },
+    onClose() {
+      this.calcLimit();
     },
     onResize(value) {
       if (!value.width || value.width === this.lastWidth) return;
