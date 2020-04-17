@@ -281,7 +281,9 @@ export default {
         el.scroll(0, 0);
       });
     },
-    onResize() {
+    onResize(value) {
+      if (!value.width || value.width === this.lastWidth) return;
+      this.lastWidth = value.width;
       this.debounceCalcLimit();
     },
     debounceCalcLimit(time = 300) {

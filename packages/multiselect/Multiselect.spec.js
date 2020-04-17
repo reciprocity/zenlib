@@ -219,14 +219,14 @@ describe("Multiselect.vue", () => {
         newFlag: true
       });
 
-      expect(wrapper.vm.myLimit).toBe(99999);
+      wrapper.vm.calcLimit = jest.fn();
 
-      wrapper.vm.onResize();
+      wrapper.vm.onResize({ width: 100 });
 
       jest.runAllTimers();
       await wrapper.vm.$nextTick();
 
-      expect(wrapper.vm.myLimit).toBe(1);
+      expect(wrapper.vm.calcLimit).toHaveBeenCalled();
     });
 
     it("reorders options on open", async () => {
