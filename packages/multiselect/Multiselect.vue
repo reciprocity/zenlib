@@ -247,7 +247,11 @@ export default {
       const emptyValue = this.multiple ? [] : "";
       this.$emit("input", emptyValue);
     },
-    calcLimit() {
+    async calcLimit() {
+      this.calculatingLimit = true;
+      this.myLimit = UNLIMITED;
+      await this.$nextTick();
+
       const items = this.$el.querySelectorAll(
         ".multiselect__tags .multiselect__tag"
       );
@@ -260,10 +264,10 @@ export default {
         i++;
       }
       this.calculatingLimit = false;
-      return Math.max(i, 1);
+      this.myLimit = Math.max(i, 1);
     },
     onChange() {
-      this.debounceCalcLimit(0);
+      this.calcLimit();
     },
     onOpen() {
       if (!this.newFlag) return;
@@ -282,13 +286,7 @@ export default {
     debounceCalcLimit(time = 300) {
       if (!this.multiple || !this.newFlag) return;
       clearTimeout(this.calcLimitTimer);
-      this.calcLimitTimer = setTimeout(() => {
-        this.calculatingLimit = true;
-        this.myLimit = UNLIMITED;
-        this.$nextTick(() => {
-          this.myLimit = this.calcLimit();
-        });
-      }, time);
+      this.calcLimitTimer = setTimeout(this.calcLimit, time);
     },
     isSelected(option) {
       for (let b of this.value || []) {
