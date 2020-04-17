@@ -545,7 +545,6 @@ $title-truncate-width: 50ch;
 
   &.new-flag .multiselect__limit-pill {
     flex: 0 0 auto;
-    margin-left: 3px !important;
   }
 
   .multiselect__tag {
