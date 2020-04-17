@@ -1,12 +1,11 @@
 <template>
   <div class="d-flex align-items-center">
     <b-form-input
-      v-model="value"
+      v-model="color"
       :required="required"
       pattern="#[0-9A-Fa-f]{6}"
-      @input="$emit('input', value)"
     />
-    <color-picker v-model="value" />
+    <color-picker v-model="color" />
   </div>
 </template>
 
@@ -28,6 +27,16 @@ export default {
     required: {
       type: Boolean,
       default: false
+    }
+  },
+  computed: {
+    color: {
+      get: function() {
+        return this.value;
+      },
+      set: function(value) {
+        this.$emit("input", value);
+      }
     }
   }
 };
