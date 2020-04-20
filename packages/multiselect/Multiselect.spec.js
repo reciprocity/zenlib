@@ -181,17 +181,11 @@ describe("Multiselect.vue", () => {
       const wrapper = mount(Multiselect, {
         propsData: {
           multiple: true,
+          newFlag: true,
           options
         },
-        data: () => ({
-          newFlag: true
-        }),
         value: [options[2], options[0]],
         sync: false
-      });
-
-      wrapper.setData({
-        newFlag: true
       });
 
       wrapper.vm.onChange();
@@ -206,17 +200,11 @@ describe("Multiselect.vue", () => {
       const wrapper = mount(Multiselect, {
         propsData: {
           multiple: true,
+          newFlag: true,
           options
         },
-        data: () => ({
-          newFlag: true
-        }),
         value: [options[2], options[0]],
         sync: false
-      });
-
-      wrapper.setData({
-        newFlag: true
       });
 
       wrapper.vm.calcLimit = jest.fn();
@@ -229,20 +217,33 @@ describe("Multiselect.vue", () => {
       expect(wrapper.vm.calcLimit).toHaveBeenCalled();
     });
 
+    it("recalculates limit on close", async () => {
+      const wrapper = mount(Multiselect, {
+        propsData: {
+          multiple: true,
+          newFlag: true,
+          options
+        },
+        value: [options[2], options[0]]
+      });
+
+      wrapper.vm.calcLimit = jest.fn();
+
+      wrapper.vm.onClose();
+
+      await wrapper.vm.$nextTick();
+
+      expect(wrapper.vm.calcLimit).toHaveBeenCalled();
+    });
+
     it("reorders options on open", async () => {
       const wrapper = mount(Multiselect, {
         propsData: {
           multiple: true,
+          newFlag: true,
           options
         },
-        data: () => ({
-          newFlag: true
-        }),
         sync: false
-      });
-
-      wrapper.setData({
-        newFlag: true
       });
 
       expect(wrapper.vm.myOptions[0].label).toBe(options[0].label);
