@@ -190,11 +190,14 @@ export default {
     showCheckboxes: {
       type: Boolean,
       default: true
+    },
+    newFlag: {
+      type: Boolean,
+      default: false
     }
   },
   data: function() {
     return {
-      newFlag: false,
       myLimit: UNLIMITED,
       myOptions: [],
       calculatingLimit: false
@@ -231,18 +234,6 @@ export default {
   },
   created: function() {
     formatOptions(this.options);
-  },
-  mounted: function() {
-    // Todo: remove once flag is removed and multiselect is in GA:
-    function anyParentWithClass(element, clas) {
-      return (
-        (element.className &&
-          element.className.split(" ").indexOf(clas) >= 0) ||
-        (element.parentNode && anyParentWithClass(element.parentNode, clas))
-      );
-    }
-
-    this.newFlag = anyParentWithClass(this.$el, "multiselect_improvements");
   },
   methods: {
     clearSelectedValue() {
@@ -479,7 +470,7 @@ $title-truncate-width: 50ch;
     padding-left: 0;
     margin-bottom: 6px;
     order: -1;
-    flex: 1 1 auto;
+    flex: 1 1 25%;
     margin-right: 3px;
   }
   .multiselect__input::placeholder {

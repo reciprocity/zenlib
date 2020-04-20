@@ -52,7 +52,7 @@ storiesOf("Components|Multiselect", module)
     },
     components: { Multiselect },
     template:
-      "<div class='multiselect_improvements' style='max-width: 400px;'><multiselect v-model='value' :options='options' @input='change' /></div>",
+      "<multiselect v-model='value' :options='options' @input='change' :newFlag='true' style='max-width: 700px;' />",
     methods: {
       change: action("input")
     }
@@ -72,7 +72,7 @@ storiesOf("Components|Multiselect", module)
     },
     components: { Multiselect },
     template:
-      "<div class='multiselect_improvements' style='max-width: 700px;'><multiselect v-model='value' :options='options' @input='change' multiple :close-on-select='false' /></div>",
+      "<multiselect placeholder='some very long placeholder' v-model='value' :options='options' @input='change' multiple :close-on-select='false' :newFlag='true' style='max-width: 700px;' />",
     methods: {
       change: action("input")
     }
