@@ -1,17 +1,25 @@
 <template>
-  <div class="multiselect-wrapper">
+  <div
+    v-resize="onResize"
+    class="multiselect-wrapper"
+    :class="{ 'calculating-limit': calculatingLimit, 'new-flag': newFlag }"
+  >
     <vue-multiselect
       :name="name"
       :multiple="multiple"
       :disabled="disabled"
       :class="validationClass"
-      :options="options"
+      :options="myOptions"
       :option-height="35"
       :value="value"
       :allow-empty="allowEmpty"
       :show-labels="false"
+      :limit="myLimit"
       v-bind="$attrs"
       v-on="$listeners"
+      @input="onChange"
+      @open="onOpen"
+      @close="onClose"
     >
       <!--
         TODO: clean up when this is merged:
@@ -23,6 +31,38 @@
         slot-scope="props"
       >
         <slot v-bind="props" :name="slotName" />
+      </template>
+
+      <template v-if="newFlag && multiple" slot="limit">
+        <span class="multiselect__tag multiselect__limit-pill">
+          <span>+{{ (value || []).length - myLimit }}</span>
+        </span>
+      </template>
+
+      <template v-if="newFlag && multiple" slot="beforeList">
+        <span
+          class="multiselect__action multiselect__option"
+          :class="{ disabled: !isValueSet }"
+          @click="clearSelectedValue"
+          ><small>Clear selection</small></span
+        >
+      </template>
+
+      <template
+        v-if="newFlag && multiple && showCheckboxes"
+        slot="option"
+        slot-scope="props"
+      >
+        <div class="checkbox_parent">
+          <input
+            type="checkbox"
+            class="multiselect__checkbox"
+            :checked="isSelected(props.option)"
+          />
+          <span>
+            {{ props.option }}
+          </span>
+        </div>
       </template>
 
       <template v-slot:clear>
@@ -62,9 +102,14 @@
 </template>
 
 <script>
+import Vue from "vue";
 import VueMultiselect from "vue-multiselect";
 import isObject from "lodash.isobject";
 import "vue-multiselect/dist/vue-multiselect.min.css";
+import cloneDeep from "lodash.clonedeep";
+import VueResizeObserver from "vue-resize-observer";
+
+Vue.use(VueResizeObserver);
 
 const formatOptions = options => {
   return options.forEach(option => {
@@ -74,6 +119,36 @@ const formatOptions = options => {
     }
   });
 };
+
+export const isEqual = (a, b) => {
+  if (typeof a !== typeof b) return false;
+  if (Array.isArray(a) !== Array.isArray(b)) return false;
+
+  if (typeof a === "object") {
+    // Prevent circular reference:
+    if (a === b) return true;
+
+    for (let key in a) {
+      if (!Object.prototype.hasOwnProperty.call(a, key)) continue;
+
+      if (typeof a[key] !== typeof b[key]) return false;
+
+      if (typeof a[key] === "object") {
+        if (!isEqual(a[key], b[key])) return false;
+      } else if (a[key] !== b[key]) {
+        return false;
+      }
+    }
+    // Check that every key from b also exists in a:
+    for (let key in b) {
+      if (typeof b[key] !== typeof a[key]) return false;
+    }
+    return true;
+  }
+  return a === b;
+};
+
+const UNLIMITED = 99999;
 
 export default {
   name: "ZenMultiselect",
@@ -111,7 +186,22 @@ export default {
     valid: {
       type: Boolean,
       default: null
+    },
+    showCheckboxes: {
+      type: Boolean,
+      default: true
+    },
+    newFlag: {
+      type: Boolean,
+      default: false
     }
+  },
+  data: function() {
+    return {
+      myLimit: UNLIMITED,
+      myOptions: [],
+      calculatingLimit: false
+    };
   },
   computed: {
     validationClass() {
@@ -131,6 +221,17 @@ export default {
       return !!this.valueArray.length;
     }
   },
+  watch: {
+    options: {
+      immediate: true,
+      deep: true,
+      handler: function(value) {
+        formatOptions(value);
+        this.myOptions = cloneDeep(value);
+        this.orderOptions();
+      }
+    }
+  },
   created: function() {
     formatOptions(this.options);
   },
@@ -138,6 +239,67 @@ export default {
     clearSelectedValue() {
       const emptyValue = this.multiple ? [] : "";
       this.$emit("input", emptyValue);
+    },
+    async calcLimit() {
+      if (!this.newFlag || !this.multiple) return;
+
+      this.calculatingLimit = true;
+      this.myLimit = UNLIMITED;
+      await this.$nextTick();
+
+      const items = this.$el.querySelectorAll(
+        ".multiselect__tags .multiselect__tag"
+      );
+      const width = this.$el.offsetWidth - 140;
+      let x = 0;
+      let i = 0;
+      while (items[i]) {
+        x += items[i].offsetWidth;
+        if (x > width) break;
+        i++;
+      }
+      this.calculatingLimit = false;
+      this.myLimit = Math.max(i, 1);
+    },
+    onChange() {
+      this.calcLimit();
+    },
+    onOpen() {
+      if (!this.newFlag) return;
+      this.myOptions = cloneDeep(this.options);
+      this.orderOptions();
+      this.$nextTick(() => {
+        let el = this.$el.querySelectorAll(".multiselect__content-wrapper")[0];
+        el.scroll(0, 0);
+      });
+    },
+    onClose() {
+      this.calcLimit();
+    },
+    onResize(value) {
+      if (!value.width || value.width === this.lastWidth) return;
+      this.lastWidth = value.width;
+      this.debounceCalcLimit();
+    },
+    debounceCalcLimit(time = 300) {
+      clearTimeout(this.calcLimitTimer);
+      this.calcLimitTimer = setTimeout(this.calcLimit, time);
+    },
+    isSelected(option) {
+      for (let b of this.value || []) {
+        if (isEqual(b, option)) {
+          return true;
+        }
+      }
+    },
+    orderOptions() {
+      if (!this.newFlag || !Array.isArray(this.value)) return;
+      // Reorder items, so that selected are on top:
+      let selected = this.myOptions.filter(a => this.isSelected(a, this.value));
+      let unSelected = this.myOptions.filter(
+        a => !this.isSelected(a, this.value)
+      );
+      this.myOptions = selected.concat(unSelected);
     }
   }
 };
@@ -304,9 +466,12 @@ $title-truncate-width: 50ch;
     text-overflow: ellipsis;
   }
 
-  .multiselect__input {
+  &.new-flag .multiselect__input {
     padding-left: 0;
     margin-bottom: 6px;
+    order: -1;
+    flex: 1 1 25%;
+    margin-right: 3px;
   }
   .multiselect__input::placeholder {
     color: $vue-ms-placeholder-color;
@@ -332,13 +497,29 @@ $title-truncate-width: 50ch;
     padding: $vue-ms-padding-y 0;
   }
 
-  .multiselect__tags-wrap {
+  &:not(.new-flag) .multiselect__tags-wrap {
     display: inline;
+  }
+
+  &.new-flag .multiselect__tags-wrap {
+    display: flex;
+    flex-wrap: nowrap;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  &.calculating-limit .multiselect__tags-wrap {
+    display: block;
+  }
+
+  &:not(.new-flag) .multiselect__tags {
+    display: block;
   }
 
   .multiselect__tags {
     min-height: $vue-ms-min-height;
-    display: block;
+    display: flex;
+    flex-wrap: nowrap;
     padding: $vue-ms-padding-y calc(1em + 1rem + 25px) 0 $vue-ms-padding-x;
     border-radius: $vue-ms-border-radius;
     border: $vue-ms-border-width solid $vue-ms-border-color;
@@ -351,6 +532,10 @@ $title-truncate-width: 50ch;
       display: table;
       clear: both;
     }
+  }
+
+  &.new-flag .multiselect__limit-pill {
+    flex: 0 0 auto;
   }
 
   .multiselect__tag {
@@ -535,6 +720,20 @@ $title-truncate-width: 50ch;
     font-size: inherit;
   }
 
+  .checkbox_parent {
+    display: flex;
+    align-items: center;
+  }
+
+  .multiselect__checkbox {
+    margin-right: 9px;
+  }
+
+  .multiselect__checkbox + span {
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
   .multiselect__option--highlight {
     background: $vue-ms-option-highlight-bg;
     outline: none;
@@ -603,6 +802,16 @@ $title-truncate-width: 50ch;
     background: $vue-ms-option-selected-highlight-bg;
     content: attr(data-deselect);
     color: $vue-ms-option-selected-highlight-color;
+  }
+
+  .multiselect__action {
+    &:hover {
+      color: $primary;
+    }
+    &.disabled {
+      color: $custom-select-disabled-color;
+      cursor: default;
+    }
   }
 
   .multiselect-enter-active,

@@ -36,4 +36,44 @@ storiesOf("Components|Multiselect", module)
     methods: {
       change: action("input")
     }
+  }))
+  .add("single improved", () => ({
+    data() {
+      return {
+        value: null,
+        options: [
+          "Argentina",
+          "Slovenia",
+          "United States",
+          "China",
+          "Some very long country name that never existed plus some more"
+        ]
+      };
+    },
+    components: { Multiselect },
+    template:
+      "<multiselect v-model='value' :options='options' @input='change' :newFlag='true' style='max-width: 700px;' />",
+    methods: {
+      change: action("input")
+    }
+  }))
+  .add("multiple improved", () => ({
+    data() {
+      return {
+        value: null,
+        options: [
+          "Argentina",
+          "Slovenia",
+          "United States",
+          "China",
+          "Some very long country name that never existed plus some more"
+        ]
+      };
+    },
+    components: { Multiselect },
+    template:
+      "<multiselect placeholder='some very long placeholder' v-model='value' :options='options' @input='change' multiple :close-on-select='false' :newFlag='true' style='max-width: 700px;' />",
+    methods: {
+      change: action("input")
+    }
   }));
