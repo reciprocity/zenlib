@@ -33,7 +33,7 @@ First, you'll need to install all packages dependencies, interlink packages loca
 
 `npm install && npm run bootstrap && npm run build`
 
-#### Run storybook locally
+### Run storybook locally
 
 To run the storybook website locally you can do it by running
 
@@ -49,9 +49,9 @@ _The storybook website will also watch for changes while it's running. So if you
 
 _Note! These instructions apply if you're running frontend locally (outside the container) with frontend/yarn serve:local._
 
-When you're modifying some component **it's useful to see how modifications look like in the actual app.** The problem is that Zenlib is a separate repo and thus packages included in Zengrc are updated only when your work is done when your PR is merged. Here's how you can make it work:
+When you're modifying some component it's useful to see how modifications look like in the actual app. The problem is that Zenlib is a separate repo and thus packages included in Zengrc are updated only when your work is done when your PR is merged. Here's how you can make it work:
 
-**The idea is to substitute the actual node module included in the ZenGrc with a symlink that's pointing to work version of our component (example for multiselect):**
+The idea is to substitute the actual node module included in the ZenGrc with a symlink that's pointing to work version of our component (example for multiselect):
 
 `cd zenlib/packages/multiselect`
 ...and create a symlink to make component globally available:
