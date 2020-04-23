@@ -45,6 +45,37 @@ After you change stuff in the component's source code, you'll need to build the 
 
 _The storybook website will also watch for changes while it's running. So if you want to develop using hot reloading, you need to run the storybook website in one terminal, and `npm run build:watch` in another one._
 
+#### Reiewing component changes live in the Zengrc app
+
+_Note! These instructions apply if you're running frontend locally (outside the container) with frontend/yarn serve:local._
+
+When you're modifying some component **it's useful to see how modifications look like in the actual app.** The problem is that Zenlib is a separate repo and thus packages included in Zengrc are updated only when your work is done when your PR is merged. Here's how you can make it work:
+
+**The idea is to substitute the actual node module included in the ZenGrc with a symlink that's pointing to work version of our component (example for multiselect):**
+
+`cd zenlib/packages/multiselect`
+...and create a symlink to make component globally available:
+`npm link`
+
+Go to the frontend folder of the app:
+cd zengrc/frontend
+... and use the previously created link:
+_npm link [Name of the module you're modifying]
+eg. npm `link @reciprocity/multiselect`
+
+To view changes live while coding, Zenlib needs to be rebuilt on any change. So keep the following command running:
+`cd zenlib;
+npm run bootstrap;
+npm run build:watch`
+
+Open new terminal tab and start Zengrc local server:
+`cd zengrc/frontend/;
+yarn server:local`
+
+The new component should be already visible.
+
+Thanks to param in _vue.config.js_ - `config.resolve.symlinks(false);`, any changes in symlinks within node_modules will trigger a rebuild of Zengrc and you'll be able to review component changes.
+
 #### Linting & code style
 
 There's an `npm run lint` command that will run ESLint and Prettier to format and lint your code.
