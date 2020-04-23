@@ -63,13 +63,13 @@ cd zengrc/frontend
 _npm link [Name of the module you're modifying]
 eg. npm `link @reciprocity/multiselect`
 
-To view changes live while coding, Zenlib needs to be rebuilt on any change. So keep the following command running:
-`cd zenlib;
-npm run bootstrap;
+To view changes live while coding, Zenlib needs to be rebuilt on any change. So keep the following command running:\
+`cd zenlib;\
+npm run bootstrap;\
 npm run build:watch`
 
-Open new terminal tab and start Zengrc local server:
-`cd zengrc/frontend/;
+Open new terminal tab and start Zengrc local server:\
+`cd zengrc/frontend/;\
 yarn server:local`
 
 The new component should be already visible.
