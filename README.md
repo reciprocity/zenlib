@@ -55,24 +55,24 @@ _Note:
 - _These instructions apply if you're running frontend locally (outside the container) with frontend/yarn serve:local._
 - _All commands below are an example for multiselect component_
 
-Navigate to component folder:
-`cd zenlib/packages/multiselect`
-...and create a symlink to make component globally available:
+Navigate to component folder:\
+`cd zenlib/packages/multiselect`\
+...and create a symlink to make component globally available:\
 `yarn link`
 
-Go to the zengrc\frontend folder:
-`cd zengrc/frontend`
-... and substitute actual module with a symlink:
+Go to the zengrc\frontend folder:\
+`cd zengrc/frontend`\
+... and substitute actual module with a symlink:\
 `yarn @reciprocity/multiselect`
 
-To view changes live while coding, Zenlib needs to be rebuilt on any change. So keep the following command running:
-`cd zenlib;`
-`npm run bootstrap;`
+To view changes live while coding, Zenlib needs to be rebuilt on any change. So keep the following command running:\
+`cd zenlib;`\
+`npm run bootstrap;`\
 `npm run build:watch`
 
-Run Zengrc app in new tab:
-`cd zengrc/frontend/;`
-`yarn server:local`
+Run Zengrc app in new tab:\
+`cd zengrc/frontend/;`\
+`yarn server:local`\
 
 The new component should be already visible.
 
@@ -115,6 +115,7 @@ We run coverage checks on each PR so try not to ship code without tests ;)
 #### Versioning
 
 Use [Semantic Versioning](https://semver.org/). Start by `0.0.1` and once the component is ready, change it to `0.1.0`
+Component's version is bumped automatically once the PR is merged. Which number will bump depends on what kind of commits there are in the PR.
 
 ### Committing changes
 
