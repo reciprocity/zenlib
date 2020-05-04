@@ -2,7 +2,11 @@
   <div
     v-resize="onResize"
     class="multiselect-wrapper"
-    :class="{ 'calculating-limit': calculatingLimit, 'new-flag': newFlag }"
+    :class="{
+      'calculating-limit': calculatingLimit,
+      'new-flag': newFlag,
+      multiple: multiple
+    }"
   >
     <vue-multiselect
       :name="name"
@@ -14,6 +18,8 @@
       :value="value"
       :allow-empty="allowEmpty"
       :show-labels="false"
+      :label="label"
+      :custom-label="customLabel"
       :limit="myLimit"
       v-bind="$attrs"
       v-on="$listeners"
@@ -49,8 +55,8 @@
       </template>
 
       <template
-        v-if="newFlag && multiple && showCheckboxes"
-        slot="option"
+        v-if="checkboxesVisible"
+        :slot="checkboxesVisible ? 'option' : ''"
         slot-scope="props"
       >
         <div class="checkbox_parent">
@@ -60,7 +66,7 @@
             :checked="isSelected(props.option)"
           />
           <span>
-            {{ props.option }}
+            {{ getOptionLabel(props.option) }}
           </span>
         </div>
       </template>
@@ -148,6 +154,13 @@ export const isEqual = (a, b) => {
   return a === b;
 };
 
+// Copied from node_modules/vue-multiselect/src/multiselectMixin.js:
+function isEmpty(opt) {
+  if (opt === 0) return false;
+  if (Array.isArray(opt) && opt.length === 0) return true;
+  return !opt;
+}
+
 const UNLIMITED = 99999;
 
 export default {
@@ -194,6 +207,23 @@ export default {
     newFlag: {
       type: Boolean,
       default: false
+    },
+    customLabel: {
+      type: Function,
+      default: (option, label) =>
+        isEmpty(option) ? "" : label ? option[label] : option
+    },
+    label: {
+      type: String,
+      default: ""
+    },
+    limit: {
+      type: Number,
+      default: UNLIMITED
+    },
+    customOptionSlot: {
+      type: Boolean,
+      default: false
     }
   },
   data: function() {
@@ -219,6 +249,14 @@ export default {
     },
     isValueSet() {
       return !!this.valueArray.length;
+    },
+    checkboxesVisible() {
+      return (
+        !this.customOptionSlot &&
+        this.newFlag &&
+        this.multiple &&
+        this.showCheckboxes
+      );
     }
   },
   watch: {
@@ -229,6 +267,7 @@ export default {
         formatOptions(value);
         this.myOptions = cloneDeep(value);
         this.orderOptions();
+        this.calcLimit();
       }
     }
   },
@@ -241,6 +280,9 @@ export default {
       this.$emit("input", emptyValue);
     },
     async calcLimit() {
+      if (!this.newFlag) {
+        this.myLimit = this.limit;
+      }
       if (!this.newFlag || !this.multiple) return;
 
       this.calculatingLimit = true;
@@ -300,6 +342,19 @@ export default {
         a => !this.isSelected(a, this.value)
       );
       this.myOptions = selected.concat(unSelected);
+    },
+    // Copied from node_modules/vue-multiselect/src/multiselectMixin.js:
+    getOptionLabel(option) {
+      if (isEmpty(option)) return "";
+      /* istanbul ignore else */
+      if (option.isTag) return option.label;
+      /* istanbul ignore else */
+      if (option.$isLabel) return option.$groupLabel;
+
+      let label = this.customLabel(option, this.label);
+      /* istanbul ignore else */
+      if (isEmpty(label)) return "";
+      return label;
     }
   }
 };
@@ -360,7 +415,7 @@ $vue-ms-tag-padding-x: 0.4rem;
 $vue-ms-tag-padding-y: 0.25rem;
 $vue-ms-tag-border-radius: $badge-border-radius;
 
-$vue-ms-arrow-color: $custom-select-color;
+$vue-ms-arrow-color: $color-regent-gray;
 $vue-ms-arrow-size: 5px;
 $vue-ms-arrow-padding: 8px;
 
@@ -375,6 +430,7 @@ $title-truncate-width: 50ch;
   // --------------------------------
   // Select field
   // --
+  width: 100%;
 
   fieldset[disabled] .multiselect {
     pointer-events: none;
@@ -450,7 +506,7 @@ $title-truncate-width: 50ch;
     border: none;
     border-radius: $vue-ms-border-radius;
     background: inherit;
-    padding: 0 0 0 $vue-ms-padding-x;
+    padding: 0;
     width: 100%;
     transition: border 0.1s ease;
     box-sizing: border-box;
@@ -466,12 +522,11 @@ $title-truncate-width: 50ch;
     text-overflow: ellipsis;
   }
 
-  &.new-flag .multiselect__input {
-    padding-left: 0;
-    margin-bottom: 6px;
-    order: -1;
-    flex: 1 1 25%;
-    margin-right: 3px;
+  &.new-flag.multiple .multiselect__input {
+    position: absolute;
+    padding-bottom: 0.3em;
+    height: 1.8em;
+    max-width: calc(100% - 1em);
   }
   .multiselect__input::placeholder {
     color: $vue-ms-placeholder-color;
@@ -512,14 +567,9 @@ $title-truncate-width: 50ch;
     display: block;
   }
 
-  &:not(.new-flag) .multiselect__tags {
-    display: block;
-  }
-
   .multiselect__tags {
     min-height: $vue-ms-min-height;
-    display: flex;
-    flex-wrap: nowrap;
+    display: block;
     padding: $vue-ms-padding-y calc(1em + 1rem + 25px) 0 $vue-ms-padding-x;
     border-radius: $vue-ms-border-radius;
     border: $vue-ms-border-width solid $vue-ms-border-color;
@@ -534,8 +584,14 @@ $title-truncate-width: 50ch;
     }
   }
 
+  &.new-flag .multiselect__tags {
+    display: flex;
+    flex-wrap: nowrap;
+  }
+
   &.new-flag .multiselect__limit-pill {
     flex: 0 0 auto;
+    padding-right: 10px;
   }
 
   .multiselect__tag {
@@ -628,6 +684,7 @@ $title-truncate-width: 50ch;
     text-align: center;
     cursor: pointer;
     transition: transform 0.2s ease;
+    z-index: 2;
   }
 
   .multiselect__select::before {
