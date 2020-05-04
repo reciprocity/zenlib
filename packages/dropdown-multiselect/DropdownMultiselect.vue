@@ -10,6 +10,7 @@
       :placeholder="placeholder"
       :label="label"
       :track-by="trackBy"
+      :custom-option-slot="true"
       v-on="$listeners"
     >
       <template slot="selection" slot-scope="{ values, isOpen }">
