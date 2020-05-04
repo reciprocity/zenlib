@@ -3,6 +3,7 @@
 [![CircleCI](https://circleci.com/gh/reciprocity/zenlib.svg?style=svg)](https://circleci.com/gh/reciprocity/zenlib) [![Coverage Status](https://coveralls.io/repos/github/reciprocity/zenlib/badge.svg?branch=master)](https://coveralls.io/github/reciprocity/zenlib?branch=master)
 
 We made this library to put all the Vue.js components we share across projects.
+Just testing codeowners!
 
 ## Quick Start
 
