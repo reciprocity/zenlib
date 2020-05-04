@@ -14,6 +14,11 @@ describe("DropdownMultiselect.vue", () => {
     }
   ];
 
+  it("inits with zero options", () => {
+    const wrapper = shallowMount(DropdownMultiselect, {}).find(VueMultiselect);
+    expect(wrapper.vm.options.length).toBe(0);
+  });
+
   it("should pass props down to the VueMultiselect component", () => {
     const wrapper = shallowMount(DropdownMultiselect, {
       propsData: {
