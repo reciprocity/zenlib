@@ -40,7 +40,8 @@ describe("Tabs.vue", () => {
     const wrapper = shallowMount(Tabs, {
       propsData: {
         items,
-        customLabel: a => a.label + "_addon"
+        customLabel: a => a.label + "_addon",
+        moreText: count => count + "_custom"
       }
     });
     expect(
@@ -62,5 +63,19 @@ describe("Tabs.vue", () => {
     await wrapper.vm.$nextTick();
     let emit = wrapper.emitted("removeClicked")[0];
     expect(emit[0].item.label).toBe("Slovenia");
+  });
+
+  it("renders missing property", () => {
+    const wrapper = shallowMount(Tabs, {
+      propsData: {
+        items: [{ a: 2 }, { a: 5 }]
+      }
+    });
+    expect(
+      wrapper
+        .findAll(".item")
+        .at(0)
+        .text()
+    ).toBe("[label]");
   });
 });
