@@ -1,15 +1,15 @@
-# Zen Tabs
+# Zen Tags
 
 A select component with support multi value selection, auto-complete, etc.
 
 ## Installation
 
 ```
-npm install @reciprocity/tabs
+npm install @reciprocity/tags
 ```
 or
 ```
-yarn add @reciprocity/tabs
+yarn add @reciprocity/tags
 ```
 
 ## Usage

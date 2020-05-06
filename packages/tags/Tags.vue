@@ -1,7 +1,7 @@
 <template>
   <div
     v-resize="onResize"
-    class="zen-tabs-items"
+    class="zen-tags-items"
     :class="{
       'calculating-limit': calculatingLimit
     }"
@@ -34,7 +34,7 @@ Vue.use(VueResizeObserver);
 const UNLIMITED = 99999;
 
 export default {
-  name: "ZenTabs",
+  name: "ZenTags",
   props: {
     items: {
       type: Array,
@@ -128,7 +128,7 @@ export default {
 @import "bootstrap/scss/functions";
 @import "bootstrap/scss/variables";
 
-.zen-tabs-items {
+.zen-tags-items {
   display: flex;
 
   .items-wrapper {

@@ -1,7 +1,7 @@
 {
-  "name": "@reciprocity/tabs",
+  "name": "@reciprocity/tags",
   "version": "0.1.0",
-  "description": "Extendable tabs component",
+  "description": "Extendable tags component",
   "main": "dist/index.js",
   "scripts": {},
   "author": "",

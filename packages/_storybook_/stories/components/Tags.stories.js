@@ -1,9 +1,9 @@
 import { storiesOf } from "@storybook/vue";
 import { action } from "@storybook/addon-actions";
-import Tabs from "@reciprocity/tabs";
-import README from "../../../tabs/README.md";
+import Tags from "@reciprocity/tags";
+import README from "../../../tags/README.md";
 
-storiesOf("Components|Tabs", module)
+storiesOf("Components|Tags", module)
   .addParameters({
     readme: {
       sidebar: README
@@ -21,7 +21,7 @@ storiesOf("Components|Tabs", module)
         ]
       };
     },
-    components: { Tabs },
+    components: { Tags },
     methods: {
       removeClicked: function(data) {
         this.items.splice(data.index, 1);
@@ -34,7 +34,7 @@ storiesOf("Components|Tabs", module)
     template: `
       <div>
         <div style="background-color: #fff; padding: 0; margin-bottom: 0.25rem; max-width: 350px;">
-          <tabs v-model='value' :items='items' @removeClicked="removeClicked" />
+          <tags v-model='value' :items='items' @removeClicked="removeClicked" />
         </div>
         <input v-model="newItem"/>
         <button @click="addItem">Add item</button>
