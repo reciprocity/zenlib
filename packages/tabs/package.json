@@ -1,6 +1,6 @@
 {
   "name": "@reciprocity/tabs",
-  "version": "0.4.4",
+  "version": "0.1.0",
   "description": "Extendable tabs component",
   "main": "dist/index.js",
   "scripts": {},
