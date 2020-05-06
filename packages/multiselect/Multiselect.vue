@@ -4,7 +4,6 @@
     class="multiselect-wrapper"
     :class="{
       'calculating-limit': calculatingLimit,
-      'new-flag': newFlag,
       multiple: multiple
     }"
   >
@@ -39,13 +38,13 @@
         <slot v-bind="props" :name="slotName" />
       </template>
 
-      <template v-if="newFlag && multiple" slot="limit">
+      <template v-if="multiple" slot="limit">
         <span class="multiselect__tag multiselect__limit-pill">
           <span>+{{ (value || []).length - myLimit }}</span>
         </span>
       </template>
 
-      <template v-if="newFlag && multiple" slot="beforeList">
+      <template v-if="multiple" slot="beforeList">
         <span
           class="multiselect__action multiselect__option"
           :class="{ disabled: !isValueSet }"
@@ -204,10 +203,6 @@ export default {
       type: Boolean,
       default: true
     },
-    newFlag: {
-      type: Boolean,
-      default: false
-    },
     customLabel: {
       type: Function,
       default: (option, label) =>
@@ -251,12 +246,7 @@ export default {
       return !!this.valueArray.length;
     },
     checkboxesVisible() {
-      return (
-        !this.customOptionSlot &&
-        this.newFlag &&
-        this.multiple &&
-        this.showCheckboxes
-      );
+      return !this.customOptionSlot && this.multiple && this.showCheckboxes;
     }
   },
   watch: {
@@ -280,10 +270,7 @@ export default {
       this.$emit("input", emptyValue);
     },
     async calcLimit() {
-      if (!this.newFlag) {
-        this.myLimit = this.limit;
-      }
-      if (!this.newFlag || !this.multiple) return;
+      if (!this.multiple) return;
 
       this.calculatingLimit = true;
       this.myLimit = UNLIMITED;
@@ -307,7 +294,7 @@ export default {
       this.calcLimit();
     },
     onOpen() {
-      if (!this.newFlag) return;
+      if (!this.multiple) return;
       this.myOptions = cloneDeep(this.options);
       this.orderOptions();
       this.$nextTick(() => {
@@ -335,7 +322,7 @@ export default {
       }
     },
     orderOptions() {
-      if (!this.newFlag || !Array.isArray(this.value)) return;
+      if (!Array.isArray(this.value)) return;
       // Reorder items, so that selected are on top:
       let selected = this.myOptions.filter(a => this.isSelected(a, this.value));
       let unSelected = this.myOptions.filter(
@@ -522,7 +509,7 @@ $title-truncate-width: 50ch;
     text-overflow: ellipsis;
   }
 
-  &.new-flag.multiple .multiselect__input {
+  &.multiple .multiselect__input {
     position: absolute;
     padding-bottom: 0.3em;
     height: 1.8em;
@@ -552,11 +539,7 @@ $title-truncate-width: 50ch;
     padding: $vue-ms-padding-y 0;
   }
 
-  &:not(.new-flag) .multiselect__tags-wrap {
-    display: inline;
-  }
-
-  &.new-flag .multiselect__tags-wrap {
+  .multiselect__tags-wrap {
     display: flex;
     flex-wrap: nowrap;
     min-width: 0;
@@ -576,6 +559,7 @@ $title-truncate-width: 50ch;
     background: $custom-select-bg;
     font-family: inherit;
     font-size: inherit;
+    background-color: rgb(196, 255, 194);
 
     &::after {
       content: "";
@@ -584,12 +568,16 @@ $title-truncate-width: 50ch;
     }
   }
 
-  &.new-flag .multiselect__tags {
+  &.multiple .multiselect__tags {
+    background-color: rgb(255, 242, 208);
+  }
+
+  .multiselect__tags {
     display: flex;
     flex-wrap: nowrap;
   }
 
-  &.new-flag .multiselect__limit-pill {
+  .multiselect__limit-pill {
     flex: 0 0 auto;
     padding-right: 10px;
   }
