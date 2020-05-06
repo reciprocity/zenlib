@@ -47,25 +47,25 @@ _The storybook website will also watch for changes while it's running. So if you
 
 #### Reiewing component changes live in the Zengrc app
 
-When you're modifying some component it's useful to see how modifications look like in the actual app. The problem is that Zenlib is a separate repo and thus packages included in Zengrc are updated only when your work is done when your PR is merged.
+It's useful to see how component's modifications look like in the actual app. The problem is that Zenlib is a separate repo. Package's versions are bumped when your PR gets merged, so this is when we could run `npm install` in Zengrc, to update components. But we would like to see our component in action during development, not only after it's merged. 
 
-The idea is to substitute the actual node module included in the ZenGrc with a symlink that's pointing to work version of our component.
+The idea is to substitute the actual installed folder in zengrc/frontend/node_modules with a symbolic link that's pointing to working folder of our component. Npm (yarn) do support such functionality out of the box! It's called `npm link`.
 
 _Note:
 - _These instructions apply if you're running frontend locally (outside the container) with frontend/yarn serve:local._
-- _All commands below are an example for multiselect component_
+- _All commands below are an example for my-component component_
 
-Navigate to component folder:\
-`cd zenlib/packages/multiselect`\
-...and create a symlink to make component globally available:\
+Go to `zenlib/packages/my-component` and create a symlink to make folder globally available:\
 `yarn link`
 
-Go to the zengrc\frontend folder:\
-`cd zengrc/frontend`\
-... and substitute actual module with a symlink:\
-`yarn @reciprocity/multiselect`
+Go to `zengrc\frontend` folder and substitute actual module with a symlink:\
+`yarn @reciprocity/my-component`
 
-To view changes live while coding, Zenlib needs to be rebuilt on any change. So keep the following command running:\
+To make sure component's folder was replaced with symbolic link, go to `zengrc/frontend/` and run
+`ls -la node_modules/@reciprocity`
+Symbolic links have arrows pointing to original folders, eg. `my-component -> ../../../../../../.config/yarn/link/@reciprocity/my-component`
+
+Make sure zenLib is rebuilt on each of your change - keep this running:\
 `cd zenlib;`\
 `npm run bootstrap;`\
 `npm run build:watch`
@@ -74,10 +74,8 @@ Run Zengrc app in new tab:\
 `cd zengrc/frontend/;`\
 `yarn server:local`\
 
-The new component should be already visible.
-
-Any changes you make in your local version of _zenlib/packages/multiselect_ will now reflect in the app.
-(make sure _vue.config.js_ has param `config.resolve.symlinks(false);`)
+Changes should now be visible in Zengrc. It will also reload and show any addtional changes automatically.
+(in case of troubles make sure _vue.config.js_ has param `config.resolve.symlinks(false);`)
 
 #### Linting & code style
 
@@ -97,6 +95,8 @@ _This will also be run automatically before pushing changes_
 
 If you want to generate a coverage report for the unit tests, there's an `npm run test:coverage` command that will generate a coverage directory with a report.
 
+Each component should have 95% lines of js covered with tests.
+
 We run coverage checks on each PR so try not to ship code without tests ;)
 
 ### Adding a new package/component
@@ -105,11 +105,14 @@ We run coverage checks on each PR so try not to ship code without tests ;)
 
 - Add a `README.md`
 - Add a `package.json` to handle the new component dependencies
+  Set version of the component to 0.1.0
 
 2. Add the component to Story Book
 
-- Add the package as a dependency in `packages/_storybook_/package.json`
+- Add the package as a dependency in `packages/_storybook_/package.json`. Put in version ^0.1.0, although note that since package isn't published, you can't do `npm install`!
 - Create a new story file under the `packages/_storybook_/stories/` folder
+- Since we can't install our component throught npm, we need to use `npm link` to create symbolic link in `_storybook_/node_modules/@reciprocity` that's pointing to root path of our component (eg. `zenlib/packages/my-component`).
+  For more details see section *Reiewing component changes live in the Zengrc app* in this readme. It's pretty much the same, you just need to do it for _storybook_ instead of zengrc.
 - Re run [Bootstrap packages](#bootstrap-packages)
 
 #### Versioning
