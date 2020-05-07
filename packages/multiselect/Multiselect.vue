@@ -10,6 +10,7 @@
     <vue-multiselect
       :name="name"
       :multiple="multiple"
+      :search-in-dropdown="multiple"
       :disabled="disabled"
       :class="validationClass"
       :options="myOptions"
@@ -533,6 +534,21 @@ $title-truncate-width: 50ch;
   .multiselect__single:focus {
     border-color: $color-hit-gray;
     outline: none;
+  }
+
+  .input-wrapper {
+    border-bottom: 1px solid $color-athens-gray;
+
+    .multiselect__input {
+      background-color: transparent;
+      position: relative;
+      margin: 0;
+      padding: 0;
+      line-height: 32px;
+      height: auto;
+      text-indent: 8px;
+      float: none;
+    }
   }
 
   .multiselect__single {

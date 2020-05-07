@@ -13,12 +13,18 @@ storiesOf("Components|Multiselect", module)
     data() {
       return {
         value: null,
-        options: ["Argentina", "Slovenia", "United States"]
+        options: [
+          "Argentina",
+          "Slovenia",
+          "United States",
+          "China",
+          "Some very long country name that never existed plus some more"
+        ]
       };
     },
     components: { Multiselect },
     template:
-      "<multiselect v-model='value' :options='options' @input='change' />",
+      "<multiselect v-model='value' :options='options' @input='change' style='max-width: 700px;' />",
     methods: {
       change: action("input")
     }
@@ -27,20 +33,6 @@ storiesOf("Components|Multiselect", module)
     data() {
       return {
         value: null,
-        options: ["Argentina", "Slovenia", "United States"]
-      };
-    },
-    components: { Multiselect },
-    template:
-      "<multiselect v-model='value' :options='options' @input='change' multiple />",
-    methods: {
-      change: action("input")
-    }
-  }))
-  .add("single improved", () => ({
-    data() {
-      return {
-        value: null,
         options: [
           "Argentina",
           "Slovenia",
@@ -52,27 +44,7 @@ storiesOf("Components|Multiselect", module)
     },
     components: { Multiselect },
     template:
-      "<multiselect v-model='value' :options='options' @input='change' :newFlag='true' style='max-width: 700px;' />",
-    methods: {
-      change: action("input")
-    }
-  }))
-  .add("multiple improved", () => ({
-    data() {
-      return {
-        value: null,
-        options: [
-          "Argentina",
-          "Slovenia",
-          "United States",
-          "China",
-          "Some very long country name that never existed plus some more"
-        ]
-      };
-    },
-    components: { Multiselect },
-    template:
-      "<multiselect placeholder='some very long placeholder' v-model='value' :options='options' @input='change' multiple :close-on-select='false' :newFlag='true' style='max-width: 700px;' />",
+      "<multiselect placeholder='some very long placeholder' v-model='value' :options='options' @input='change' multiple :close-on-select='false' style='max-width: 700px;' />",
     methods: {
       change: action("input")
     }
