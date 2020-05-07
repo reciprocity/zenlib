@@ -10,6 +10,7 @@
     <vue-multiselect
       :name="name"
       :multiple="multiple"
+      :search-in-dropdown="multiple"
       :disabled="disabled"
       :class="validationClass"
       :options="myOptions"
@@ -535,6 +536,21 @@ $title-truncate-width: 50ch;
     outline: none;
   }
 
+  .input-wrapper {
+    border-bottom: 1px solid $color-athens-gray;
+
+    .multiselect__input {
+      background-color: transparent;
+      position: relative;
+      margin: 0;
+      padding: 0;
+      line-height: 32px;
+      height: auto;
+      text-indent: 8px;
+      float: none;
+    }
+  }
+
   .multiselect__single {
     padding: $vue-ms-padding-y 0;
   }
@@ -559,12 +575,17 @@ $title-truncate-width: 50ch;
     background: $custom-select-bg;
     font-family: inherit;
     font-size: inherit;
+    background-color: rgb(196, 255, 194);
 
     &::after {
       content: "";
       display: table;
       clear: both;
     }
+  }
+
+  &.multiple .multiselect__tags {
+    background-color: rgb(255, 242, 208);
   }
 
   .multiselect__tags {
