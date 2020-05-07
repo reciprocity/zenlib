@@ -45,9 +45,9 @@ After you change stuff in the component's source code, you'll need to build the 
 
 _The storybook website will also watch for changes while it's running. So if you want to develop using hot reloading, you need to run the storybook website in one terminal, and `npm run build:watch` in another one._
 
-#### Reiewing component changes live in the Zengrc app
+#### Reviewing component changes live in the Zengrc app
 
-It's useful to see how component's modifications look like in the actual app. The problem is that Zenlib is a separate repo. Package's versions are bumped when your PR gets merged, so this is when we could run `npm install` in Zengrc, to update components. But we would like to see our component in action during development, not only after it's merged. 
+It's useful to see how component's modifications look like in the actual app. The problem is that Zenlib is a separate repo. Package's versions are bumped when your PR gets merged, so this is when we could run `npm install` in Zengrc, to update components. But we would like to see our component in action during development, not only after it's merged.
 
 The idea is to substitute the actual installed folder in zengrc/frontend/node_modules with a symbolic link that's pointing to working folder of our component. Npm (yarn) do support such functionality out of the box! It's called `npm link`.
 
@@ -58,8 +58,9 @@ _Note:
 Go to `zenlib/packages/my-component` and create a symlink to make folder globally available:\
 `yarn link`
 
-Go to `zengrc\frontend` folder and substitute actual module with a symlink:\
-`yarn @reciprocity/my-component`
+Go to `zengrc\frontend` folder and run:\
+`yarn link @reciprocity/my-component`
+...which substituted actual module with a symlink
 
 To make sure component's folder was replaced with symbolic link, go to `zengrc/frontend/` and run
 `ls -la node_modules/@reciprocity`
