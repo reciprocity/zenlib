@@ -50,7 +50,7 @@
 		"typescript": "^3.5.3",
 		"vue": "^2.6.10",
 		"vue-jest": "^3.0.4",
-		"vue-multiselect": "github:reciprocity/vue-multiselect",
+		"vue-multiselect": "github:reciprocity/vue-multiselect#6307700",
 		"vue-template-compiler": "^2.6.10"
 	},
 	"jest": {
