@@ -575,17 +575,12 @@ $title-truncate-width: 50ch;
     background: $custom-select-bg;
     font-family: inherit;
     font-size: inherit;
-    background-color: rgb(196, 255, 194);
 
     &::after {
       content: "";
       display: table;
       clear: both;
     }
-  }
-
-  &.multiple .multiselect__tags {
-    background-color: rgb(255, 242, 208);
   }
 
   .multiselect__tags {
