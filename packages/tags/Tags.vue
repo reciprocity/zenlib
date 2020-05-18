@@ -146,7 +146,7 @@ export default {
 
   .item {
     display: flex;
-    align-items: stretch;
+    align-items: center;
     background-color: #fff;
     margin: 0.25rem;
     background-color: $color-ghost;
@@ -177,13 +177,14 @@ export default {
     align-items: center;
     cursor: pointer;
     color: $color-oslo-gray;
-    font-size: 1.7em;
     font-weight: 500;
     padding: 0 0.25em;
+    margin-top: -2px;
+    height: 100%;
+    font-size: 1.2em;
 
     &:after {
-      content: "×";
-      line-height: 1em;
+      content: "\D7";
     }
 
     &:hover {
