@@ -1,0 +1,17 @@
+{
+  "name": "@reciprocity/tags",
+  "version": "0.1.0",
+  "description": "Extendable tags component",
+  "main": "dist/index.js",
+  "scripts": {},
+  "author": "",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@reciprocity/bootstrap": "^0.8.1",
+    "bootstrap": "^4.3.1",
+    "vue-resize-observer": "^1.0.32"
+  }
+}
