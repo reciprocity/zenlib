@@ -125,8 +125,7 @@ export default {
 
 <style lang="scss">
 @import "@reciprocity/bootstrap/scss/custom";
-@import "bootstrap/scss/functions";
-@import "bootstrap/scss/variables";
+@import "@reciprocity/bootstrap/scss/variables";
 
 .zen-tags-items {
   display: flex;
