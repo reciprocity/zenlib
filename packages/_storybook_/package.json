@@ -1,6 +1,6 @@
 {
   "name": "@reciprocity/storybook",
-  "version": "0.13.0",
+  "version": "0.13.1",
   "description": "A storybook website for library components",
   "main": "index.js",
   "private": true,
@@ -24,7 +24,7 @@
     "@reciprocity/loading-spinner": "^0.1.9",
     "@reciprocity/multiselect": "^0.5.3",
     "@reciprocity/styles": "^0.0.2",
-    "@reciprocity/tags": "^0.1.1",
+    "@reciprocity/tags": "^0.1.2",
     "bootstrap": "^4.3.1",
     "bootstrap-vue": "^2.0.2",
     "vue": "^2.6.10"
