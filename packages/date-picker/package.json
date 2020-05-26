@@ -1,6 +1,6 @@
 {
   "name": "@reciprocity/date-picker",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "description": "A date picker / datetime picker component",
   "main": "dist/index.js",
   "scripts": {},
@@ -10,7 +10,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@reciprocity/bootstrap": "^0.8.1",
+    "@reciprocity/bootstrap": "^0.9.0",
     "vue2-datepicker": "^3.4.1"
   }
 }
