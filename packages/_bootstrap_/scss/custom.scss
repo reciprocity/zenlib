@@ -84,6 +84,9 @@ $border-radius: 0.125rem;
 $border-radius-lg: $border-radius;
 $border-radius-sm: $border-radius;
 
+$box-shadow: 0 0.25rem 0.625rem 0 rgba(57, 83, 122, 0.1);
+
+
 // Tables
 $table-bg: $color-white;
 $table-border-width: 0;
@@ -125,6 +128,7 @@ $dropdown-item-padding-x: 1rem;
 $dropdown-link-hover-bg: $color-athens-gray;
 $dropdown-link-active-bg: $color-waikawa-gray;
 $dropdown-link-active-hover-bg: $color-east-bay;
+$dropdown-box-shadow: $box-shadow !default;
 
 // Pagination
 $pagination-padding-y: 0.25rem;
@@ -173,4 +177,3 @@ $alert-color-level: 2;
 $badge-font-size: 0.75rem;
 
 /* stylelint-enable color-no-hex */
-
