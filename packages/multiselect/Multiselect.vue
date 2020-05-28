@@ -516,6 +516,15 @@ $title-truncate-width: 50ch;
     height: 1.8em;
     max-width: calc(100% - 1em);
   }
+
+  &.multiple .input-wrapper .multiselect__input {
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MTIuMDI1IiBoZWlnaHQ9IjUxMi4wMjUiIHZpZXdCb3g9IjAgMCA1MTIuMDI1IDUxMi4wMjUiPgogIDxwYXRoIGlkPSJzZWFyY2giIGQ9Ik01MDguNSw0NjguOSwzODcuMSwzNDcuNWExMS44NjksMTEuODY5LDAsMCwwLTguNS0zLjVIMzY1LjRBMjA3LjQzNywyMDcuNDM3LDAsMCwwLDQxNiwyMDhDNDE2LDkzLjEsMzIyLjksMCwyMDgsMFMwLDkzLjEsMCwyMDgsOTMuMSw0MTYsMjA4LDQxNmEyMDcuNDM3LDIwNy40MzcsMCwwLDAsMTM2LTUwLjZ2MTMuMmExMi4zLDEyLjMsMCwwLDAsMy41LDguNUw0NjguOSw1MDguNWExMi4wMTEsMTIuMDExLDAsMCwwLDE3LDBsMjIuNi0yMi42QTEyLjAxMSwxMi4wMTEsMCwwLDAsNTA4LjUsNDY4LjlaTTIwOCwzNjhBMTYwLDE2MCwwLDEsMSwzNjgsMjA4LDE1OS45NTYsMTU5Ljk1NiwwLDAsMSwyMDgsMzY4WiIgZmlsbD0iI2Q3ZGNlMCIvPgo8L3N2Zz4K");
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: 14px;
+    padding-right: 20px;
+  }
+
   .multiselect__input::placeholder {
     color: $vue-ms-placeholder-color;
   }
