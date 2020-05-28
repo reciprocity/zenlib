@@ -1,6 +1,6 @@
 {
   "name": "@reciprocity/multiselect",
-  "version": "0.5.5",
+  "version": "0.5.6",
   "description": "A select component with multi value support",
   "main": "dist/index.js",
   "scripts": {},
