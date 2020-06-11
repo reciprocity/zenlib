@@ -786,6 +786,7 @@ $title-truncate-width: 50ch;
   }
 
   .checkbox_parent {
+    pointer-events: none;
     display: flex;
     align-items: center;
   }
