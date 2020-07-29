@@ -692,7 +692,6 @@ $title-truncate-width: 50ch;
     text-align: center;
     cursor: pointer;
     transition: transform 0.2s ease;
-    z-index: 2;
   }
 
   .multiselect__select::before {
@@ -903,7 +902,6 @@ $title-truncate-width: 50ch;
     right: 30px;
     padding: 2px 0;
     font-size: 1.3em;
-    z-index: 10;
     cursor: pointer;
   }
 
