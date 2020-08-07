@@ -267,7 +267,7 @@ export default {
   },
   methods: {
     clearSelectedValue() {
-      const emptyValue = this.multiple ? [] : "";
+      const emptyValue = this.multiple ? [] : null;
       this.$emit("input", emptyValue);
     },
     async calcLimit() {
