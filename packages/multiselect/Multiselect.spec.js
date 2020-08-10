@@ -174,7 +174,7 @@ describe("Multiselect.vue", () => {
 
       expect(input).toBeTruthy();
       expect(input.length).toEqual(1);
-      expect(input[0][0]).toEqual("");
+      expect(input[0][0]).toEqual(null);
     });
 
     it("recalculates limit on change", async () => {
