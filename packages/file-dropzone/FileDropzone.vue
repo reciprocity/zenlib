@@ -85,7 +85,7 @@ export default {
 <style lang="scss" scoped>
 @import "@reciprocity/bootstrap/scss/colors";
 @import "@reciprocity/bootstrap/scss/variables";
-@import "../_styles_/scss/colors";
+@import "@reciprocity/_bootstrap_/scss/colors";
 
 .file-upload-dropzone {
   .dropzone-box {
