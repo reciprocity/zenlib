@@ -1,6 +1,6 @@
 {
   "name": "@reciprocity/file-dropzone",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "A file input field with file drop support",
   "main": "dist/index.js",
   "scripts": {},

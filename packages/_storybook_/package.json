@@ -1,6 +1,6 @@
 {
   "name": "@reciprocity/storybook",
-  "version": "0.13.8",
+  "version": "0.13.9",
   "description": "A storybook website for library components",
   "main": "index.js",
   "private": true,
@@ -20,7 +20,7 @@
     "@reciprocity/date-picker": "^0.6.2",
     "@reciprocity/day-selector": "^0.2.2",
     "@reciprocity/dropdown-multiselect": "^0.2.3",
-    "@reciprocity/file-dropzone": "^0.1.5",
+    "@reciprocity/file-dropzone": "^0.1.6",
     "@reciprocity/loading-spinner": "^0.1.10",
     "@reciprocity/multiselect": "^0.5.10",
     "@reciprocity/styles": "^0.0.2",
