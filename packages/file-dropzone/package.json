@@ -10,6 +10,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@reciprocity/bootstrap": "^0.9.0"
+    "@reciprocity/bootstrap": "^0.9.0",
+    "@reciprocity/styles": "0.0.2"
   }
 }
