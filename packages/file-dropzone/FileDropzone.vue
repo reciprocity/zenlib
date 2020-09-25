@@ -10,10 +10,11 @@
         @dragleave.prevent="dragOut"
         @dragend.prevent="dragOut"
       >
-        <span class="text-muted">
-          Drag &amp; drop files here or
-          <span class="text-primary">click to browse</span>
-          for files.
+        <span class="d-flex align-items-center">
+          <i class="fa fa-cloud-upload mr-3" />
+          <b>Drag &amp; drop files here</b>
+          <span class="mx-2">or</span>
+          <div class="fake-button">Browse files</div>
         </span>
         <input
           ref="fileInput"
@@ -84,14 +85,16 @@ export default {
 <style lang="scss" scoped>
 @import "@reciprocity/bootstrap/scss/colors";
 @import "@reciprocity/bootstrap/scss/variables";
+@import "../_styles_/scss/colors";
 
 .file-upload-dropzone {
   .dropzone-box {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px dashed $border-color-default;
     height: 150px;
+    border: 1px dashed $color-ghost;
+    padding: 0.5rem;
     text-align: center;
     cursor: pointer;
     background: $color-zircon;
@@ -106,5 +109,17 @@ export default {
       background: $color-wild-sand;
     }
   }
+}
+
+.fa-cloud-upload {
+  font-size: 2.4rem;
+  color: $color-abs-blue-dark;
+}
+
+.fake-button {
+  color: $color-white;
+  background-color: $color-abs-blue-dark;
+  padding: 0.35rem 0.75rem;
+  border-radius: 2px;
 }
 </style>
