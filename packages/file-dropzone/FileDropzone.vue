@@ -13,7 +13,7 @@
         <div class="content">
           <i class="fa fa-cloud-upload mr-3" />
           <b class="mt-0">Drag &amp; drop files here</b>
-          <span class="mx-2 mb-2 mt-1">or</span>
+          <span class="mx-2 my-1">or</span>
           <div class="fake-button">Browse files</div>
         </div>
         <input
