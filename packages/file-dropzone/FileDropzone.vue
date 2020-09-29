@@ -96,6 +96,16 @@ export default {
 @import "@reciprocity/styles/scss/colors";
 
 .file-upload-dropzone {
+  position: relative;
+  overflow: hidden;
+  min-height: 64px;
+
+  form {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+
   .content {
     display: flex;
     align-items: center;
@@ -111,13 +121,14 @@ export default {
   }
 
   .dropzone-box {
+    height: 100%;
+    width: 100%;
+    margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 170px;
     border: 1px dashed $color-ghost;
     padding: 0.5rem;
-    text-align: center;
     cursor: pointer;
     background: $color-zircon;
     border-radius: 3px;
