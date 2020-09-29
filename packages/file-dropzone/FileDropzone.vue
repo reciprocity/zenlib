@@ -11,7 +11,7 @@
         @dragend.prevent="dragOut"
       >
         <div class="content">
-          <i class="fa fa-cloud-upload mr-3" />
+          <i class="fal fa-cloud-upload mr-3" />
           <b class="mt-0">Drag &amp; drop files here</b>
           <span class="mx-2 my-1">or</span>
           <div class="fake-button">Browse files</div>
@@ -30,6 +30,9 @@
 </template>
 
 <script>
+import { library, dom } from "@fortawesome/fontawesome-svg-core";
+import { faCloudUpload } from "@fortawesome/pro-light-svg-icons";
+
 export default {
   props: {
     multiple: {
@@ -55,6 +58,11 @@ export default {
         }
       ];
     }
+  },
+  mounted() {
+    // Add fa replace watcher:
+    library.add(faCloudUpload);
+    dom.watch();
   },
   methods: {
     fileSelected(event) {
