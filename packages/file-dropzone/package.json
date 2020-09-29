@@ -10,6 +10,8 @@
     "access": "public"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.31",
+    "@fortawesome/pro-light-svg-icons": "^5.15.0",
     "@reciprocity/bootstrap": "^0.9.0",
     "@reciprocity/styles": "0.0.2"
   }
