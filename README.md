@@ -29,38 +29,38 @@ To start working with the library you'll need to have Node.js and npm installed 
 
 #### Development setup
 
-First, you'll need to install all packages dependencies, interlink packages locally and build them. Run `npm install` command from the root folder and also from `./packages/_storybook_`.
+First, you'll need to install all packages dependencies, interlink packages locally, and build them. Run `npm install` command from the root folder and also from `./packages/_storybook_`.
 
-You will need to run two separate terminal windows. In the first run go to root folder and run:
+You will need to run two separate terminal windows. In the first run go to the root folder and run:
 1. `npm run bootstrap`
 2. `npm run build:watch`
 
 In the second terminal window go to `./packages/_storybook_` and run:
 1. `npm run storybook`
 
-Storybook now runs on `http://localhost:6006/` and all changes you make to any package/component are immediatelly reflected in the storybook.
+Storybook now runs on `http://localhost:6006/` and all changes you make to any package/component are immediately reflected in the storybook.
 
 #### Componetn changes reflection in Storybook: In-depth
-Zenlib is a multi-npm-package repo (based on [Lerna](https://github.com/lerna/lerna)). Each component is it's own npm package.
+Zenlib is a multi-npm-package repo (based on [Lerna](https://github.com/lerna/lerna)). Each component is its own npm package.
 
-Command `./npm run bootstrap` is cruical here. It searches for all inter-repo package dependencies and replaces those packages with a symbolic link that shows directly to `dist` folder of each package.
+Command `./npm run bootstrap` is crucial here. It searches for all inter-repo package dependencies and replaces those packages with a symbolic link that shows directly to `dist` folder of each package.
 
 _For example if you go to `./packages/_storybook_/` and run `$ ls -la node_modules/@reciprocity` you should see `->` symbol after each folder name. It means the "folder" is actully just a pointer to some other folder eg: `file-dropzone -> ../../../file-dropzone`_
 
-So whenever `dist` folder of a package is rebuilt due to some changes (due to running `build:watch` command), this change will get picked up by a Storybook and you'll be able to see the changes immediatelly.
+So whenever `dist` folder of a package is rebuilt due to some changes (due to running `build:watch` command), this change will get picked up by a Storybook and you'll be able to see the changes immediately.
 
 #### Building packages
 
 After you change stuff in the component's source code, you'll need to build the packages so they're distributable. You can do that by running `npm run build`.
 
-But since you're probabbly already running `npm run build:watch`, which rebuilds package on each change, there's no need to do this manual build.
+But since you're probably already running `npm run build:watch`, which rebuilds the package on each change, there's no need to do this manual build.
 
 #### Reviewing component changes live in the Zengrc app
 
-It's useful to see how component's modifications look like in the actual app. The problem is that Zenlib is a separate repo. Package's versions are bumped when your PR gets merged, so this is when we could run `npm install` in Zengrc, to update components. But we would like to see our component in action during development, not only after it's merged.
+It's useful to see how the component's modifications look like in the actual app. The problem is that Zenlib is a separate repo. Package's versions are bumped when your PR gets merged, so this is when we could run `npm install` in Zengrc, to update components. But we would like to see our component in action during development, not only after it's merged.
 
 The idea is to substitute the actual installed folder in zengrc/frontend/node_modules with a symbolic link that's pointing to working folder of our component. Npm (yarn) do support such functionality out of the box! It's called `npm link`.
-Basically the same thing that `bootstrap` does within the Zenlib repo.
+Basically, the same thing that `bootstrap` does within the Zenlib repo.
 
 _Note:
 - _These instructions apply if you're running frontend locally (outside the container) with frontend/yarn serve:local._
@@ -86,7 +86,7 @@ Run Zengrc app in new tab:\
 `cd zengrc/frontend/;`\
 `yarn server:local`\
 
-Changes should now be visible in Zengrc. It will also reload and show any addtional changes automatically.
+Changes should now be visible in Zengrc. It will also reload and show any additional changes automatically.
 (in case of troubles make sure _vue.config.js_ has param `config.resolve.symlinks(false);`)
 
 #### Linting & code style
@@ -121,16 +121,16 @@ We run coverage checks on each PR so try not to ship code without tests ;)
 
 2. Add the component to Story Book
 
-- Add the package as a dependency in `packages/_storybook_/package.json`. Put in version ^0.1.0, although note that since package isn't published, you can't do `npm install`!
+- Add the package as a dependency on `packages/_storybook_/package.json`. Put in version ^0.1.0, although note that since the package isn't published, you can't do `npm install`!
 - Create a new story file under the `packages/_storybook_/stories/` folder
-- Since we can't install our component throught npm, we need to use `npm link` to create symbolic link in `_storybook_/node_modules/@reciprocity` that's pointing to root path of our component (eg. `zenlib/packages/my-component`).
-  For more details see section *Reiewing component changes live in the Zengrc app* in this readme. It's pretty much the same, you just need to do it for _storybook_ instead of zengrc.
+- Since we can't install our component through npm, we need to use `npm link` to create a symbolic link in `_storybook_/node_modules/@reciprocity` that's pointing to the root path of our component (eg. `zenlib/packages/my-component`).
+  For more details see section *Reviewing component changes live in the Zengrc app* in this readme. It's pretty much the same, you just need to do it for _storybook_ instead of zengrc.
 - Re run [Bootstrap packages](#bootstrap-packages)
 
 #### Versioning
 
 Use [Semantic Versioning](https://semver.org/). Start by `0.0.1` and once the component is ready, change it to `0.1.0`
-Component's version is bumped automatically once the PR is merged. Which number will bump depends on what kind of commits there are in the PR.
+The component's version is bumped automatically once the PR is merged. Which number will bump depends on what kind of commits there are in the PR.
 
 ### Committing changes
 
