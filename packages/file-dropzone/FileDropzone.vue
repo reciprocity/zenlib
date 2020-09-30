@@ -10,12 +10,12 @@
         @dragleave.prevent="dragOut"
         @dragend.prevent="dragOut"
       >
-        <span class="d-flex align-items-center">
-          <i class="fa fa-cloud-upload mr-3" />
-          <b>Drag &amp; drop files here</b>
-          <span class="mx-2">or</span>
+        <div class="content">
+          <i class="fal fa-cloud-upload mr-3" />
+          <b class="mt-0">Drag &amp; drop files here</b>
+          <span class="mx-2 my-1">or</span>
           <div class="fake-button">Browse files</div>
-        </span>
+        </div>
         <input
           ref="fileInput"
           :multiple="multiple"
@@ -30,6 +30,9 @@
 </template>
 
 <script>
+import { library, dom } from "@fortawesome/fontawesome-svg-core";
+import { faCloudUpload } from "@fortawesome/pro-light-svg-icons";
+
 export default {
   props: {
     multiple: {
@@ -55,6 +58,11 @@ export default {
         }
       ];
     }
+  },
+  mounted() {
+    // Add fa replace watcher:
+    library.add(faCloudUpload);
+    dom.watch();
   },
   methods: {
     fileSelected(event) {
@@ -88,14 +96,39 @@ export default {
 @import "@reciprocity/styles/scss/colors";
 
 .file-upload-dropzone {
+  position: relative;
+  overflow: hidden;
+  min-height: 64px;
+
+  form {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+
+  .content {
+    display: flex;
+    align-items: center;
+  }
+
+  &.blocks .content {
+    flex-direction: column;
+
+    > * {
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+    }
+  }
+
   .dropzone-box {
+    height: 100%;
+    width: 100%;
+    margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 150px;
     border: 1px dashed $color-ghost;
     padding: 0.5rem;
-    text-align: center;
     cursor: pointer;
     background: $color-zircon;
     border-radius: 3px;

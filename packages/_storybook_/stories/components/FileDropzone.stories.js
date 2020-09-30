@@ -10,5 +10,9 @@ storiesOf("Components|FileDropzone", module)
   })
   .add("default", () => ({
     components: { FileDropzone },
-    template: "<file-dropzone />"
+    template: '<file-dropzone class="blocks" style="height: 200px"/>'
+  }))
+  .add("inlined", () => ({
+    components: { FileDropzone },
+    template: "<file-dropzone/>"
   }));
