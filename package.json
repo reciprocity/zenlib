@@ -14,7 +14,10 @@
 		"storybook": "cd packages/_storybook_ && npm run storybook",
 		"build-storybook": "cd packages/_storybook_ && npm run build",
 		"build-storybook-branch": "cd packages/_storybook_ && npm run build-branch",
-		"deploy-storybook": "cd packages/_storybook_ && npm run deploy"
+		"deploy-storybook": "cd packages/_storybook_ && npm run deploy",
+		"build:mwc": "vue-cli-service build --target wc --name zenlib-wc 'packages/*/*.vue'",
+		"build:multiselect-wc": "vue-cli-service build --target wc --name zen-multiselect 'packages/multiselect/Multiselect.vue'",
+		"build:multiselect-wc-2": "vue-cli-service build --target lib --name zen-multiselect 'packages/multiselect/buildWebComponent.js'"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.5.5",
@@ -45,10 +48,12 @@
 		"rollup-plugin-node-resolve": "^5.2.0",
 		"rollup-plugin-postcss": "^2.0.3",
 		"rollup-plugin-vue": "^5.0.1",
+		"sass-loader": "^10.0.3",
 		"slack-notify": "^0.1.7",
 		"tslib": "^1.10.0",
 		"typescript": "^3.5.3",
 		"vue": "^2.6.10",
+		"vue-custom-element": "^3.2.14",
 		"vue-jest": "^3.0.4",
 		"vue-multiselect": "github:reciprocity/vue-multiselect#7a33dd6",
 		"vue-template-compiler": "^2.6.10"
