@@ -7,6 +7,7 @@
       multiple: multiple
     }"
   >
+    <!-- <p>This is a Vue-Multiselect: -{{ _props }}-</p> -->
     <vue-multiselect
       :name="name"
       :multiple="multiple"
@@ -163,65 +164,95 @@ function isEmpty(opt) {
 
 const UNLIMITED = 99999;
 
+function getAvailableProps(component) {
+  let props = {};
+  props = { ...props, ...component.props };
+  for (const mixin of component.mixins) {
+    props = { ...props, ...mixin.props };
+  }
+  return props;
+}
+
+function concatProps(original, additional) {
+  for (const key in additional) {
+    if (
+      Object.prototype.hasOwnProperty.call(additional, key) &&
+      !Object.prototype.hasOwnProperty.call(original, key)
+    ) {
+      original[key] = additional[key];
+    }
+  }
+  return original;
+}
+
 export default {
   name: "ZenMultiselect",
   components: { VueMultiselect },
-  props: {
-    allowEmpty: {
-      type: Boolean,
-      default: true
+  // this.$attrs is always empty when used as web component.
+  // this._props extracts values from attributes of *known* props
+  // so if we want attr and it's value to appear in this._props, we
+  // need to promote that attr to a known prop.
+  // We do this by adding all known props of each known sub-components
+  // In our case it's just multiselect
+  props: concatProps(
+    {
+      allowEmpty: {
+        type: Boolean,
+        default: true
+      },
+      name: {
+        type: String,
+        default: ""
+      },
+      multiple: {
+        type: Boolean,
+        default: false
+      },
+      disabled: {
+        type: Boolean,
+        default: false
+      },
+      options: {
+        type: Array,
+        required: false,
+        default: () => []
+      },
+      renderSelectElement: {
+        type: Boolean,
+        default: false
+      },
+      value: {
+        type: [Object, String, Array, Number],
+        default: null
+      },
+      valid: {
+        type: Boolean,
+        default: null
+      },
+      showCheckboxes: {
+        type: Boolean,
+        default: true
+      },
+      customLabel: {
+        type: Function,
+        default: (option, label) =>
+          isEmpty(option) ? "" : label ? option[label] : option
+      },
+      label: {
+        type: String,
+        default: ""
+      },
+      limit: {
+        type: Number,
+        default: UNLIMITED
+      },
+      customOptionSlot: {
+        type: Boolean,
+        default: false
+      }
     },
-    name: {
-      type: String,
-      default: ""
-    },
-    multiple: {
-      type: Boolean,
-      default: false
-    },
-    disabled: {
-      type: Boolean,
-      default: false
-    },
-    options: {
-      type: Array,
-      required: false,
-      default: () => []
-    },
-    renderSelectElement: {
-      type: Boolean,
-      default: false
-    },
-    value: {
-      type: [Object, String, Array, Number],
-      default: null
-    },
-    valid: {
-      type: Boolean,
-      default: null
-    },
-    showCheckboxes: {
-      type: Boolean,
-      default: true
-    },
-    customLabel: {
-      type: Function,
-      default: (option, label) =>
-        isEmpty(option) ? "" : label ? option[label] : option
-    },
-    label: {
-      type: String,
-      default: ""
-    },
-    limit: {
-      type: Number,
-      default: UNLIMITED
-    },
-    customOptionSlot: {
-      type: Boolean,
-      default: false
-    }
-  },
+    getAvailableProps(VueMultiselect)
+  ),
   data: function() {
     return {
       myLimit: UNLIMITED,
@@ -264,6 +295,7 @@ export default {
   },
   created: function() {
     formatOptions(this.options);
+    console.log("comp opts", this._props);
   },
   methods: {
     clearSelectedValue() {
@@ -291,10 +323,12 @@ export default {
       this.calculatingLimit = false;
       this.myLimit = Math.max(i, 1);
     },
-    onChange() {
+    onChange(val) {
+      this.$emit("input", val);
       this.calcLimit();
     },
     onOpen() {
+      this.$emit("open");
       if (!this.multiple) return;
       this.myOptions = cloneDeep(this.options);
       this.orderOptions();
