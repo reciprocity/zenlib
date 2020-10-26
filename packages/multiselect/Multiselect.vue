@@ -21,6 +21,7 @@
       :label="label"
       :custom-label="customLabel"
       :limit="myLimit"
+      :block-keys="blockKeys_c"
       v-bind="attrs"
       v-on="$listeners"
       @input="onChange"
@@ -222,6 +223,11 @@ export default {
       customOptionSlot: {
         type: Boolean,
         default: false
+      },
+      // Web component workaround:
+      blockKeys: {
+        type: [Array, String],
+        default: []
       }
     },
     [VueMultiselect]
@@ -263,6 +269,9 @@ export default {
     },
     value_c() {
       return parseProp(this.value, []);
+    },
+    blockKeys_c() {
+      return parseProp(this.blockKeys, []);
     }
   },
   watch: {
