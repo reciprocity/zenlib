@@ -145,3 +145,8 @@ _There's a commit message linter that will automatically tell you if you're usin
 ### Releasing changes
 
 Once you're finished with your changes you need to open a PR from your feature branch to master. Once your PR is approved and merged your changes will be released automatically to NPM.
+
+### Web components
+To build multiselect* as web component, run `yarn build:multiselect-wc`. It builds js files and puts them into *zenlib2/dist/*
+
+*Currently multiselect is the only supported web component from Zenlib. Todo: Also make other components exportable as web components.
