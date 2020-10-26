@@ -7,7 +7,6 @@
       multiple: multiple
     }"
   >
-    <!-- <p>This is a Vue-Multiselect: -{{ _props }}-</p> -->
     <vue-multiselect
       :name="name"
       :multiple="multiple"
@@ -269,7 +268,6 @@ export default {
   },
   created: function() {
     formatOptions(this.options);
-    console.log("comp opts", this._props);
   },
   methods: {
     clearSelectedValue() {
