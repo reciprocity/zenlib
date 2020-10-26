@@ -21,7 +21,7 @@
       :label="label"
       :custom-label="customLabel"
       :limit="myLimit"
-      v-bind="$attrs"
+      v-bind="attrs"
       v-on="$listeners"
       @input="onChange"
       @open="onOpen"
@@ -234,6 +234,11 @@ export default {
     };
   },
   computed: {
+    attrs() {
+      return Object.keys(this.$attrs).length
+        ? this.$attrs
+        : cloneDeep(this._props);
+    },
     validationClass() {
       if (this.valid === null) {
         return "";
