@@ -17,7 +17,6 @@
 		"deploy-storybook": "cd packages/_storybook_ && npm run deploy",
 		"build:mwc": "vue-cli-service build --target wc --name zenlib-wc 'packages/*/*.vue'",
 		"build:multiselect-wc": "vue-cli-service build --target wc --name zen-multiselect 'packages/multiselect/Multiselect.vue'",
-		"build:multiselect-wc-2": "vue-cli-service build --target lib --name zen-multiselect 'packages/multiselect/buildWebComponent.js'"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.5.5",
