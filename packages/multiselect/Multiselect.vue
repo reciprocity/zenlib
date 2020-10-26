@@ -15,7 +15,7 @@
       :class="validationClass"
       :options="myOptions"
       :option-height="35"
-      :value="value"
+      :value="value_c"
       :allow-empty="allowEmpty"
       :show-labels="false"
       :label="label"
@@ -41,7 +41,7 @@
 
       <template v-if="multiple" slot="limit">
         <span class="multiselect__tag multiselect__limit-pill">
-          <span>+{{ (value || []).length - myLimit }}</span>
+          <span>+{{ (value_c || []).length - myLimit }}</span>
         </span>
       </template>
 
@@ -186,7 +186,7 @@ export default {
         default: false
       },
       options: {
-        type: Array,
+        type: [Array, String],
         required: false,
         default: () => []
       },
@@ -246,10 +246,10 @@ export default {
       return this.valid ? "is-valid" : "is-invalid";
     },
     valueArray() {
-      return Array.isArray(this.value)
-        ? this.value
-        : this.value && Object.keys(this.value).length
-        ? [this.value]
+      return Array.isArray(this.value_c)
+        ? this.value_c
+        : this.value_c && Object.keys(this.value_c).length
+        ? [this.value_c]
         : [];
     },
     isValueSet() {
@@ -257,10 +257,16 @@ export default {
     },
     checkboxesVisible() {
       return !this.customOptionSlot && this.multiple && this.showCheckboxes;
+    },
+    options_c() {
+      return parseProp(this.options, []);
+    },
+    value_c() {
+      return parseProp(this.value, []);
     }
   },
   watch: {
-    options: {
+    options_c: {
       immediate: true,
       deep: true,
       handler: function(value) {
@@ -272,7 +278,7 @@ export default {
     }
   },
   created: function() {
-    formatOptions(this.options);
+    formatOptions(this.options_c);
   },
   methods: {
     clearSelectedValue() {
@@ -305,9 +311,8 @@ export default {
       this.calcLimit();
     },
     onOpen() {
-      this.$emit("open");
       if (!this.multiple) return;
-      this.myOptions = cloneDeep(this.options);
+      this.myOptions = cloneDeep(this.options_c);
       this.orderOptions();
       this.$nextTick(() => {
         let el = this.$el.querySelectorAll(".multiselect__content-wrapper")[0];
@@ -327,18 +332,20 @@ export default {
       this.calcLimitTimer = setTimeout(this.calcLimit, time);
     },
     isSelected(option) {
-      for (let b of this.value || []) {
+      for (let b of this.value_c || []) {
         if (isEqual(b, option)) {
           return true;
         }
       }
     },
     orderOptions() {
-      if (!Array.isArray(this.value)) return;
+      if (!Array.isArray(this.value_c)) return;
       // Reorder items, so that selected are on top:
-      let selected = this.myOptions.filter(a => this.isSelected(a, this.value));
+      let selected = this.myOptions.filter(a =>
+        this.isSelected(a, this.value_c)
+      );
       let unSelected = this.myOptions.filter(
-        a => !this.isSelected(a, this.value)
+        a => !this.isSelected(a, this.value_c)
       );
       this.myOptions = selected.concat(unSelected);
     },
