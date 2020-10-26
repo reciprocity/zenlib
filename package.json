@@ -16,7 +16,7 @@
 		"build-storybook-branch": "cd packages/_storybook_ && npm run build-branch",
 		"deploy-storybook": "cd packages/_storybook_ && npm run deploy",
 		"build:mwc": "vue-cli-service build --target wc --name zenlib-wc 'packages/*/*.vue'",
-		"build:multiselect-wc": "vue-cli-service build --target wc --name zen-multiselect 'packages/multiselect/Multiselect.vue'",
+		"build:multiselect-wc": "vue-cli-service build --target wc --name zen-multiselect2 'packages/multiselect/Multiselect.vue'"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.5.5",
