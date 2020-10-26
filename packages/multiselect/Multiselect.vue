@@ -24,9 +24,22 @@
       :block-keys="blockKeys_c"
       v-bind="attrs"
       v-on="$listeners"
-      @input="onChange"
-      @open="onOpen"
-      @close="onClose"
+      @input="
+        onChange($event);
+        $emit('input', $event);
+      "
+      @open="
+        onOpen($event);
+        $emit('open', $event);
+      "
+      @close="
+        onClose($event);
+        $emit('close', $event);
+      "
+      @select="$emit('select', $event)"
+      @remove="$emit('remove', $event)"
+      @search-change="$emit('searchChange', $event)"
+      @tag="$emit('tag', $event)"
     >
       <!--
         TODO: clean up when this is merged:
