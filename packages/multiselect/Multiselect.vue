@@ -115,6 +115,7 @@ import isObject from "lodash.isobject";
 import "vue-multiselect/dist/vue-multiselect.min.css";
 import cloneDeep from "lodash.clonedeep";
 import VueResizeObserver from "vue-resize-observer";
+import { addChildrenProps, parseProp } from "./webComponentHelper";
 
 Vue.use(VueResizeObserver);
 
@@ -164,37 +165,10 @@ function isEmpty(opt) {
 
 const UNLIMITED = 99999;
 
-function getAvailableProps(component) {
-  let props = {};
-  props = { ...props, ...component.props };
-  for (const mixin of component.mixins) {
-    props = { ...props, ...mixin.props };
-  }
-  return props;
-}
-
-function concatProps(original, additional) {
-  for (const key in additional) {
-    if (
-      Object.prototype.hasOwnProperty.call(additional, key) &&
-      !Object.prototype.hasOwnProperty.call(original, key)
-    ) {
-      original[key] = additional[key];
-    }
-  }
-  return original;
-}
-
 export default {
   name: "ZenMultiselect",
   components: { VueMultiselect },
-  // this.$attrs is always empty when used as web component.
-  // this._props extracts values from attributes of *known* props
-  // so if we want attr and it's value to appear in this._props, we
-  // need to promote that attr to a known prop.
-  // We do this by adding all known props of each known sub-components
-  // In our case it's just multiselect
-  props: concatProps(
+  props: addChildrenProps(
     {
       allowEmpty: {
         type: Boolean,
@@ -251,7 +225,7 @@ export default {
         default: false
       }
     },
-    getAvailableProps(VueMultiselect)
+    [VueMultiselect]
   ),
   data: function() {
     return {
