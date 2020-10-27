@@ -22,6 +22,7 @@
       :custom-label="customLabel"
       :limit="myLimit"
       v-bind="$attrs"
+      :block-keys="blockKeys_c"
       v-on="$listeners"
       @input="onChange"
       @open="onOpen"
@@ -114,6 +115,7 @@ import isObject from "lodash.isobject";
 import "vue-multiselect/dist/vue-multiselect.min.css";
 import cloneDeep from "lodash.clonedeep";
 import VueResizeObserver from "vue-resize-observer";
+import { addChildrenProps, parseProp } from "./webComponentHelper";
 
 Vue.use(VueResizeObserver);
 
@@ -220,6 +222,11 @@ export default {
     customOptionSlot: {
       type: Boolean,
       default: false
+      },
+      // Web component workaround:
+      blockKeys: {
+        type: [Array, String],
+        default: []
     }
   },
   data: function() {
@@ -254,6 +261,9 @@ export default {
     },
     value_c() {
       return parseProp(this.value, []);
+    },
+    blockKeys_c() {
+      return parseProp(this.blockKeys, []);
     }
   },
   watch: {
