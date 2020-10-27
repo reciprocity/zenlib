@@ -240,7 +240,7 @@ export default {
       // Web component workaround:
       blockKeys: {
         type: [Array, String],
-        default: []
+        default: () => []
       }
     },
     [VueMultiselect]
