@@ -183,66 +183,66 @@ export default {
   components: { VueMultiselect },
   props: addChildrenProps(
     {
-    allowEmpty: {
-      type: Boolean,
-      default: true
-    },
-    name: {
-      type: String,
-      default: ""
-    },
-    multiple: {
-      type: Boolean,
-      default: false
-    },
-    disabled: {
-      type: Boolean,
-      default: false
-    },
-    options: {
+      allowEmpty: {
+        type: Boolean,
+        default: true
+      },
+      name: {
+        type: String,
+        default: ""
+      },
+      multiple: {
+        type: Boolean,
+        default: false
+      },
+      disabled: {
+        type: Boolean,
+        default: false
+      },
+      options: {
         type: [Array, String],
-      required: false,
-      default: () => []
-    },
-    renderSelectElement: {
-      type: Boolean,
-      default: false
-    },
-    value: {
-      type: [Object, String, Array, Number],
-      default: null
-    },
-    valid: {
-      type: Boolean,
-      default: null
-    },
-    showCheckboxes: {
-      type: Boolean,
-      default: true
-    },
-    customLabel: {
-      type: Function,
-      default: (option, label) =>
-        isEmpty(option) ? "" : label ? option[label] : option
-    },
-    label: {
-      type: String,
-      default: ""
-    },
-    limit: {
-      type: Number,
-      default: UNLIMITED
-    },
-    customOptionSlot: {
-      type: Boolean,
-      default: false
+        required: false,
+        default: () => []
+      },
+      renderSelectElement: {
+        type: Boolean,
+        default: false
+      },
+      value: {
+        type: [Object, String, Array, Number],
+        default: null
+      },
+      valid: {
+        type: Boolean,
+        default: null
+      },
+      showCheckboxes: {
+        type: Boolean,
+        default: true
+      },
+      customLabel: {
+        type: Function,
+        default: (option, label) =>
+          isEmpty(option) ? "" : label ? option[label] : option
+      },
+      label: {
+        type: String,
+        default: ""
+      },
+      limit: {
+        type: Number,
+        default: UNLIMITED
+      },
+      customOptionSlot: {
+        type: Boolean,
+        default: false
       },
       // Web component workaround:
       blockKeys: {
         type: [Array, String],
         default: []
-    }
-  },
+      }
+    },
     [VueMultiselect]
   ),
   data: function() {
