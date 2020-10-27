@@ -21,8 +21,8 @@
       :label="label"
       :custom-label="customLabel"
       :limit="myLimit"
-      v-bind="$attrs"
       :block-keys="blockKeys_c"
+      v-bind="attrs"
       v-on="$listeners"
       @input="onChange"
       @open="onOpen"
@@ -168,7 +168,8 @@ const UNLIMITED = 99999;
 export default {
   name: "ZenMultiselect",
   components: { VueMultiselect },
-  props: {
+  props: addChildrenProps(
+    {
     allowEmpty: {
       type: Boolean,
       default: true
@@ -229,6 +230,8 @@ export default {
         default: []
     }
   },
+    [VueMultiselect]
+  ),
   data: function() {
     return {
       myLimit: UNLIMITED,
@@ -237,6 +240,11 @@ export default {
     };
   },
   computed: {
+    attrs() {
+      return Object.keys(this.$attrs).length
+        ? this.$attrs
+        : cloneDeep(this._props);
+    },
     validationClass() {
       if (this.valid === null) {
         return "";
