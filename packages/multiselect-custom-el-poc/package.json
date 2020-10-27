@@ -1,7 +1,7 @@
 {
-  "name": "@reciprocity/multiselect",
+  "name": "@reciprocity/multiselect-custom-el-poc",
   "version": "0.5.10",
-  "description": "A select component with multi value support",
+  "description": "A select component with multi value support created for Micro frontends POC",
   "main": "dist/index.js",
   "scripts": {},
   "author": "",
