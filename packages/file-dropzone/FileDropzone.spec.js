@@ -20,7 +20,12 @@ describe("FileDropzone.vue", () => {
 
     expect(vm.isOver).toBe(false);
 
-    labelEl.dispatchEvent(new Event("dragover"));
+    const dragoverEvent = new Event("dragover");
+    dragoverEvent.dataTransfer = {
+      files: ["file1"]
+    };
+
+    labelEl.dispatchEvent(dragoverEvent);
 
     expect(vm.isOver).toBe(true);
 
