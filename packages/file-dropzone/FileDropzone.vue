@@ -79,7 +79,8 @@ export default {
 
       this.isOver = false;
     },
-    dragOver() {
+    dragOver(event) {
+      event.dataTransfer.dropEffect = "copy";
       this.isOver = true;
     },
     dragOut() {
