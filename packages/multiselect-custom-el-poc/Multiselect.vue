@@ -170,7 +170,7 @@ export const isEqual = (a, b) => {
 };
 
 // Copied from node_modules/vue-multiselect/src/multiselectMixin.js:
-function isEmpty(opt) {
+export function isEmpty(opt) {
   if (opt === 0) return false;
   if (Array.isArray(opt) && opt.length === 0) return true;
   return !opt;

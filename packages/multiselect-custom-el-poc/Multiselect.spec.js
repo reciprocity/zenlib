@@ -1,4 +1,4 @@
-import Multiselect, { isEqual } from "./Multiselect.vue";
+import Multiselect, { isEqual, isEmpty } from "./Multiselect.vue";
 import { shallowMount, mount } from "@vue/test-utils";
 import VueMultiselect from "vue-multiselect";
 
@@ -34,6 +34,13 @@ describe("Multiselect.vue", () => {
       isEqual({ a: 1, b: { a: 1, b: 2 } }, { a: 1, b: { a: 1, b: 2, c: 3 } })
     ).toBe(false);
     expect(isEqual({ a: 1, b: [] }, { a: 1, b: [1, 2] })).toBe(false);
+    expect(isEqual({ a: 1 }, { a: "str" })).toBe(false);
+  });
+
+  it("isEmpty() works", () => {
+    expect(isEmpty([])).toBe(true);
+    expect(isEmpty([1])).toBe(false);
+    expect(isEmpty(0)).toBe(false);
   });
 
   it("isEqual() handles circular references", () => {
