@@ -14,7 +14,8 @@
 		"storybook": "cd packages/_storybook_ && npm run storybook",
 		"build-storybook": "cd packages/_storybook_ && npm run build",
 		"build-storybook-branch": "cd packages/_storybook_ && npm run build-branch",
-		"deploy-storybook": "cd packages/_storybook_ && npm run deploy"
+		"deploy-storybook": "cd packages/_storybook_ && npm run deploy",
+		"build:multiselect-custom-el-poc": "vue-cli-service build --target wc --name zen-multiselect-custom-el-poc 'packages/multiselect-custom-el-poc/Multiselect.vue'"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.5.5",

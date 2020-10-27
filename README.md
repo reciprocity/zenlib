@@ -145,3 +145,10 @@ _There's a commit message linter that will automatically tell you if you're usin
 ### Releasing changes
 
 Once you're finished with your changes you need to open a PR from your feature branch to master. Once your PR is approved and merged your changes will be released automatically to NPM.
+
+### Zen multiselect custom element POC
+This component is just a proof of concept produced for Micro frontends POC. It's not production ready!
+
+To build multiselect* as web component, run `yarn build:multiselect-custom-el-poc`. It builds js files and puts them into *zenlib/dist/*
+
+*Currently multiselect is the only supported web component from Zenlib. Todo: Also make other components exportable as web components.
